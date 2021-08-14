@@ -1,0 +1,13 @@
+---
+label: 1-column-text
+hide_body: false
+fields:
+- type: text
+  hidden: true
+  label: block
+  name: block
+  default: one-column-1
+- type: include
+  name: column
+  label: Column
+  template: text-column

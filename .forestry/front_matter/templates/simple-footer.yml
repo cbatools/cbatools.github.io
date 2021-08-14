@@ -1,0 +1,16 @@
+---
+label: simple-footer
+hide_body: false
+fields:
+- type: text
+  hidden: true
+  label: block
+  name: block
+  default: footer-1
+- type: textarea
+  label: Footer Text
+  name: content
+  config:
+    wysiwyg: true
+    schema:
+      format: html

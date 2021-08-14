@@ -1,0 +1,17 @@
+---
+label: text-column
+hide_body: false
+fields:
+- type: text
+  name: headline
+  label: Headline
+- type: text
+  label: slug
+  name: slug
+- type: textarea
+  name: content
+  label: Content
+  config:
+    wysiwyg: true
+    schema:
+      format: html
