@@ -113,7 +113,7 @@ p {
 
 .button.secondary {
     background-color: transparent;
-    border: 1.5px solid #F3E600
+    border: 1.5px solid #ffcb3b
 }
 
 .button.small {
@@ -222,7 +222,8 @@ input.inverted::placeholder {
     align-items: center;
     padding: 16px 32px;
     padding: 1rem 2rem;
-    background-color: #F3E600;
+    background-color: #ffcb3b;
+    z-index: 111;
 }
 
 .block-header-2--logo img {
@@ -290,7 +291,7 @@ input.inverted::placeholder {
 }
 
 .block-hero-1 {
-    --bg: #F3E600;
+    --bg: #ffcb3b;
     --text: #000;
     display: -ms-flexbox;
     display: flex;
@@ -313,7 +314,7 @@ input.inverted::placeholder {
 }
 
 .block-hero-2 {
-    --bg: #F3E600;
+    --bg: #ffcb3b;
     --text: #000;
     -ms-flex-direction: column;
     flex-direction: column;
@@ -481,7 +482,7 @@ input.inverted::placeholder {
 .block-cta-bar {
     padding: 32px;
     padding: 2rem;
-    background: #F3E600;
+    background: #ffcb3b;
     color: #000
 }
 
