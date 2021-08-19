@@ -9,3 +9,4 @@ site/public/
 dist/
 .tmp/
 _site/
+.jekyll-cache/

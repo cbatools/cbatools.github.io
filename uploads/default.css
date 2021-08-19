@@ -30,7 +30,8 @@ h2 {
 }
 
 h2 span.light {
-    font-weight: 300
+    font-weight: 300;
+    font-size: 2.6rem;
 }
 
 h3 {
@@ -40,8 +41,7 @@ h3 {
 
 h3,
 p {
-    font-size: 16px;
-    font-size: 1rem;
+    font-size: 1.2rem;
     line-height: 1.35
 }
 
@@ -113,7 +113,7 @@ p {
 
 .button.secondary {
     background-color: transparent;
-    border: 1.5px solid #ffcb3b
+    border: 1.5px solid #FFE459
 }
 
 .button.small {
@@ -213,7 +213,6 @@ input.inverted::placeholder {
 
 .block-header-2 {
     width: 100%;
-    position: fixed;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-pack: justify;
@@ -222,8 +221,11 @@ input.inverted::placeholder {
     align-items: center;
     padding: 16px 32px;
     padding: 1rem 2rem;
-    background-color: #ffcb3b;
+    background-color: #FFE459;
     z-index: 111;
+    max-height: 5rem;
+    overflow: auto;
+    white-space: nowrap;
 }
 
 .block-header-2--logo img {
@@ -235,7 +237,8 @@ input.inverted::placeholder {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-align: baseline;
-    align-items: baseline
+    align-items: baseline;
+    padding-left: 3rem;
 }
 
 .block-header-2 .nav-item {
@@ -291,7 +294,7 @@ input.inverted::placeholder {
 }
 
 .block-hero-1 {
-    --bg: #ffcb3b;
+    --bg: #FFE459;
     --text: #000;
     display: -ms-flexbox;
     display: flex;
@@ -314,7 +317,7 @@ input.inverted::placeholder {
 }
 
 .block-hero-2 {
-    --bg: #ffcb3b;
+    --bg: #FFE459;
     --text: #000;
     -ms-flex-direction: column;
     flex-direction: column;
@@ -366,8 +369,7 @@ input.inverted::placeholder {
     margin: 16px 0 32px;
     margin: 1rem 0 2rem;
     color: #000;
-    font-size: 16px;
-    font-size: 1rem
+    font-size: 1.2rem
 }
 
 .block-hero-2 .column.media img {
@@ -482,7 +484,7 @@ input.inverted::placeholder {
 .block-cta-bar {
     padding: 32px;
     padding: 2rem;
-    background: #ffcb3b;
+    background: #FFE459;
     color: #000
 }
 
@@ -727,7 +729,8 @@ input.inverted::placeholder {
     align-items: center;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
-    text-align: center
+    text-align: center;
+    
 }
 
 .block-feature-2 .column.text {
