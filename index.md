@@ -28,7 +28,7 @@ page_sections:
     button_text: See on GitHub
   image:
     image: "/uploads/index/cba-1.png"
-    alt_text: Product Shot
+    alt_text: CBA Tools
   background_image: "/uploads/2018/06/21/hero-2-bg.png"
 - template: content-feature
   block: feature-1
@@ -37,8 +37,8 @@ page_sections:
   headline: <strong>말풍선 모양 트위치 채팅</strong>
   content: 마리텔의 방송효과에서 영감을 받은 <br/> 밑에서 위로 올라오는 말풍선 모양의 트위치 채팅창
   media:
-    image: "/uploads/2018/06/21/blocks-split.png"
-    alt_text: uBuild Blocks Mock-Up
+    image: "/uploads/index/speechchat-1.png"
+    alt_text: Twitch Speech Balloon Chat
   cta:
     enabled: true
     url: https://github.com/overgd/twip-alert-infinitechallenge-balloon
@@ -50,8 +50,8 @@ page_sections:
   headline: <strong>무한도전 풍선모양 트윕 알림</strong>
   content: 무한도전 자막에 나왔던 풍선 모양의 알림을 트윕 알림으로 적용해보세요!
   media:
-    image: "/uploads/2018/06/21/edit.gif"
-    alt_text: Customize Blocks
+    image: "/uploads/index/infinite-1.png"
+    alt_text: Twip Infinite Challenge Balloon Style Alert
   cta:
     enabled: true
     url: https://github.com/overgd/twip-alert-infinitechallenge-balloon
@@ -63,17 +63,12 @@ page_sections:
   headline: <strong>무한도전 별모양 트윕 알림</strong>
   content: 무한도전에 나온 깜짝 놀라는 별 모양의 자막을 트윕 알림으로 적용해보세요!
   media:
-    image: "/uploads/2018/06/21/blocks-split.png"
-    alt_text: uBuild Blocks Mock-Up
+    image: "/uploads/index/infinite-2.png"
+    alt_text: Twip Infinite Challenge Star Style Alert
   cta:
     enabled: true
     url: https://github.com/overgd/twip-alert-infinitechallenge-star
     button_text: See on GitHub
-- template: full-width-media-element
-  block: media-1
-  image: "/uploads/2018/06/21/theme.png"
-  caption: All Available Blocks
-  slug: blocks
 - template: detail-content
   block: text-1
   headline: Steps to Build a Site!
