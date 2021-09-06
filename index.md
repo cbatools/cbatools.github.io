@@ -24,7 +24,7 @@ page_sections:
   content: 유니크하고 화려한 스트리밍을 위한 여러가지 도구/스킨을 무료로 배포합니다! 
   cta:
     enabled: false
-    url: https://github.com/forestryio/ubuild-jekyll
+    url: https://ttkworkroom.imweb.me/
     button_text: See on GitHub
   image:
     image: "/uploads/index/cba-1.png"
@@ -35,12 +35,16 @@ page_sections:
   media_alignment: Left
   slug: speech-bubbles-twitch-chat
   headline: <strong>말풍선 모양 트위치 채팅</strong>
-  content: 마리텔의 방송효과에서 영감을 받은 <br/> 밑에서 위로 올라오는 말풍선 모양의 트위치 채팅창
+  content: 입체적이고 다이나믹한! <br/> 밑에서 위로 올라오는 말풍선 모양의 트위치 채팅창 <h3>사용법</h3><br/><ol><li>밑의 주소 가장 끝에 twitch ID를 넣고 복사해주세요!</li></ol>
+  aftercontent: <ol start="2"><li>OBS, Xsplit 등등 사용하시는 방송프로그램의 브라우저 위젯에 주소를 복사해주세요!</li><li>위젯을 원하는 사이즈로 조절해주세요!</li><li>완성! 😆</li></ol>
+  urltext:
+    enabled: true
+    text: https://cbatools.github.io/sbtc/chat.html?id=
   media:
     image: "/uploads/index/speechchat-1.png"
     alt_text: Twitch Speech Balloon Chat
   cta:
-    enabled: true
+    enabled: false
     url: https://github.com/overgd/twip-alert-infinitechallenge-balloon
     button_text: See on GitHub
 - template: content-feature

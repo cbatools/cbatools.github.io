@@ -10,6 +10,19 @@
           {% if section.cta and section.cta.enabled == true %}
           <a class="button primary" href="{{ section.cta.url }}">{{ section.cta.button_text }}</a>
           {% endif %}
+          {% if section.urltext and section.urltext.enabled == true %}
+          <!-- Target -->
+          <div class="urltext-group">
+            <input id="urltext" value="{{ section.urltext.text }}" />
+            <!-- Trigger -->
+            <span>
+              <button class="btn" data-clipboard-target="#urltext">
+              copy
+              </button>
+            </span>
+          </div>
+          {% endif %}
+          <p>{{ section.aftercontent }}</p>
       </div>
     </div>
   </div>
