@@ -1,14 +1,21 @@
   </body>
   <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
   <script>
-   var clipboard = new ClipboardJS('.btn');
+    const urltext = document.getElementById("urltext").value;
+    var clipboard = new ClipboardJS('.btn');
+    
 
-  clipboard.on('success', function (e) {
-    console.log(e);
-  });
+    clipboard.on('success', function (e) {
+      console.log(e);
+    });
 
-  clipboard.on('error', function (e) {
-    console.log(e);
-  });
+    clipboard.on('error', function (e) {
+      console.log(e);
+    });
+
+    function printName() {
+      const twitchID = document.getElementById('twitchID').value;
+      document.getElementById("urltext").value = urltext + twitchID;
+    }
   </script>
 </html>

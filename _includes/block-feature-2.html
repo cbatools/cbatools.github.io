@@ -13,7 +13,7 @@
           {% if section.urltext and section.urltext.enabled == true %}
           <!-- Target -->
           <div class="urltext-group">
-            <input id="urltext" value="{{ section.urltext.text }}" />
+            <input id="urltext" value="{{ section.urltext.text }}" readonly/>
             <!-- Trigger -->
             <span>
               <button class="btn" data-clipboard-target="#urltext">
