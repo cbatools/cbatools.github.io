@@ -4,6 +4,7 @@ const urlSearchParams = new URLSearchParams(window.location.search);
 const params = Object.fromEntries(urlSearchParams.entries());
 if (params.id != null) {
   twitchID = params.id;
+  document.title = document.title + " " + twitchID;
 }
 
 /*
@@ -306,7 +307,7 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 12000, att
     // https://avatars.dicebear.com/api/bottts/%EC%98%A4%EB%B2%84_.svg?r=50
     let nameEle = document.createElement('span');
     nameEle.classList.add('user-name');
-    // nameEle.innerText = Date.now()
+    // nameEle.innerText = Date.now();
     nameEle.innerText = data.name;
     nameEle.style.color = random_color_light;
     nameEle.style.background = random_color;
