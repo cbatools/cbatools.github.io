@@ -7,6 +7,13 @@ if (params.id != null) {
   document.title = document.title + " " + twitchID;
 }
 
+function mulberry32(a) {
+  var t = a += 0x6D2B79F5;
+  t = Math.imul(t ^ t >>> 15, t | 1);
+  t ^= t + Math.imul(t ^ t >>> 7, t | 61);
+  return ((t ^ t >>> 14) >>> 0) / 4294967296;
+}
+
 /*
   원본 : https://codepen.io/tbogard/pen/mRKGbp
 */
@@ -224,7 +231,9 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 12000, att
   chatUser.classList.add('chat-user');
   chatUserAvatar.classList.add('chat-user-avatar');
 
-  chatBox.style.left = Math.floor(Math.random() * 90 + 1) + "%";
+  var leftpx = Math.floor(mulberry32(Date.now()) * 90 + 1) + "%";
+  
+  chatBox.style.left = leftpx;
 
   // var random_color = "#" + Math.floor(Math.random() * 16777215).toString(16);
   var currentTime = Date.now();
@@ -527,3 +536,4 @@ function getBTTVEmotes(channel) {
     });
   });
 }
+
