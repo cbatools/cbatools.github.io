@@ -338,7 +338,8 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 12000, att
     chatUser.appendChild(badgeEle);
     
     chatLineInner.appendChild(spaceEle);
-    if (params.userinfo == 1) {
+    console.log(params.userinfo)
+    if (params.userinfo == 1 || params.userinfo == undefined) {
       chatLineInner.appendChild(nameEle);
     }
     // chatLineInner.appendChild(colonEle);
