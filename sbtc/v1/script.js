@@ -1,7 +1,9 @@
 var twitchID = document.getElementById("id").getAttribute("twitchId"); // TwitchID | 트위치ID
+var showUserInfo = 1;
 const c_color = document.getElementById("color").getAttribute("color");
 const urlSearchParams = new URLSearchParams(window.location.search);
 const params = Object.fromEntries(urlSearchParams.entries());
+
 if (params.id != null) {
   twitchID = params.id;
   document.title = document.title + " " + twitchID;
@@ -336,7 +338,9 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 12000, att
     chatUser.appendChild(badgeEle);
     
     chatLineInner.appendChild(spaceEle);
-    chatLineInner.appendChild(nameEle);
+    if (params.userinfo == 1) {
+      chatLineInner.appendChild(nameEle);
+    }
     // chatLineInner.appendChild(colonEle);
     chatLineInner.appendChild(messageEle);
   } else
