@@ -2,6 +2,8 @@
   <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
   <script>
     const urltext = document.getElementById("urltext").value;
+    let url = new URL(urltext);
+    let params = new URLSearchParams(url.search);
     var clipboard = new ClipboardJS('.btn');
     
 
@@ -15,7 +17,18 @@
 
     function printName() {
       const twitchID = document.getElementById('twitchID').value;
-      document.getElementById("urltext").value = urltext + twitchID;
+      url.searchParams.set('id', twitchID);
+      document.getElementById("urltext").value = url;
+    }
+    
+    function checkUserinfoOption() {
+      const userinfo = document.getElementById('userinfo').checked;
+      if (userinfo) {
+        url.searchParams.set('userinfo', 1);
+      } else {
+        url.searchParams.set('userinfo', 0);
+      }
+      document.getElementById("urltext").value = url;
     }
   </script>
 </html>

@@ -11,6 +11,10 @@
           <a class="button primary" href="{{ section.cta.url }}">{{ section.cta.button_text }}</a>
           {% endif %}
           {% if section.urltext and section.urltext.enabled == true %}
+          <div>
+            <input style="width: auto;" type="checkbox" name="userinfo" id="userinfo" onchange="checkUserinfoOption()" value="1" checked>
+            <label for="userinfo">유저정보 표시</label>
+          </div>
           <!-- Target -->
           <div class="urltext-group">
             <input id="urltext" value="{{ section.urltext.text }}" readonly/>
