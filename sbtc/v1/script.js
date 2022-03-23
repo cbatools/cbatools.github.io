@@ -111,7 +111,7 @@ function addListeners() {
       message: 'Connected...',
       attribs: { subtype: 'connected' },
       timeout: 5000 });
-
+    document.title = document.title + " " + twitchID;
     removeAdminChatLine({ subtype: 'connecting' });
     removeAdminChatLine({ subtype: 'disconnected' });
   });
@@ -338,9 +338,11 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 12000, att
     chatUser.appendChild(badgeEle);
     
     chatLineInner.appendChild(spaceEle);
-    console.log(params.userinfo)
     if (params.userinfo == 1 || params.userinfo == undefined) {
       chatLineInner.appendChild(nameEle);
+    }
+    if (params.color == 'dark') {
+      
     }
     // chatLineInner.appendChild(colonEle);
     chatLineInner.appendChild(messageEle);
