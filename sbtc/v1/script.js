@@ -344,8 +344,20 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 12000, att
     if (params.userinfo == 1 || params.userinfo == undefined) {
       chatLineInner.appendChild(nameEle);
     }
-    if (params.color == 'dark') {
-      
+    if (params.theme == 'dark') {
+      messageEle.classList.add('dark');
+
+      chatLineInner.classList.add('dark');
+      chatLineInner.style.borderColor = random_color_light;
+      chatLineInner.style.background = '#000';
+      chatLineInner.style.color = random_color_light;
+
+      nameEle.classList.add('dark');
+      nameEle.style.color = random_color_dark;
+      nameEle.style.background = random_color_light;
+      nameEle.style.borderColor = random_color_light;
+
+      chatLine_tail.style.borderColor = random_color_light + " transparent";
     }
     // chatLineInner.appendChild(colonEle);
     chatLineInner.appendChild(messageEle);
