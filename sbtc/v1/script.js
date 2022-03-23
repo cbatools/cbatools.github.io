@@ -7,6 +7,8 @@ const params = Object.fromEntries(urlSearchParams.entries());
 if (params.id != null) {
   twitchID = params.id;
   document.title = document.title + " " + twitchID;
+} else if (params.id == null || params.id == '') {
+  document.title = document.title + " v1";
 }
 
 function mulberry32(a) {
