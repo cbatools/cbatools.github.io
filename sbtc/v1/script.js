@@ -111,7 +111,6 @@ function addListeners() {
       message: 'Connected...',
       attribs: { subtype: 'connected' },
       timeout: 5000 });
-    document.title = document.title + " " + twitchID;
     removeAdminChatLine({ subtype: 'connecting' });
     removeAdminChatLine({ subtype: 'disconnected' });
   });
@@ -160,7 +159,9 @@ function addListeners() {
     showAdminMessage({
       message: `Joined ${chan}`,
       timeout: 1000 });
-
+    if (chan != twitchID) {
+      document.title = document.title + " " + chan;
+    }
   });
 
   client.on('part', (channel, username, self) => {
