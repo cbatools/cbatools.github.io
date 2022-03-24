@@ -5,6 +5,18 @@
   <meta charset="UTF-8">
   <title>SBTC </title>
   <link rel="stylesheet" href="./style.css">
+  <script>
+    var twitchID = '';
+    const urlSearchParams = new URLSearchParams(window.location.search);
+    const params = Object.fromEntries(urlSearchParams.entries());
+
+    if (params.id != null) {
+      twitchID = params.id;
+      document.title = document.title + " " + params.id;
+    } else if (params.id == null || params.id == '') {
+      document.title = document.title + " v1";
+    }
+  </script>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-3QXDYGK4CW"></script>
   <script>

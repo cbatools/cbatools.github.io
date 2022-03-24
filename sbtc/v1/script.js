@@ -1,15 +1,4 @@
-var twitchID = document.getElementById("id").getAttribute("twitchId"); // TwitchID | 트위치ID
-var showUserInfo = 1;
 const c_color = document.getElementById("color").getAttribute("color");
-const urlSearchParams = new URLSearchParams(window.location.search);
-const params = Object.fromEntries(urlSearchParams.entries());
-
-if (params.id != null) {
-  twitchID = params.id;
-  document.title = document.title + " " + twitchID;
-} else if (params.id == null || params.id == '') {
-  document.title = document.title + " v1";
-}
 
 function mulberry32(a) {
   var t = a += 0x6D2B79F5;
