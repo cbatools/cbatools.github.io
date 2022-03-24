@@ -3,10 +3,11 @@
   <script>
     const urltext = document.getElementById("urltext").value;
     let url = new URL(urltext);
+    let theme = 0;
+
     let params = new URLSearchParams(url.search);
     var clipboard = new ClipboardJS('.btn');
     
-
     clipboard.on('success', function (e) {
       console.log(e);
     });
@@ -26,7 +27,17 @@
       if (userinfo) {
         url.searchParams.set('userinfo', 1);
       } else {
-        url.searchParams.set('userinfo', 0);
+        url.searchParams.delete('userinfo');
+      }
+      document.getElementById("urltext").value = url;
+    }
+    function checkThemeOption() {
+      const theme = document.getElementById('theme').checked;
+      if (theme) {
+        url.searchParams.set('theme', 'dark');
+      } else {
+        url.searchParams.delete('theme', '');
+        
       }
       document.getElementById("urltext").value = url;
     }
