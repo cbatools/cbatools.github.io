@@ -36,7 +36,7 @@ page_sections:
   slug: speech-bubbles-twitch-chat
   headline: <strong>말풍선 모양 트위치 채팅</strong>
   content: 입체적이고 다이나믹한! <br/> 밑에서 위로 올라오는 말풍선 모양의 트위치 채팅창 <h3>사용법</h3><br/><ol><li>밑에 트위치 ID를 입력하시고 주소를 복사해주세요!</li></ol><br/><input id='twitchID' onkeyup='printName()' placeholder='트위치ID'/>
-  aftercontent: <ol start="2"><li>OBS, Xsplit 등등 사용하시는 방송프로그램의 브라우저 위젯에 복사한 주소를 넣어 만들어 주세요!<br/>*추천 사이즈 - 너비 1700 높이 600</li><li>위젯을 원하는 곳에 위치하고 사이즈를 조절해주세요!</li><li>즐거운 방송되세요! 😆</li></ol>
+  aftercontent: <ol start="2"><li>OBS, Xsplit 등등 사용하시는 방송프로그램의 브라우저 위젯에 복사한 주소를 넣어 만들어 주세요!<br/>*추천 사이즈 - 너비 1700 높이 600</li><li>위젯을 원하는 곳에 위치시키고 사이즈를 조절해주세요!</li><li>즐거운 방송되세요! 😆</li></ol>
   urltext:
     enabled: true
     text: https://cbatools.github.io/sbtc/v1/chat.html?id=

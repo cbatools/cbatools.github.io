@@ -25,9 +25,9 @@
     function checkUserinfoOption() {
       const userinfo = document.getElementById('userinfo').checked;
       if (userinfo) {
-        url.searchParams.set('userinfo', 1);
-      } else {
         url.searchParams.delete('userinfo');
+      } else {
+        url.searchParams.set('userinfo', 0);
       }
       document.getElementById("urltext").value = url;
     }
