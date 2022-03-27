@@ -347,6 +347,8 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 12000, att
       nameEle.style.borderColor = random_color_light;
 
       chatLine_tail.style.borderColor = random_color_light + " transparent";
+    } else if (params.theme == 'fever') {
+      chatLineInner.classList.add('fever');
     }
     // chatLineInner.appendChild(colonEle);
     chatLineInner.appendChild(messageEle);
