@@ -1,0 +1,240 @@
+<section id="{{ section.slug | slugify }}" class="block block-feature-2">
+  <style>
+    @font-face {
+      font-family: 'CookieRun-Regular';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+    .chat-box {
+      font-family: 'CookieRun-Regular', sans-serif;
+      bottom: 10px;
+      width: auto;
+      max-width: 210px;
+      background: tranparent;
+      overflow: hidden;
+      max-height: 0px;
+      transition: opacity 2s, max-height 1s, margin-top 1s;
+      animation: shake .3s;
+      animation-iteration-count: 2;
+    }
+    .chat-box.visible {
+      margin-top: 10px;
+      max-height: 340px;
+      left: 25%;
+      display: flex;
+      position: relative;
+    }
+    .chat-line {
+      padding: 12px;
+      animation: shake 4s;
+      animation-iteration-count: infinite;
+    }
+    .chat-line.visible {
+      margin-top: 10px;
+      max-height: 340px;
+      transition: opacity 2s, max-height 1s, margin-top 300ms;
+    }
+    .chat-line .chat-user {
+
+    }
+    .chat-line .chat-user .chat-user-avatar {
+      width: 46px;
+      height: 46px;
+      margin-left: 12px;
+      background-repeat: no-repeat !important;
+      animation: shake 2s;
+      animation-iteration-count: infinite;
+    }
+    .chat-line .chat-user .badges {
+      top: 36px;
+      right: 9px;
+      position: absolute;
+      filter: opacity(0.8);
+      width: 18px;
+      line-height: .5;
+    }
+    .chat-line .chat-line-bg {
+      background: transparent;
+      margin-right: 16px;
+      border-radius: 28px;
+      box-shadow: 4px 4px 8px 0px #000000;
+    }
+    .chat-line .chat-line-inner {
+      position: relative;
+      margin-bottom: 16px;
+      font-size: 1.05em;
+      line-height: 1.8em;
+      background-color: #fff;
+      border: 4px solid black;
+      border-radius: 24px;
+      overflow-wrap: break-word;
+      border-color: rgb(229, 71, 76);
+      color: rgb(229, 71, 76);
+    }
+    .chat-line .chat-line-inner.dark {
+      border-color: rgb(252, 131, 163); color: rgb(252, 131, 163); background: rgb(0, 0, 0);
+    }
+    .chat-line .chat-line-inner.admin .message {
+      opacity: 0.4;
+    }
+    .chat-line .chat-line-inner-tail {
+      content: "";
+      position: absolute;
+      bottom: 2px;
+      left: -18px;
+      border-style: solid;
+      border-width: 15px 15px 0;
+      display: block;
+      width: 0;
+      z-index: .9;
+      border-color: rgb(229, 71, 76) transparent;
+    }
+    .chat-line .chat-line-inner-tail.dark {
+      border-color: rgb(252, 131, 163) transparent;
+    }
+    .chat-line .chat-line-inner-tail-shadow {
+      content: "";
+      position: absolute;
+      bottom: -20px;
+      left: 18px;
+      border-style: solid;
+      border-width: 16px 15px 0;
+      border-color: rgba(0,0,0,.4) transparent;
+      display: block;
+      width: 0;
+      z-index: .9;
+    }
+
+    .user-name {
+      display: block;
+      font-size: 1em;
+      font-weight: bold;
+      color: #fff;
+      padding: .2em 1em;
+      border: 2px solid;
+      border-radius: 16px 16px 0 0;
+      text-shadow: 2px 2px 1px rgb(0 0 0), 2px 1px 4px rgb(0 0 0), 2px 3px 3px rgb(0 0 0);
+      color: rgb(249, 172, 175);
+      background: rgb(229, 71, 76);
+      border-color: rgb(229, 71, 76);
+    }
+    .user-name.noinfo {
+      display: none;
+    }
+    .user-name.dark{
+      text-shadow: none;
+      color: rgb(173, 3, 48); background: rgb(252, 131, 163); border-color: rgb(252, 131, 163);
+    }
+
+    .message {
+      min-width: 32px;
+      font-size: 1.1em;
+      white-space: normal;
+      line-height: 1.6;
+      word-break: break-word;
+      display: -webkit-box;
+      -webkit-line-clamp: 9;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding: 0.7em 0.7em;
+      border-radius: 0px 0 20px 20px;
+      text-shadow: 0px 3px 3px rgba(255,255,255,0.5);
+      background: rgba(249, 172, 175, .2);
+    }
+    .message.dark {
+      text-shadow: none;
+      background: rgba(252, 131, 163, 0.2);
+    }
+
+    .message img {
+      vertical-align: text-bottom;
+    }
+    .message img.emoji {
+      width: 20px;
+    }
+
+    @keyframes shake {
+      0% { transform: translate(1px, 1px) rotate(0deg); }
+      10% { transform: translate(-1px, -2px) rotate(-1deg); }
+      20% { transform: translate(-3px, 0px) rotate(1deg); }
+      30% { transform: translate(3px, 2px) rotate(0deg); }
+      40% { transform: translate(1px, -1px) rotate(1deg); }
+      50% { transform: translate(-1px, 2px) rotate(-1deg); }
+      60% { transform: translate(-3px, 1px) rotate(0deg); }
+      70% { transform: translate(3px, 1px) rotate(-1deg); }
+      80% { transform: translate(-1px, -1px) rotate(1deg); }
+      90% { transform: translate(1px, 2px) rotate(0deg); }
+      100% { transform: translate(1px, -2px) rotate(-1deg); }
+    }
+    @keyframes slide {
+      0% {
+        margin-left: 0px;  
+      }
+      100% {
+        margin-left: 200px;  
+      }
+    }
+  </style>
+  <div class="container">
+    <div class="columns">
+      <div class="column media">
+        <div class="chat-box visible">
+          <div class="chat-line">
+            <div class="chat-line-bg">
+              <div class="chat-line-inner" id="chat-line-inner">
+                <div class="chat-line-inner-tail-shadow">
+                  <div class="chat-line-inner-tail" id="chat-line-inner-tail">
+                  </div>
+                </div>
+                <span> </span>
+                <span class="user-name" id="user-name">오버_</span>
+                <span class="message" id="message">
+                  안녕하세요! 말풍선 채팅 샘플입니다! 모양을 확인해보세요~</span>
+              </div>
+            </div>
+            <div class="chat-user">
+              <div class="chat-user-avatar" style="background: url(https://avatars.dicebear.com/api/gridy/107712711.svg);"></div>
+              <span class="badges"><img src="https://static-cdn.jtvnw.net/badges/v1/5527c58c-fb7d-422d-b71b-f309dcb85cc1/1" badgetype="broadcaster" alt="broadcaster" class="badge"></span>
+            </div>
+          </div>
+        </div>
+        <div>* 옵션이 적용된 모양을 확인해보세요</div>
+      </div>
+      <div class="column text">
+        <h2><span class="light">{{ section.headline }}</span></h2>
+        <p>{{ section.content }}</p>
+        {% if section.cta and section.cta.enabled == true %}
+        <a class="button primary" href="{{ section.cta.url }}">{{ section.cta.button_text }}</a>
+        {% endif %}
+        {% if section.urltext and section.urltext.enabled == true %}
+        <div>
+          <div class="twitchID-group">
+            <span>
+              트위치ID
+            </span>
+            <input id='twitchID' onkeyup='printName()' placeholder='여기에 트위치ID 를 입력해주세요'/>
+          </div>
+          <br/>
+          <input style="width: auto;" type="checkbox" name="userinfo" id="userinfo" onchange="checkUserinfoOption()" value="1" checked>
+          <label for="userinfo">유저정보 표시</label>
+          <input style="width: auto;" type="checkbox" name="theme" id="theme" onchange="checkThemeOption()" value="0">
+          <label for="theme">다크모드</label>
+        </div>
+        <!-- Target -->
+        <div class="urltext-group">
+          <input id="urltext" value="{{ section.urltext.text }}" readonly/>
+          <!-- Trigger -->
+          <span>
+            <button class="btn" data-clipboard-target="#urltext">
+            copy
+            </button>
+          </span>
+        </div>
+        {% endif %}
+        <p>{{ section.aftercontent }}</p>
+      </div>
+    </div>
+  </div>
+</section>

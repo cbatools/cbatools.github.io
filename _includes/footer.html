@@ -6,7 +6,7 @@
     let theme = 0;
 
     let params = new URLSearchParams(url.search);
-    var clipboard = new ClipboardJS('.btn');
+    let clipboard = new ClipboardJS('.btn');
     
     clipboard.on('success', function (e) {
       console.log(e);
@@ -24,20 +24,35 @@
     
     function checkUserinfoOption() {
       const userinfo = document.getElementById('userinfo').checked;
+      let nameEle = document.getElementById('user-name');
       if (userinfo) {
         url.searchParams.delete('userinfo');
+        nameEle.classList.remove('noinfo');
       } else {
         url.searchParams.set('userinfo', 0);
+        nameEle.classList.add('noinfo');
       }
       document.getElementById("urltext").value = url;
     }
     function checkThemeOption() {
       const theme = document.getElementById('theme').checked;
+      let chatLineInner = document.getElementById('chat-line-inner');
+      let chatLineInnerTail = document.getElementById('chat-line-inner-tail');
+      let messageEle = document.getElementById('message');
+      let nameEle = document.getElementById('user-name');
+
       if (theme) {
         url.searchParams.set('theme', 'dark');
+        chatLineInner.classList.add('dark');
+        messageEle.classList.add('dark');
+        nameEle.classList.add('dark');
+        chatLineInnerTail.classList.add('dark');
       } else {
         url.searchParams.delete('theme', '');
-        
+        chatLineInner.classList.remove('dark');
+        messageEle.classList.remove('dark');
+        nameEle.classList.remove('dark');
+        chatLineInnerTail.classList.remove('dark');
       }
       document.getElementById("urltext").value = url;
     }
