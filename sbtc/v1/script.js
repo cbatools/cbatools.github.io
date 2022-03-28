@@ -283,7 +283,7 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 12000, att
     'room-id' in data && chatBox.setAttribute('channel-id', data['room-id']);
     // 'username' in data && chatBox.setAttribute('username', Date.now());
     'username' in data && chatBox.setAttribute('username', data.username);
-    console.log(data['room-id']);
+    // console.log(data['room-id']);
     let spaceEle = document.createElement('span');
     spaceEle.innerText = ' ';
     let badgeEle = document.createElement('span');
@@ -312,6 +312,10 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 12000, att
     nameEle.classList.add('user-name');
     // nameEle.innerText = Date.now();
     nameEle.innerText = data.name;
+    // console.log(data.name.length);
+    if (data.name.length > 7) {
+      nameEle.style.fontSize = '.8em';
+    }
     nameEle.style.color = random_color_light;
     nameEle.style.background = random_color;
     nameEle.style.borderColor = random_color;
