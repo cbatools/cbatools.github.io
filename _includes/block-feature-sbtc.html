@@ -69,6 +69,11 @@
       border-color: rgb(229, 71, 76);
       color: rgb(229, 71, 76);
     }
+    .chat-line .chat-line-inner.fever {
+      background-image: -webkit-linear-gradient(92deg,#f35626,#feab3a);
+      -webkit-background-clip: text;
+      animation: hue 1s infinite linear;
+    }
     .chat-line .chat-line-inner.dark {
       border-color: rgb(252, 131, 163); color: rgb(252, 131, 163); background: rgb(0, 0, 0);
     }
@@ -173,6 +178,14 @@
         margin-left: 200px;  
       }
     }
+    @keyframes hue {
+      from {
+        -webkit-filter: hue-rotate(0deg);
+      }
+      to {
+        -webkit-filter: hue-rotate(360deg);
+      }
+    }
   </style>
   <div class="container">
     <div class="columns">
@@ -197,7 +210,8 @@
             </div>
           </div>
         </div>
-        <div>* 옵션이 적용된 모양을 확인해보세요</div>
+        <div>* 옵션이 적용된 모양을 확인해보세요.</div>
+        <div>* 실제 채팅은 랜덤으로 색과 아바타가 나옵니다.</div>
       </div>
       <div class="column text">
         <h2><span class="light">{{ section.headline }}</span></h2>
@@ -206,28 +220,96 @@
         <a class="button primary" href="{{ section.cta.url }}">{{ section.cta.button_text }}</a>
         {% endif %}
         {% if section.urltext and section.urltext.enabled == true %}
-        <div>
-          <div class="twitchID-group">
-            <span>
-              트위치ID
-            </span>
-            <input id='twitchID' onkeyup='printName()' placeholder='여기에 트위치ID 를 입력해주세요'/>
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">ID</label>
           </div>
-          <br/>
-          <input style="width: auto;" type="checkbox" name="userinfo" id="userinfo" onchange="checkUserinfoOption()" value="1" checked>
-          <label for="userinfo">유저정보 표시</label>
-          <input style="width: auto;" type="checkbox" name="theme" id="theme" onchange="checkThemeOption()" value="0">
-          <label for="theme">다크모드</label>
+          <div class="field-body">
+            <div class="field has-addons">
+              <p class="control">
+                <a class="button is-static">
+                  twitch.tv/
+                </a>
+              </p>
+              <p class="control is-expanded">
+                <input class="input" id='twitchID' onkeyup='printName()' placeholder='트위치ID 를 입력해주세요'/>
+              </p>
+            </div>
+          </div>
         </div>
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">테마선택</label>
+          </div>
+          <div class="field-body">
+            <div class="field is-narrow">
+              <div class="control">
+                <div class="select is-fullwidth">
+                  <select name="theme" id="theme" onchange="checkThemeOption()">
+                    <option value="light">밝은느낌(기본)</option>
+                    <option value="dark">어두운느낌</option>
+                  </select>
+                  <!-- <input style="width: auto;" type="checkbox" name="theme" id="theme" onchange="checkThemeOption()" value="0"> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="field is-horizontal">
+          <div class="field-label">
+            <label class="label" style="
+            color: #f35626;
+            background-image: -webkit-linear-gradient(92deg, #f35626, #feab3a);
+            -webkit-background-clip: text;
+            text-fill-color: transparent;
+            animation: hue 1s infinite linear;">
+              FEVER!
+            </label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <label class="checkbox">
+                  <input style="width: auto;" type="checkbox" name="fever" id="fever" onchange="checkFeverOption()" value="0">
+                  색이 화려하게 변신!!
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="field is-horizontal">
+          <div class="field-label">
+            <label class="label">유저정보</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <label class="checkbox">
+                  <input style="width: auto;" type="checkbox" name="userinfo" id="userinfo" onchange="checkUserinfoOption()" value="1" checked>
+                  표시하기
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        
         <!-- Target -->
-        <div class="urltext-group">
-          <input id="urltext" value="{{ section.urltext.text }}" readonly/>
-          <!-- Trigger -->
-          <span>
-            <button class="btn" data-clipboard-target="#urltext">
-            copy
-            </button>
-          </span>
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">채팅창주소</label>
+          </div>
+          <div class="field-body">
+            <div class="field has-addons">
+              <p class="control is-expanded">
+                <input class="input" id="urltext" value="{{ section.urltext.text }}" readonly/>
+              </p>
+              <div class="control">
+                <a class="button is-info">
+                  복사!
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
         {% endif %}
         <p>{{ section.aftercontent }}</p>
