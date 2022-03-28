@@ -51,9 +51,6 @@ body {
   transition: opacity 2s, max-height 1s, margin-top 300ms;
   
 }
-.chat-line .chat-user {
-
-}
 .chat-line .chat-user .chat-user-avatar {
   width: 46px;
   height: 46px;
@@ -90,7 +87,7 @@ body {
 .chat-line .chat-line-inner.fever {
   background-image: -webkit-linear-gradient(92deg,#f35626,#feab3a);
   -webkit-background-clip: text;
-  -webkit-animation: hue 1s infinite linear;
+  animation: hue 1s infinite linear;
 }
 .chat-line .chat-line-inner.admin .message {
   opacity: 0.4;
@@ -181,7 +178,7 @@ body {
     margin-left: 200px;  
   }
 }
-@-webkit-keyframes hue {
+@keyframes hue {
   from {
     -webkit-filter: hue-rotate(0deg);
   }
