@@ -225,8 +225,8 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 12000, att
   chatUser.classList.add('chat-user');
   chatUserAvatar.classList.add('chat-user-avatar');
 
-  var leftpx = Math.floor(mulberry32(Date.now()) * 90 + 1) + "%";
-  
+  var leftpx = Math.floor(mulberry32(Date.now()) * 80 + 1) + "vw";
+
   chatBox.style.left = leftpx;
 
   // var random_color = "#" + Math.floor(Math.random() * 16777215).toString(16);
@@ -315,6 +315,8 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 12000, att
     // console.log(data.name.length);
     if (data.name.length > 7) {
       nameEle.style.fontSize = '.8em';
+    } else if (data.name.length > 10) {
+      nameEle.style.fontSize = '.5em';
     }
     nameEle.style.color = random_color_light;
     nameEle.style.background = random_color;
