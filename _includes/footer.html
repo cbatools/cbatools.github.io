@@ -6,7 +6,7 @@
     let theme = 0;
 
     let params = new URLSearchParams(url.search);
-    let clipboard = new ClipboardJS('.btn');
+    var clipboard = new ClipboardJS('.button');
     
     clipboard.on('success', function (e) {
       console.log(e);
@@ -34,6 +34,20 @@
       }
       document.getElementById("urltext").value = url;
     }
+        
+    function checkFeverOption() {
+      const fever = document.getElementById('fever').checked;
+      let chatLineInner = document.getElementById('chat-line-inner');
+
+      if (fever) {
+        url.searchParams.set('fever', 1);
+        chatLineInner.classList.add('fever');
+      } else {
+        url.searchParams.delete('fever');
+        chatLineInner.classList.remove('fever');
+      }
+      document.getElementById("urltext").value = url;
+    }
 
     function checkThemeOption() {
       const theme = document.getElementById('theme').value;
@@ -58,18 +72,6 @@
       }
       document.getElementById("urltext").value = url;
     }
-    
-    function checkFeverOption() {
-      const fever = document.getElementById('fever').checked;
-      let chatLineInner = document.getElementById('chat-line-inner');
 
-      if (fever) {
-        url.searchParams.set('fever', '1');
-        chatLineInner.classList.add('fever');
-      } else {
-        url.searchParams.delete('fever', '');
-        chatLineInner.classList.remove('fever');
-      }
-    }
   </script>
 </html>

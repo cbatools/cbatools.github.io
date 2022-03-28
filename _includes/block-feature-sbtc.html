@@ -249,7 +249,6 @@
                     <option value="light">밝은느낌(기본)</option>
                     <option value="dark">어두운느낌</option>
                   </select>
-                  <!-- <input style="width: auto;" type="checkbox" name="theme" id="theme" onchange="checkThemeOption()" value="0"> -->
                 </div>
               </div>
             </div>
@@ -292,8 +291,6 @@
             </div>
           </div>
         </div>
-        
-        <!-- Target -->
         <div class="field is-horizontal">
           <div class="field-label is-normal">
             <label class="label">채팅창주소</label>
@@ -304,7 +301,7 @@
                 <input class="input" id="urltext" value="{{ section.urltext.text }}" readonly/>
               </p>
               <div class="control">
-                <a class="button is-info">
+                <a class="button is-info" data-clipboard-target="#urltext">
                   복사!
                 </a>
               </div>
