@@ -314,9 +314,13 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 12000, att
     nameEle.innerText = data.name;
     // console.log(data.name.length);
     if (data.name.length > 7) {
-      nameEle.style.fontSize = '.8em';
+      nameEle.style.fontSize = '0.8em';
     } else if (data.name.length > 10) {
-      nameEle.style.fontSize = '.5em';
+      nameEle.style.fontSize = '0.4em';
+    } else if (data.name.length > 12) {
+      nameEle.style.fontSize = '0.2em';
+    } else if (data.name.length > 20) {
+      nameEle.style.fontSize = '0.1em';
     }
     nameEle.style.color = random_color_light;
     nameEle.style.background = random_color;
