@@ -83,6 +83,6 @@ page_sections:
 #     Blocks and preview them as you go along.</p></li></ol>
 - template: simple-footer
   block: footer-1
-  content: <h4>made by 김뚝딱 <br/> tuk.tak.kim@gmail.com</h4>
+  content: <h4>made by 오버_ <br/> overlab120@gmail.com</h4>
 ---
 
