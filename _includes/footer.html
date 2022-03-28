@@ -34,14 +34,16 @@
       }
       document.getElementById("urltext").value = url;
     }
+
     function checkThemeOption() {
-      const theme = document.getElementById('theme').checked;
+      const theme = document.getElementById('theme').value;
+
       let chatLineInner = document.getElementById('chat-line-inner');
       let chatLineInnerTail = document.getElementById('chat-line-inner-tail');
       let messageEle = document.getElementById('message');
       let nameEle = document.getElementById('user-name');
 
-      if (theme) {
+      if (theme == 'dark') {
         url.searchParams.set('theme', 'dark');
         chatLineInner.classList.add('dark');
         messageEle.classList.add('dark');
@@ -55,6 +57,19 @@
         chatLineInnerTail.classList.remove('dark');
       }
       document.getElementById("urltext").value = url;
+    }
+    
+    function checkFeverOption() {
+      const fever = document.getElementById('fever').checked;
+      let chatLineInner = document.getElementById('chat-line-inner');
+
+      if (fever) {
+        url.searchParams.set('fever', '1');
+        chatLineInner.classList.add('fever');
+      } else {
+        url.searchParams.delete('fever', '');
+        chatLineInner.classList.remove('fever');
+      }
     }
   </script>
 </html>
