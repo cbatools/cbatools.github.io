@@ -205,7 +205,7 @@ function getChan(channel = '') {
   return channel.replace(/^#/, '');
 }
 
-function showMessage({ chan, type, message = '', data = {}, timeout = 12000, attribs = {} } = {}) {
+function showMessage({ chan, type, message = '', data = {}, timeout = 30000, attribs = {} } = {}) {
   
   let chatBox = document.createElement('div');
   let chatLine_ = document.createElement('div');
@@ -315,8 +315,8 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 12000, att
     // console.log(data.name.length);
     if (data.name.length > 7) {
       nameEle.style.fontSize = '0.8em';
-    } else if (data.name.length > 10) {
-      nameEle.style.fontSize = '0.4em';
+    } else if (data.name.length >= 10) {
+      nameEle.style.fontSize = '0.5em';
     } else if (data.name.length > 12) {
       nameEle.style.fontSize = '0.2em';
     } else if (data.name.length > 20) {
