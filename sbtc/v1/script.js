@@ -229,7 +229,6 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
 
   chatBox.style.left = leftpx;
 
-  // var random_color = "#" + Math.floor(Math.random() * 16777215).toString(16);
   var currentTime = Date.now();
   var random_color = randomColor({
     luminosity: 'bright',
@@ -246,7 +245,6 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
     seed: currentTime,
     // seed: data['user-id']
   });
-  console.log(random_color);
   document.getElementById("color").getAttribute("color");
 
   if (c_color === "") {
@@ -361,6 +359,11 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
     if (params.fever == '1') {
       chatLineInner.classList.add('fever');
     }
+    if (params.one == '1') {
+      if (finalMessage.length == 1 && finalMessage[0].type) {
+        messageEle.classList.add('onecharacter');
+      }
+    }
     // chatLineInner.appendChild(colonEle);
     chatLineInner.appendChild(messageEle);
   } else
@@ -463,7 +466,7 @@ function addEmoteDOM(ele, data) {
       if (type === 'twitch') {
         if (subtype === 'emote') {
           out = document.createElement('img');
-          out.setAttribute('src', `https://static-cdn.jtvnw.net/emoticons/v2/${n.id}/default/light/1.0`);
+          out.setAttribute('src', `https://static-cdn.jtvnw.net/emoticons/v2/${n.id}/default/light/3.0`);
           out.setAttribute('alt', code);
         }
       } else

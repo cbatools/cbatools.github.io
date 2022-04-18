@@ -142,15 +142,23 @@ body {
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding: 0.7em 0.7em;
+  padding: 0.65em;
   border-radius: 0px 0 20px 20px;
   text-shadow: 0px 3px 3px rgba(255,255,255,0.5);
 }
 .message.dark {
   text-shadow: none;
 }
+.message.onecharacter {
+  font-size: 1.6em;
+  padding: 0.5em;
+}
+.message.onecharacter img {
+  width: 1.6em;
+}
 
 .message img {
+  width: 1.2em;
   vertical-align: text-bottom;
 }
 .message img.emoji {
