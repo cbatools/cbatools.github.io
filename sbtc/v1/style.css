@@ -150,11 +150,11 @@ body {
   text-shadow: none;
 }
 .message.onecharacter {
-  font-size: 1.6em;
+  font-size: 1.8em;
   padding: 0.5em;
 }
 .message.onecharacter img {
-  width: 1.6em;
+  width: 1.8em;
 }
 
 .message img {
