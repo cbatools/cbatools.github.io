@@ -330,7 +330,7 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
 
     let messageEle = document.createElement('span');
     messageEle.classList.add('message');
-    messageEle.classList.add('onecharacter');
+    // messageEle.classList.add('onecharacter');
     messageEle.style.background = random_color_light+"33";
 
     let finalMessage = handleEmotes(chan, data.emotes || {}, message);
