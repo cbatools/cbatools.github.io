@@ -330,6 +330,7 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
 
     let messageEle = document.createElement('span');
     messageEle.classList.add('message');
+    messageEle.classList.add('onecharacter');
     messageEle.style.background = random_color_light+"33";
 
     let finalMessage = handleEmotes(chan, data.emotes || {}, message);
@@ -359,9 +360,9 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
     if (params.fever == '1') {
       chatLineInner.classList.add('fever');
     }
-    if (params.one == '1') {
+    if (params.one == '0') {
       if (finalMessage.length == 1 && finalMessage[0].type) {
-        messageEle.classList.add('onecharacter');
+        messageEle.classList.remove('onecharacter');
       }
     }
     // chatLineInner.appendChild(colonEle);
