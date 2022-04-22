@@ -34,6 +34,16 @@
       }
       document.getElementById("urltext").value = url;
     }
+
+    function checkOneCharacterOption() {
+      const userinfo = document.getElementById('onecharacter').checked;
+      if (userinfo) {
+        url.searchParams.delete('one');
+      } else {
+        url.searchParams.set('one', 0);
+      }
+      document.getElementById("urltext").value = url;
+    }
         
     function checkFeverOption() {
       const fever = document.getElementById('fever').checked;
