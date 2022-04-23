@@ -368,6 +368,18 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
         messageEle.classList.add('onecharacter');
       }
     }
+    if (params.lol == '0') {
+
+    } else if (params.lol == '1') {
+      finalMessage.forEach(n => {
+        if (typeof n === 'string') {
+          let lolword = n.search('ㅋㅋㅋ');
+          if (lolword >= 0) {
+            chatLine_.classList.add('lol-animation');
+          }
+        }
+      });
+    }
     // chatLineInner.appendChild(colonEle);
     chatLineInner.appendChild(messageEle);
   } else

@@ -45,6 +45,10 @@ body {
   animation: shake 4s;
   animation-iteration-count: infinite;
 }
+.chat-line.lol-animation {
+  animation: shake .8s;
+  animation-iteration-count: infinite;
+}
 .chat-line.visible {
   margin-top: 10px;
   max-height: 340px;
