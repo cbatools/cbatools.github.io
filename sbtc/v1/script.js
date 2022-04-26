@@ -126,7 +126,7 @@ function addListeners() {
 
     let chan = getChan(channel);
     let name = userstate['display-name'] || userstate.username;
-    if(userstate['username'] !== 'nightbot') {
+    if(userstate['username'] !== 'nightbot' && userstate['username'] !== 'bbangddeock' && userstate['username'] !== 'ssakdook') {
       // if(/[^\w]/g.test(name)) {
       // 	name += ` (${userstate.username})`;
       // }
