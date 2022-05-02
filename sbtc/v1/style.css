@@ -63,6 +63,9 @@ body {
   animation: shake 2s;
   animation-iteration-count: infinite;
 }
+.chat-line .chat-user .chat-user-avatar.hide {
+  display: none;
+}
 .chat-line .chat-user .badges {
   top: 36px;
   right: 9px;
