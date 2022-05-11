@@ -36,11 +36,21 @@
     }
 
     function checkOneCharacterOption() {
-      const userinfo = document.getElementById('onecharacter').checked;
-      if (userinfo) {
+      const onecharacter = document.getElementById('onecharacter').checked;
+      if (onecharacter) {
         url.searchParams.delete('one');
       } else {
         url.searchParams.set('one', 0);
+      }
+      document.getElementById("urltext").value = url;
+    }
+
+    function checkLOLOption() {
+      const lol = document.getElementById('lol').checked;
+      if (lol) {
+        url.searchParams.set('lol', 1);
+      } else {
+        url.searchParams.delete('lol');
       }
       document.getElementById("urltext").value = url;
     }
