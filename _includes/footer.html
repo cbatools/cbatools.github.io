@@ -83,5 +83,24 @@
       document.getElementById("urltext").value = url;
     }
 
+    function selectAvatarOption() {
+      const avatar = document.getElementById('avatar').value;
+
+      let chatUserAvatar = document.getElementById('chat-user-avatar');
+
+      if (avatar == 'gridy') {
+        url.searchParams.set('avatar', 'gridy');
+        chatUserAvatar.style.backgroundImage = 'url(https://avatars.dicebear.com/api/gridy/107712711.svg)';
+      } else if (avatar == 'hide') {
+        url.searchParams.set('avatar', '0');
+        chatUserAvatar.style.backgroundImage = '';
+
+      } else {
+
+      }
+      document.getElementById("urltext").value = url;
+    }
+    
+
   </script>
 </html>

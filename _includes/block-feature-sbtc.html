@@ -205,7 +205,7 @@
               </div>
             </div>
             <div class="chat-user">
-              <div class="chat-user-avatar" style="background: url(https://avatars.dicebear.com/api/gridy/107712711.svg);"></div>
+              <div class="chat-user-avatar" id="chat-user-avatar" style="background: url(https://avatars.dicebear.com/api/gridy/107712711.svg);"></div>
               <span class="badges"><img src="https://static-cdn.jtvnw.net/badges/v1/5527c58c-fb7d-422d-b71b-f309dcb85cc1/1" badgetype="broadcaster" alt="broadcaster" class="badge"></span>
             </div>
           </div>
@@ -248,6 +248,23 @@
                   <select name="theme" id="theme" onchange="checkThemeOption()">
                     <option value="light">밝은느낌(기본)</option>
                     <option value="dark">어두운느낌</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">아바타선택</label>
+          </div>
+          <div class="field-body">
+            <div class="field is-narrow">
+              <div class="control">
+                <div class="select is-fullwidth">
+                  <select name="avatar" id="avatar" onchange="selectAvatarOption()">
+                    <option value="hide">숨김</option>
+                    <option value="gridy" selected>그리디(기본)</option>
                   </select>
                 </div>
               </div>
