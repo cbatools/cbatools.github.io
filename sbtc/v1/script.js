@@ -303,8 +303,7 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
         }
       }, []);
     }
-    chatUserAvatar.setAttribute('style', 'background: url(https://avatars.dicebear.com/api/gridy/'+ data['user-id'] +'.svg);');
-    // https://avatars.dicebear.com/api/bottts/%EC%98%A4%EB%B2%84_.svg?r=50
+
     let nameEle = document.createElement('span');
     nameEle.classList.add('user-name');
     // nameEle.innerText = Date.now();
@@ -367,10 +366,12 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
         messageEle.classList.add('onecharacter');
       }
     }
-    if (params.avatar == '1' || params.avatar == undefined) {
-
+    if  (params.avatar == '1' ||  params.avatar == 'gridy' || params.avatar == undefined) {
+      chatUserAvatar.setAttribute('style', 'background: url(https://avatars.dicebear.com/api/gridy/'+ data['user-id'] +'.svg);');
     } else if (params.avatar == '0') {
       chatUserAvatar.classList.add('hide');
+    } else {
+      chatUserAvatar.setAttribute('style', 'background: url(https://avatars.dicebear.com/api/gridy/'+ data['user-id'] +'.svg);');
     }
     if (params.lol == '0') {
 
@@ -394,10 +395,12 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
     messageEle.classList.add('message');
     messageEle.innerText = message;
     
-    if (params.avatar == '1' || params.avatar == undefined) {
+    if (params.avatar == '1' ||  params.avatar == 'gridy' || params.avatar == undefined) {
       chatUserAvatar.setAttribute('style', 'background: url(https://avatars.dicebear.com/api/gridy/admin.svg);');
     } else if (params.avatar == '0') {
       chatUserAvatar.classList.add('hide');
+    } else {
+      chatUserAvatar.setAttribute('style', 'background: url(https://avatars.dicebear.com/api/gridy/admin.svg);');
     }
     chatLineInner.appendChild(messageEle);
   }
