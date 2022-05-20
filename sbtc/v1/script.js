@@ -1,15 +1,10 @@
+/*
+  tmi 참고 : https://codepen.io/tbogard/pen/mRKGbp
+*/
+
 const c_color = document.getElementById("color").getAttribute("color");
 
-function mulberry32(a) {
-  var t = a += 0x6D2B79F5;
-  t = Math.imul(t ^ t >>> 15, t | 1);
-  t ^= t + Math.imul(t ^ t >>> 7, t | 61);
-  return ((t ^ t >>> 14) >>> 0) / 4294967296;
-}
-
-/*
-  원본 : https://codepen.io/tbogard/pen/mRKGbp
-*/
+let chatBoxEles = [];
 
 const chatEle = document.getElementById('chat');
 const twitchBadgeCache = {
@@ -19,7 +14,6 @@ const bttvEmoteCache = {
   lastUpdated: 0,
   data: { global: [] },
   urlTemplate: '//cdn.betterttv.net/emote/{{id}}/{{image}}' };
-
 
 const krakenBase = 'https://api.twitch.tv/kraken/';
 const krakenClientID = '4g5an0yjebpf93392k4c5zll7d7xcec';
@@ -42,7 +36,6 @@ const chatFilters = [
 '\u2600-\u26FF', // Miscellaneous Symbols
 // '\u2700-\u27BF', // Dingbats
 '\u2800-\u28FF'];
-
 
 const chatFilter = new RegExp(`[${chatFilters.join('')}]`);
 
@@ -118,7 +111,7 @@ function addListeners() {
   });
 
   function handleMessage(channel, userstate, message, fromSelf) {
-    console.log(userstate)
+    // console.log(userstate)
     if (chatFilter.test(message)) {
       testing && console.log(message);
       return;
@@ -225,30 +218,33 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
   chatUser.classList.add('chat-user');
   chatUserAvatar.classList.add('chat-user-avatar');
 
-  var leftpx = Math.floor(mulberry32(Date.now()) * 80 + 1) + "vw";
+  let left_pos = Math.floor(mulberry32(Date.now()) * 80 + 1);
+  if (chatBoxEles.length > 0) {
+    chatBoxEles.forEach(element => {
+      // console.log('element', element);
+    });
+  }
+  chatBox.style.left = left_pos + "vw";
 
-  chatBox.style.left = leftpx;
-
-  var currentTime = Date.now();
-  var random_color = randomColor({
+  let currentTime = Date.now();
+  let random_color = randomColor({
     luminosity: 'bright',
     seed: currentTime,
     // seed: data['user-id']
   });
-  var random_color_light = randomColor({
+  let random_color_light = randomColor({
     luminosity: 'light',
     seed: currentTime,
     // seed: data['user-id']
   });
-  var random_color_dark = randomColor({
+  let random_color_dark = randomColor({
     luminosity: 'dark',
     seed: currentTime,
     // seed: data['user-id']
   });
-  document.getElementById("color").getAttribute("color");
 
   if (c_color === "") {
-    random_color = random_color
+    random_color = random_color;
   } else {
     random_color = "#" + c_color;
   }
@@ -279,7 +275,6 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
     'id' in data && chatBox.setAttribute('message-id', data.id);
     'user-id' in data && chatBox.setAttribute('user-id', data['user-id']);
     'room-id' in data && chatBox.setAttribute('channel-id', data['room-id']);
-    // 'username' in data && chatBox.setAttribute('username', Date.now());
     'username' in data && chatBox.setAttribute('username', data.username);
     // console.log(data['room-id']);
     let spaceEle = document.createElement('span');
@@ -291,6 +286,10 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
       let badges = Object.keys(data.badges).
       forEach(type => {
         let version = data.badges[type];
+        // 트위치 예측 이모티콘 구분
+        if (type == 'predictions') {
+          let number = version.split('-');
+        }
         let group = badgeGroup[type];
         if (group && version in group.versions) {
           let url = group.versions[version].image_url_1x;
@@ -304,11 +303,13 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
       }, []);
     }
 
+    chatBoxEles.push({ id: data.id ? data.id : Date.now(), date: Date.now(), pos: left_pos });
+
     let nameEle = document.createElement('span');
     nameEle.classList.add('user-name');
     // nameEle.innerText = Date.now();
     nameEle.innerText = data.name;
-    // console.log(data.name.length);
+    
     if (data.name.length > 7) {
       nameEle.style.fontSize = '0.8em';
     } else if (data.name.length >= 10) {
@@ -321,10 +322,6 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
     nameEle.style.color = random_color_light;
     nameEle.style.background = random_color;
     nameEle.style.borderColor = random_color;
-
-    // let colonEle = document.createElement('span');
-    // colonEle.classList.add('message-colon');
-    // colonEle.innerText = ': ';
 
     let messageEle = document.createElement('span');
     messageEle.classList.add('message');
@@ -387,8 +384,7 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
     }
     // chatLineInner.appendChild(colonEle);
     chatLineInner.appendChild(messageEle);
-  } else
-  if (type === 'admin') {
+  } else if (type === 'admin') {
     chatBox.classList.add('admin');
 
     let messageEle = document.createElement('span');
@@ -410,14 +406,24 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
   setTimeout(() => chatBox.classList.add('visible'), 100);
 
   if (chatEle.childElementCount > 10) {
-    chatEle.removeChild(chatEle.children[0]);
+    let boxId = chatBoxEles[0].id;
+    chatEle.childNodes.forEach(node => {
+      if (node.getAttribute('message-id') == boxId) {
+        chatEle.removeChild(node);
+        chatBoxEles.shift();
+      }
+    });    
   }
 
   if (timeout) {
     setTimeout(() => {
       if (chatBox.parentElement) {
         chatBox.classList.remove('visible');
-        setTimeout(() => chatEle.removeChild(chatBox), 1000);
+        setTimeout(() => {
+          let boxIndex = chatBoxEles.findIndex(box => box.id == chatBox.getAttribute('message-id'));
+          chatBoxEles.splice(boxIndex, 1);
+          chatEle.removeChild(chatBox);
+        }, 1000);
       }
     }, timeout);
   }
@@ -592,3 +598,10 @@ function getBTTVEmotes(channel) {
   });
 }
 
+// 랜덤 숫자 생성기 a : 시드
+function mulberry32(a) {
+  var t = a += 0x6D2B79F5;
+  t = Math.imul(t ^ t >>> 15, t | 1);
+  t ^= t + Math.imul(t ^ t >>> 7, t | 61);
+  return ((t ^ t >>> 14) >>> 0) / 4294967296;
+}
