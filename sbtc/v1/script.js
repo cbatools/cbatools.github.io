@@ -220,13 +220,21 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
   
   let left_pos = Math.floor(mulberry32(Date.now()) * 8000 + 1) / 100;
   if (chatBoxEles.length > 0) {
-    chatBoxEles.forEach(element => {
-      if (element.pos < left_pos + 10 && element.pos > left_pos - 10) {
-        do {
-          left_pos = Math.floor(Math.random() * 8000 + 1) / 100;
-        } while (element.pos < left_pos + 10 && element.pos > left_pos - 10);
+    let perfectPos = false;
+    while (perfectPos != true) {
+      let existPos = 0;
+      chatBoxEles.forEach(element => {
+        if (element.pos !== undefined && element.pos < left_pos + 2 && element.pos > left_pos - 2) {
+          existPos++;
+        }
+      });
+
+      if (existPos !== 0) {
+        left_pos = Math.floor(Math.random() * 8000 + 1) / 100;
+      } else if (existPos === 0) {
+        perfectPos = true;
       }
-    });
+    }
   }
   chatBox.style.left = left_pos + "vw";
 
@@ -307,7 +315,7 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
       }, []);
     }
 
-    chatBoxEles.push({ id: data.id ? data.id : Date.now(), date: Date.now(), pos: left_pos });
+    chatBoxEles.push({ id: data.id, date: Date.now(), pos: left_pos });
     
     let nameEle = document.createElement('span');
     nameEle.classList.add('user-name');
@@ -411,7 +419,7 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
 
   setTimeout(() => chatBox.classList.add('visible'), 100);
 
-  if (chatEle.childElementCount > 10) {
+  if (chatEle.childElementCount > 15) {
     let boxId = chatBoxEles[0].id;
     chatBoxEles.shift();
     chatEle.childNodes.forEach(node => {
