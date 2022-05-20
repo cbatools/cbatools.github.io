@@ -218,12 +218,12 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
   chatUser.classList.add('chat-user');
   chatUserAvatar.classList.add('chat-user-avatar');
   
-  let left_pos = Math.floor(mulberry32(Date.now()) * 800 + 1) / 10;
+  let left_pos = Math.floor(mulberry32(Date.now()) * 8000 + 1) / 100;
   if (chatBoxEles.length > 0) {
     chatBoxEles.forEach(element => {
       if (element.pos < left_pos + 10 && element.pos > left_pos - 10) {
         do {
-          left_pos = Math.floor(Math.random() * 800 + 1) / 10;
+          left_pos = Math.floor(Math.random() * 8000 + 1) / 100;
         } while (element.pos < left_pos + 10 && element.pos > left_pos - 10);
       }
     });
@@ -308,7 +308,7 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
     }
 
     chatBoxEles.push({ id: data.id ? data.id : Date.now(), date: Date.now(), pos: left_pos });
-
+    
     let nameEle = document.createElement('span');
     nameEle.classList.add('user-name');
     // nameEle.innerText = Date.now();
@@ -403,6 +403,8 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
       chatUserAvatar.setAttribute('style', 'background: url(https://avatars.dicebear.com/api/gridy/admin.svg);');
     }
     chatLineInner.appendChild(messageEle);
+
+    chatBoxEles.push({ id: 'admin', date: Date.now(), pos: left_pos });
   }
 
   chatEle.appendChild(chatBox);
@@ -411,12 +413,18 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
 
   if (chatEle.childElementCount > 10) {
     let boxId = chatBoxEles[0].id;
+    chatBoxEles.shift();
     chatEle.childNodes.forEach(node => {
-      if (node.getAttribute('message-id') == boxId) {
-        chatEle.removeChild(node);
-        chatBoxEles.shift();
+      if (boxId === 'admin') {
+        if (node.getAttribute('type') === 'admin') {
+          chatEle.removeChild(node);
+        }
+      } else {
+        if (node.getAttribute('message-id') == boxId) {
+          chatEle.removeChild(node);
+        }
       }
-    });    
+    });
   }
 
   if (timeout) {
@@ -424,9 +432,15 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
       if (chatBox.parentElement) {
         chatBox.classList.remove('visible');
         setTimeout(() => {
-          let boxIndex = chatBoxEles.findIndex(box => box.id == chatBox.getAttribute('message-id'));
-          chatBoxEles.splice(boxIndex, 1);
-          chatEle.removeChild(chatBox);
+          let isAdmin = false;
+          if (chatBox.getAttribute('type') === 'admin') {
+            isAdmin = true;
+          }
+          if (!isAdmin) {
+            let boxIndex = chatBoxEles.findIndex(box => box.id == chatBox.getAttribute('message-id'));
+            chatBoxEles.splice(boxIndex, 1);
+            chatEle.removeChild(chatBox);
+          }
         }, 1000);
       }
     }, timeout);
