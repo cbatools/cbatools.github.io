@@ -217,11 +217,15 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
   chatLine_tail_shadow.classList.add('chat-line-inner-tail-shadow');
   chatUser.classList.add('chat-user');
   chatUserAvatar.classList.add('chat-user-avatar');
-
-  let left_pos = Math.floor(mulberry32(Date.now()) * 80 + 1);
+  
+  let left_pos = Math.floor(mulberry32(Date.now()) * 800 + 1) / 10;
   if (chatBoxEles.length > 0) {
     chatBoxEles.forEach(element => {
-      // console.log('element', element);
+      if (element.pos < left_pos + 10 && element.pos > left_pos - 10) {
+        do {
+          left_pos = Math.floor(Math.random() * 800 + 1) / 10;
+        } while (element.pos < left_pos + 10 && element.pos > left_pos - 10);
+      }
     });
   }
   chatBox.style.left = left_pos + "vw";
@@ -309,7 +313,7 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
     nameEle.classList.add('user-name');
     // nameEle.innerText = Date.now();
     nameEle.innerText = data.name;
-    
+
     if (data.name.length > 7) {
       nameEle.style.fontSize = '0.8em';
     } else if (data.name.length >= 10) {
