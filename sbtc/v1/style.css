@@ -32,7 +32,7 @@ body {
 }
 .chat-box.visible {
   margin-top: 10px;
-  max-height: 340px;
+  max-height: 400px;
   transition: opacity 2s, max-height .8s, margin-top 300ms;
   /* animation: slide 2s;
   animation-iteration-count: infinite;
@@ -139,13 +139,14 @@ body {
 }
 
 .message {
+  max-height: 232px;
   min-width: 32px;
   font-size: 1.1em;
   white-space: normal;
   line-height: 1.6;
-  word-break: break-word;
+  word-break: break-all;
   display: -webkit-box;
-  -webkit-line-clamp: 9;
+  -webkit-line-clamp: 8;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
