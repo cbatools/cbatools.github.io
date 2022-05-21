@@ -224,7 +224,7 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
     while (perfectPos != true) {
       let existPos = 0;
       chatBoxEles.forEach(element => {
-        if (element.pos !== undefined && element.pos < left_pos + 2 && element.pos > left_pos - 2) {
+        if (element.pos !== undefined && element.pos < left_pos + 2.1 && element.pos > left_pos - 2.1) {
           existPos++;
         }
       });
