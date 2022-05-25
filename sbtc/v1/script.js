@@ -2,9 +2,10 @@
   tmi 참고 : https://codepen.io/tbogard/pen/mRKGbp
 */
 
-const c_color = document.getElementById("color").getAttribute("color");
+const selectedColor = document.getElementById("color").getAttribute("color");
 
-let chatBoxEles = [];
+let normalChats = [];
+let predictionChats = {};
 
 const chatEle = document.getElementById('chat');
 const twitchBadgeCache = {
@@ -208,6 +209,13 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
   let chatLine_tail_shadow = document.createElement('div');
   let chatUser = document.createElement('div');
   let chatUserAvatar = document.createElement('div');
+  let messageEle = document.createElement('span');
+
+  let chatType = 'normal';
+  let chatProperty = '';
+  let predictionNum = 0;
+  let predictionSeqNum = 0;
+  let predictionChatsLength = Object.keys(predictionChats).length;
   
   chatBox.classList.add('chat-box');
   chatLine_.classList.add('chat-line');
@@ -218,13 +226,43 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
   chatUser.classList.add('chat-user');
   chatUserAvatar.classList.add('chat-user-avatar');
   
+  // 말풍선 일반, 예측 구분
+  if (data.badges !== undefined && data.badges !== null) {
+    Object.keys(data.badges).
+    forEach(badgeType => {
+      let version = data.badges[badgeType];
+      // 트위치 예측 이모티콘으로 구분
+      if (badgeType == 'predictions') {
+        let number = version.split('-');
+        chatType = 'prediction';
+        predictionNum = parseInt(number[number.length - 1]);
+        chatBox.setAttribute('type', chatType);
+        chatBox.setAttribute('prediction', predictionNum);
+      } else {
+        chatBox.setAttribute('type', chatType);
+      }
+    }, []);
+  } else {
+    chatBox.setAttribute('type', 'normal');
+  }
+
+  if (params.prediction == 1) {
+    if (chatType === 'normal' && type !== 'admin') {
+      return false;
+    }
+  }
+  
+  // console.log('type', chatBox.getAttribute('type'));
+  // console.log('prediction', chatBox.getAttribute('prediction'));
+
+  // 말풍선 위치 지정
   let left_pos = Math.floor(mulberry32(Date.now()) * 8000 + 1) / 100;
-  if (chatBoxEles.length > 0) {
+  if (normalChats.length > 0) {
     let perfectPos = false;
     while (perfectPos != true) {
       let existPos = 0;
-      chatBoxEles.forEach(element => {
-        if (element.pos !== undefined && element.pos < left_pos + 2.1 && element.pos > left_pos - 2.1) {
+      normalChats.forEach(element => {
+        if (element.pos !== undefined && element.type == 'normal' && element.pos < left_pos + 2.1 && element.pos > left_pos - 2.1) {
           existPos++;
         }
       });
@@ -236,29 +274,91 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
       }
     }
   }
-  chatBox.style.left = left_pos + "vw";
 
+  // 말풍선 정보 배열
+  chatProperty = { id: data.id, date: Date.now(), pos: left_pos, type: chatType };
+  normalChats.push(chatProperty);
+
+  if (chatType == 'normal') {
+
+  } else if (chatType == 'prediction') {
+    chatProperty['prediction'] = predictionNum;
+    if (predictionChats[predictionNum] === undefined) {
+      predictionChats[predictionNum] = [];
+    }
+    predictionChats[predictionNum].push(chatProperty);
+    predictionChatsLength = Object.keys(predictionChats).length;
+    document.documentElement.style.setProperty('--prediction', predictionChatsLength);
+    let _break = 0;
+    Object.keys(predictionChats)
+    .forEach(chatKey => {
+      if (_break !== 1) {
+        predictionSeqNum++;
+        if (parseInt(chatKey) === parseInt(predictionNum)) {
+          _break = 1;
+        }
+      }
+    });
+    // console.log('predictionSeqNum', predictionSeqNum);
+  }
+
+  chatBox.style.left = 'calc(' + left_pos + 'vw)';
+
+  let colorHue = '';
   let currentTime = Date.now();
+
+  if (chatType === 'prediction') {
+    if (predictionChatsLength >= 2) {
+      chatBox.style.left = 'calc('+ (100 / (predictionChatsLength)) * (predictionSeqNum - 1) +'vw + calc(' + left_pos + 'vw / var(--prediction)) )';
+    }
+    if (predictionNum === 0) {
+
+    } else if (predictionNum === 1) {
+      colorHue = 'blue';
+    } else if (predictionNum === 2) {
+      colorHue = 'red';
+    } else if (predictionNum === 3) {
+      colorHue = 'green';
+    } else if (predictionNum === 4) {
+      colorHue = 'orange';
+    } else if (predictionNum === 5) {
+      colorHue = 'purple';
+    } else if (predictionNum === 6) {
+      colorHue = 'pink ';
+    } else if (predictionNum === 7) {
+      colorHue = '#0E0C32'; // 남색
+    } else if (predictionNum === 8) {
+      colorHue = '#92DF45'; // 연두색
+    } else if (predictionNum === 9) {
+      colorHue = 'yellow';
+    } else if (predictionNum === 10) {
+      colorHue = 'monochrome';
+    } else {
+      colorHue = '';
+    }
+
+  }
+
   let random_color = randomColor({
     luminosity: 'bright',
     seed: currentTime,
-    // seed: data['user-id']
+    hue: colorHue,
   });
   let random_color_light = randomColor({
     luminosity: 'light',
     seed: currentTime,
-    // seed: data['user-id']
+    hue: colorHue,
   });
   let random_color_dark = randomColor({
     luminosity: 'dark',
     seed: currentTime,
-    // seed: data['user-id']
+    hue: colorHue,
   });
 
-  if (c_color === "") {
+  if (selectedColor === "") {
     random_color = random_color;
   } else {
-    random_color = "#" + c_color;
+    random_color = "#" + selectedColor;
   }
   chatLineInner.style.borderColor = random_color;
   // chatLineInner.style.background = random_color_light+"33";
@@ -314,8 +414,6 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
         }
       }, []);
     }
-
-    chatBoxEles.push({ id: data.id, date: Date.now(), pos: left_pos });
     
     let nameEle = document.createElement('span');
     nameEle.classList.add('user-name');
@@ -335,7 +433,6 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
     nameEle.style.background = random_color;
     nameEle.style.borderColor = random_color;
 
-    let messageEle = document.createElement('span');
     messageEle.classList.add('message');
     messageEle.style.background = random_color_light+"33";
 
@@ -412,28 +509,47 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
     }
     chatLineInner.appendChild(messageEle);
 
-    chatBoxEles.push({ id: 'admin', date: Date.now(), pos: left_pos });
+    normalChats.push({ id: 'admin', date: Date.now(), pos: left_pos });
   }
 
   chatEle.appendChild(chatBox);
 
   setTimeout(() => chatBox.classList.add('visible'), 100);
 
-  if (chatEle.childElementCount > 15) {
-    let boxId = chatBoxEles[0].id;
-    chatBoxEles.shift();
+  if (normalChats.length > 15) {
+    let chatId = normalChats[0].id;
+    let chatType = normalChats[0].type;
+    normalChats.shift();
+
+    if (chatType == 'prediction') {
+      Object.keys(predictionChats)
+      .forEach(preKey => {
+        predictionChats[preKey].forEach((chat, index) => {
+          if (chat.id === chatId) {
+            predictionChats[preKey].splice(index, 1);
+          }
+        });
+        if (parseInt(predictionChats[preKey].length) === 0) {
+          delete predictionChats[preKey];
+        }
+      });
+    }
+
     chatEle.childNodes.forEach(node => {
-      if (boxId === 'admin') {
+      if (chatId === 'admin') {
         if (node.getAttribute('type') === 'admin') {
           chatEle.removeChild(node);
         }
       } else {
-        if (node.getAttribute('message-id') == boxId) {
+        if (node.getAttribute('message-id') == chatId) {
           chatEle.removeChild(node);
         }
       }
     });
   }
+
+  // console.log('예측채팅들', predictionChats);
+  // console.log('채팅들 배열', normalChats);
 
   if (timeout) {
     setTimeout(() => {
@@ -445,8 +561,26 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
             isAdmin = true;
           }
           if (!isAdmin) {
-            let boxIndex = chatBoxEles.findIndex(box => box.id == chatBox.getAttribute('message-id'));
-            chatBoxEles.splice(boxIndex, 1);
+            let boxIndex = normalChats.findIndex(chat => chat.id == chatBox.getAttribute('message-id'));
+            let chatId = normalChats[boxIndex].id;
+            let chatType = normalChats[boxIndex].type;
+
+            normalChats.splice(boxIndex, 1);
+            
+            if (chatType == 'prediction') {
+              Object.keys(predictionChats)
+              .forEach(preKey => {
+                predictionChats[preKey].forEach((chat, index) => {
+                  if (chat.id === chatId) {
+                    predictionChats[preKey].splice(index, 1);
+                  }
+                });
+                if (parseInt(predictionChats[preKey].length) === 0) {
+                  delete predictionChats[preKey];
+                }
+              });
+            }
+
             chatEle.removeChild(chatBox);
           }
         }, 1000);
