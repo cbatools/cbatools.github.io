@@ -449,32 +449,23 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
     }
     // 테마 선택
     if (params.theme == 'dark') { // 다크 테마
-      messageEle.classList.add('dark');
+      chatBox.classList.add('dark');
 
-      chatLineInner.classList.add('dark');
       chatLineInner.style.borderColor = random_color_light;
       chatLineInner.style.background = '#000';
       chatLineInner.style.color = random_color_light;
 
-      nameEle.classList.add('dark');
       nameEle.style.color = random_color_dark;
       nameEle.style.background = random_color_light;
       nameEle.style.borderColor = random_color_light;
 
       chatLine_tail.style.borderColor = random_color_light + " transparent";
     } else if (params.theme == 'mlt') { // MLT 테마
+      chatBox.classList.add('mlt');
+
       let margin_bottom = Math.floor(mulberry32(Date.now()) * 74 + 1) + 'px';
 
       chatLine_.style.marginBottom = margin_bottom;
-      chatLine_tail.style.display = 'none';
-      chatLine_tail_shadow.style.display = 'none';
-      nameEle.style.display = 'none';
-
-      chatBox.classList.add('mlt');
-      chatLineInner.classList.add('mlt');
-      chatLineBg.classList.add('mlt');
-      messageEle.classList.add('mlt');
-      chatUser.classList.add('mlt');
     }
     // 피버 모드
     if (params.fever == '1') {
