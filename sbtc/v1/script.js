@@ -262,7 +262,7 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
     while (perfectPos != true) {
       let existPos = 0;
       normalChats.forEach(element => {
-        if (element.pos !== undefined && element.type == 'normal' && element.pos < left_pos + 2.4 && element.pos > left_pos - 2.4) {
+        if (element.pos !== undefined && element.type == 'normal' && element.pos < left_pos + 2.2 && element.pos > left_pos - 2.2) {
           existPos++;
         }
       });
