@@ -26,6 +26,7 @@ body {
 .chat-box {
   position: absolute;
   bottom: 10px;
+  padding-left: 1em;
   width: auto;
   max-width: 210px;
   background: tranparent;
@@ -37,6 +38,7 @@ body {
 }
 .chat-box.visible {
   margin-top: 10px;
+  padding-left: 1em;
   max-height: 400px;
   transition: opacity 2s, max-height .8s, margin-top 300ms;
   /* animation: slide 2s;
@@ -46,7 +48,8 @@ body {
   animation-timing-function: ease-in-out; */
 }
 .chat-line {
-  padding: 12px;
+  padding: 1em;
+  padding-bottom: .4em;
   animation: shake 4s;
   animation-iteration-count: infinite;
 }
@@ -58,12 +61,11 @@ body {
   margin-top: 10px;
   max-height: 340px;
   transition: opacity 2s, max-height 1s, margin-top 300ms;
-  
 }
 .chat-line .chat-user .chat-user-avatar {
   width: 46px;
   height: 46px;
-  margin-left: 12px;
+  margin-left: 14px;
   background-repeat: no-repeat !important;
   animation: shake 2s;
   animation-iteration-count: infinite;
@@ -73,7 +75,7 @@ body {
 }
 .chat-line .chat-user .badges {
   top: 36px;
-  right: 9px;
+  right: 13px;
   position: absolute;
   filter: opacity(0.8);
   width: 18px;
@@ -128,7 +130,6 @@ body {
   width: 0;
   z-index: .9;
 }
-
 .user-name {
   display: block;
   font-size: 1em;
@@ -139,10 +140,6 @@ body {
   border-radius: 16px 16px 0 0;
   text-shadow: 2px 2px 1px rgb(0 0 0), 2px 1px 4px rgb(0 0 0), 2px 3px 3px rgb(0 0 0);
 }
-.user-name.dark{
-  text-shadow: none;
-}
-
 .message {
   max-height: 232px;
   min-width: 32px;
@@ -159,9 +156,6 @@ body {
   border-radius: 0px 0 20px 20px;
   text-shadow: 0px 3px 3px rgba(255,255,255,0.5);
 }
-.message.dark {
-  text-shadow: none;
-}
 .message.onecharacter {
   font-size: 1.8em;
   padding: 0.5em;
@@ -176,6 +170,51 @@ body {
 }
 .message img.emoji {
   width: 20px;
+}
+
+/* Dark Theme */
+.message.dark {
+  text-shadow: none;
+}
+.user-name.dark{
+  text-shadow: none;
+}
+/* MLT Theme */
+.chat-box.mlt {
+  opacity: 0;
+  transition: opacity .3s;
+}
+.chat-box.mlt.visible {
+  opacity: 100%;
+  transition: opacity .4s;
+}
+.message.mlt {
+  -webkit-line-clamp: 6;
+  border-radius: 0;
+  padding: 8px 8px 8px 24px;
+}
+.chat-line .chat-line-inner.mlt {
+  border-radius: 0;
+  filter: drop-shadow(0 0 0.3rem);
+}
+.chat-line .chat-line-bg.mlt {
+  box-shadow: none;
+}
+.chat-user.mlt {
+  position: absolute;
+  top: 1.2em;
+  left: -1.1em;
+}
+.chat-line .chat-user.mlt .chat-user-avatar {
+  animation: none;
+}
+.chat-line .chat-user.mlt .badges {
+  display: flex;
+  transform: scale(.8);
+  filter: opacity(1);
+  top: -18px;
+  right: 10px;
+  line-height: 1;
 }
 
 @keyframes shake {

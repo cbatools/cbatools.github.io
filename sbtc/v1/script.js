@@ -262,7 +262,7 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
     while (perfectPos != true) {
       let existPos = 0;
       normalChats.forEach(element => {
-        if (element.pos !== undefined && element.type == 'normal' && element.pos < left_pos + 2.1 && element.pos > left_pos - 2.1) {
+        if (element.pos !== undefined && element.type == 'normal' && element.pos < left_pos + 2.4 && element.pos > left_pos - 2.4) {
           existPos++;
         }
       });
@@ -275,7 +275,7 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
     }
   }
 
-  // 말풍선 정보 배열
+  // 말풍선 정보 배열 저장
   chatProperty = { id: data.id, date: Date.now(), pos: left_pos, type: chatType };
   normalChats.push(chatProperty);
 
@@ -442,10 +442,13 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
     chatUser.appendChild(badgeEle);
     
     chatLineInner.appendChild(spaceEle);
+
+    // 유저 정보 표시 여부
     if (params.userinfo == 1 || params.userinfo == undefined) {
       chatLineInner.appendChild(nameEle);
     }
-    if (params.theme == 'dark') {
+    // 테마 선택
+    if (params.theme == 'dark') { // 다크 테마
       messageEle.classList.add('dark');
 
       chatLineInner.classList.add('dark');
@@ -459,10 +462,25 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
       nameEle.style.borderColor = random_color_light;
 
       chatLine_tail.style.borderColor = random_color_light + " transparent";
+    } else if (params.theme == 'mlt') { // MLT 테마
+      let margin_bottom = Math.floor(mulberry32(Date.now()) * 74 + 1) + 'px';
+
+      chatLine_.style.marginBottom = margin_bottom;
+      chatLine_tail.style.display = 'none';
+      chatLine_tail_shadow.style.display = 'none';
+      nameEle.style.display = 'none';
+
+      chatBox.classList.add('mlt');
+      chatLineInner.classList.add('mlt');
+      chatLineBg.classList.add('mlt');
+      messageEle.classList.add('mlt');
+      chatUser.classList.add('mlt');
     }
+    // 피버 모드
     if (params.fever == '1') {
       chatLineInner.classList.add('fever');
     }
+    // 트위치 이모티콘 한개 크게
     if (params.one == '0') {
       if (finalMessage.length != 1) {
         
@@ -472,6 +490,7 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
         messageEle.classList.add('onecharacter');
       }
     }
+    // 아바타 선택
     if  (params.avatar == '1' ||  params.avatar == 'gridy' || params.avatar == undefined) {
       chatUserAvatar.setAttribute('style', 'background: url(https://avatars.dicebear.com/api/gridy/'+ data['user-id'] +'.svg);');
     } else if (params.avatar == '0') {
@@ -479,6 +498,7 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
     } else {
       chatUserAvatar.setAttribute('style', 'background: url(https://avatars.dicebear.com/api/gridy/'+ data['user-id'] +'.svg);');
     }
+    // ㅋㅋㅋ 웃는 채팅 더 흔들리게
     if (params.lol == '0') {
 
     } else if (params.lol == '1') {
