@@ -69,26 +69,23 @@
       document.getElementById("urltext").value = url;
     }
 
-    function checkThemeOption() {
+    function selectThemeOption() {
       const theme = document.getElementById('theme').value;
 
-      let chatLineInner = document.getElementById('chat-line-inner');
-      let chatLineInnerTail = document.getElementById('chat-line-inner-tail');
-      let messageEle = document.getElementById('message');
-      let nameEle = document.getElementById('user-name');
+      let chatBox = document.getElementById('chat-box');
 
       if (theme == 'dark') {
         url.searchParams.set('theme', 'dark');
-        chatLineInner.classList.add('dark');
-        messageEle.classList.add('dark');
-        nameEle.classList.add('dark');
-        chatLineInnerTail.classList.add('dark');
+        chatBox.classList.remove('mlt');
+        chatBox.classList.add('dark');
+      } else if (theme == 'mlt') {
+        url.searchParams.set('theme', 'mlt');
+        chatBox.classList.remove('dark');
+        chatBox.classList.add('mlt');
       } else {
         url.searchParams.delete('theme', '');
-        chatLineInner.classList.remove('dark');
-        messageEle.classList.remove('dark');
-        nameEle.classList.remove('dark');
-        chatLineInnerTail.classList.remove('dark');
+        chatBox.classList.remove('dark');
+        chatBox.classList.remove('mlt');
       }
       document.getElementById("urltext").value = url;
     }
