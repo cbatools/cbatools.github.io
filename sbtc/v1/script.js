@@ -258,20 +258,35 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
   // 말풍선 위치 지정
   let left_pos = Math.floor(mulberry32(Date.now()) * 8000 + 1) / 100;
   if (normalChats.length > 0) {
+    let lastChat = normalChats[parseInt(normalChats.length) - 1];
+    let last2Chat = normalChats[parseInt(normalChats.length) - 2];
     let perfectPos = false;
+    let lastloop = 0;
     while (perfectPos != true) {
       let existPos = 0;
       normalChats.forEach(element => {
-        if (element.pos !== undefined && element.type == 'normal' && element.pos < left_pos + 2.2 && element.pos > left_pos - 2.2) {
+        if (element.pos !== undefined 
+          && element.type == 'normal' 
+          && element.pos < left_pos + 2.2 
+          && element.pos > left_pos - 2.2) {
           existPos++;
         }
       });
-
+      if (lastChat.pos < left_pos + 20 && lastChat.pos > left_pos - 20) {
+        existPos++;
+      }
+      // if (last2Chat !== undefined && last2Chat.pos < left_pos + 20 && last2Chat.pos > left_pos - 20) {
+      //   existPos++;
+      // }
       if (existPos !== 0) {
         left_pos = Math.floor(Math.random() * 8000 + 1) / 100;
       } else if (existPos === 0) {
         perfectPos = true;
       }
+      if (lastloop >= 22) {
+        perfectPos = true;
+      }
+      lastloop++;
     }
   }
 
