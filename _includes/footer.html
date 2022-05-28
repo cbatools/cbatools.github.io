@@ -54,6 +54,16 @@
       }
       document.getElementById("urltext").value = url;
     }
+
+    function checkStreamerMessageOption() {
+      const streamermessage = document.getElementById('streamermessage').checked;
+      if (streamermessage) {
+        url.searchParams.set('streamermessage', 0);
+      } else {
+        url.searchParams.delete('streamermessage');
+      }
+      document.getElementById("urltext").value = url;
+    }
         
     function checkFeverOption() {
       const fever = document.getElementById('fever').checked;
