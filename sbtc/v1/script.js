@@ -290,10 +290,6 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
     }
   }
 
-  // 말풍선 정보 배열 저장
-  chatProperty = { id: data.id, date: Date.now(), pos: left_pos, type: chatType };
-  normalChats.push(chatProperty);
-
   if (chatType == 'normal') {
 
   } else if (chatType == 'prediction') {
@@ -517,8 +513,19 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
         }
       });
     }
-    // chatLineInner.appendChild(colonEle);
+    // 방장 메세지는 안보이게
+    if (params.streamermessage == '0') {
+      if (data.username == twitchID) {
+        return false;
+      }
+    } else if (params.streamermessage == '1') {
+
+    }
     chatLineInner.appendChild(messageEle);
+
+    // 말풍선 정보 배열 저장
+    chatProperty = { id: data.id, date: Date.now(), pos: left_pos, type: chatType };
+    normalChats.push(chatProperty);
   } else if (type === 'admin') {
     chatBox.classList.add('admin');
 
