@@ -8,8 +8,12 @@
   <script>
     var twitchID = '';
     const urlSearchParams = new URLSearchParams(window.location.search);
-    const params = Object.fromEntries(urlSearchParams.entries());
-
+    // const params = Object.fromEntries(urlSearchParams.entries());
+    const params = {};
+    urlSearchParams.forEach((value, key) => {
+      params[key] = value;
+    });
+    
     if (params.id != null) {
       twitchID = params.id;
       document.title = document.title + " " + params.id;

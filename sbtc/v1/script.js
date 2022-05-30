@@ -513,7 +513,7 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
         }
       });
     }
-    // 방장 메세지는 안보이게
+    // 스트리머 메세지는 안보이게
     if (params.streamermessage == '0') {
       if (data.username == twitchID) {
         return false;
