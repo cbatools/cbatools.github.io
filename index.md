@@ -15,17 +15,13 @@ page_sections:
   # - link: "#infinitechallenge-star-twip-alert"
   #   link_text: 무한도전 별 트윕 알림
   cta:
-    url: https://ttkworkroom.imweb.me/
-    button_text: 김뚝딱작업실
+    url: "#qa"
+    button_text: 문의하기
 - template: hero-banner-w-image
   block: hero-2
   slug: features
   headline: C.B.A <br><strong>Creative Broadcast Assistant</strong>
-  content: 유니크하고 화려한 스트리밍을 위한 여러가지 도구/스킨을 무료로 배포합니다! 
-  cta:
-    enabled: false
-    url: https://ttkworkroom.imweb.me/
-    button_text: See on GitHub
+  content: 유니크하고 화려한 스트리밍을 위한 여러가지 도구/스킨을 무료로 배포합니다!
   image:
     image: "/uploads/index/cba-1.png"
     alt_text: CBA Tools
@@ -43,23 +39,19 @@ page_sections:
   media:
     image: "/uploads/index/speechchat-1.png"
     alt_text: Twitch Speech Balloon Chat
+- template: content-feature
+  block: feature-1
+  media_alignment: Right
+  slug: qa
+  headline: <strong>문의하기</strong>
+  content: <b>채팅창</b> / <b>트윕</b> / <b>투네이션</b> 등등 CSS 작업해드리고 있습니다! <br> 언제든 편하고 자유롭게 문의해주세요~ 😎 
+  media:
+    image: "/uploads/index/infinite-1.png"
+    alt_text: Twip Infinite Challenge Balloon Style Alert
   cta:
-    enabled: false
-    url: https://github.com/overgd/twip-alert-infinitechallenge-balloon
-    button_text: See on GitHub
-# - template: content-feature
-#   block: feature-1
-#   media_alignment: Right
-#   slug: infinitechallenge-balloon-twip-alert
-#   headline: <strong>무한도전 풍선모양 트윕 알림</strong>
-#   content: 무한도전 자막에 나왔던 풍선 모양의 알림을 트윕 알림으로 적용해보세요!
-#   media:
-#     image: "/uploads/index/infinite-1.png"
-#     alt_text: Twip Infinite Challenge Balloon Style Alert
-#   cta:
-#     enabled: true
-#     url: https://github.com/overgd/twip-alert-infinitechallenge-balloon
-#     button_text: See on GitHub
+    enabled: true
+    url: https://open.kakao.com/o/slr3Yjad
+    button_text: 오픈카톡
 # - template: content-feature
 #   block: feature-1
 #   media_alignment: Left
