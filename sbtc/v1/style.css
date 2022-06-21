@@ -198,6 +198,7 @@ body {
   filter: drop-shadow(0 0 0.3rem);
 }
 .chat-box.mlt .chat-line .chat-line-bg {
+  border-radius: 0;
   box-shadow: none;
 }
 .chat-box.mlt .user-name,
@@ -218,7 +219,7 @@ body {
   transform: scale(.8);
   filter: opacity(1);
   top: -18px;
-  right: 10px;
+  left: 32px;
   line-height: 1;
 }
 
