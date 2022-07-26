@@ -9,6 +9,13 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'ONE-Mobile-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   background: transparent;
   color: transparent;
@@ -21,6 +28,7 @@ body {
   position: absolute;
   bottom: 0px;
   width: 120%;
+  flex-direction: row;
 }
 
 .chat-box {
@@ -221,6 +229,119 @@ body {
   top: -18px;
   left: 32px;
   line-height: 1;
+}
+/* SMM Theme  */
+.chat-box.smm {
+  position: initial;
+  padding-left: 0;
+  display: flex;
+  align-items: flex-end;
+  animation: none;
+  transform: translate(0px, 800px);
+  transition: transform 300ms, width 300ms;
+  max-height: 400px;
+  max-width: 368px;
+  width: 0;
+}
+.chat-box.smm.visible {
+  margin-top: 0px;
+  padding-left: 56px;
+  padding-bottom: 14px;
+  transform: translate(0px, 0px);
+  transition: transform 100ms, width 100ms;
+  width: 100%;
+}
+.chat-box.smm .chat-line {
+  display: flex;
+  align-items: flex-end;
+  animation: none;
+  padding: .4em;
+}
+.chat-box.smm .chat-line .chat-line-bg {
+  background: transparent;
+  order: 2;
+  box-shadow: none;
+  padding-left: 18px;
+  padding-bottom: 38px;
+  margin-right: 2px;
+}
+.chat-box.smm .chat-line .chat-line-inner {
+  border-radius: 12px;
+  border-width: 6px;
+}
+.chat-box.smm .chat-line .chat-line-inner-tail {
+  bottom: 0px;
+  left: 4px;
+  border-style: none;
+  border-top: 10px solid transparent !important;
+  border-right: 18px solid;
+}
+.chat-box.smm .chat-line .chat-line-inner-tail-shadow {
+  bottom: 8px;
+  left: -40px;
+  border-color: transparent;
+}
+.chat-box.smm .chat-line .chat-user {
+  order: 1;
+}
+.chat-box.smm .chat-line .chat-user::before {
+  content: "";
+  display: block;
+  height: 77px;
+  width: 77px;
+  background-color: white;
+  border-radius: 100px;
+  border: 8px solid;
+  position: absolute;
+  z-index: -1;
+}
+.chat-box.smm .chat-line .chat-user .chat-user-avatar {
+  animation: none;
+  height: 77px;
+  width: 77px;
+  margin-left: 0;
+  border-radius: 100px;
+  border: 8px solid;
+  color: black;
+  background-size: 56px !important;
+  background-position: center !important;
+} 
+.chat-box.smm .chat-line .chat-user .badges {
+  top: auto;
+  right: auto;
+  left: 144px;
+  bottom: 20px;
+  width: 52px;
+}
+.chat-box.smm .message {
+  font-family: 'ONE-Mobile-Regular';
+  font-weight: 600;
+  border-radius: 0px 0 12px 12px;
+  padding: 2px 12px;
+  font-size: 29px;
+}
+.chat-box.smm .user-name {
+  position: absolute;
+  color: transparent;
+  bottom: -2px;
+  left: -128px;
+  text-shadow: none;
+  border-radius: 40px;
+  border-width: 4px;
+  background: white !important;
+  height: 34px;
+  width: 34px;
+  padding: 2px;
+  overflow: hidden;
+  font-size: 0px;
+  letter-spacing: 5px;
+  text-align: left;
+}
+.chat-box.smm .user-name::first-letter {
+  font-size: 32px;
+  padding: 4px;
+  line-height: 1;
+  text-transform: uppercase;
 }
 
 @keyframes shake {

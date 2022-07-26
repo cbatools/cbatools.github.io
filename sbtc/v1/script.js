@@ -216,6 +216,8 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
   let predictionNum = 0;
   let predictionSeqNum = 0;
   let predictionChatsLength = Object.keys(predictionChats).length;
+
+  let maxChatNum = 15;
   
   chatBox.classList.add('chat-box');
   chatLine_.classList.add('chat-line');
@@ -479,7 +481,13 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
       let margin_bottom = Math.floor(mulberry32(Date.now()) * 74 + 1) + 'px';
 
       chatLine_.style.marginBottom = margin_bottom;
-    } 
+    } else if (params.theme == 'smm') { // SMM 테마
+      chatBox.classList.add('smm');
+      maxChatNum = 4;
+      nameEle.style.color = random_color_dark;
+      chatLine_tail.style.borderColor = random_color;
+
+    }
     // 피버 모드
     if (params.fever == '1') {
       chatLineInner.classList.add('fever');
@@ -497,10 +505,12 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
     // 아바타 선택
     if  (params.avatar == '1' ||  params.avatar == 'gridy' || params.avatar == undefined) {
       chatUserAvatar.setAttribute('style', 'background: url(https://avatars.dicebear.com/api/gridy/'+ data['user-id'] +'.svg);');
+      chatUserAvatar.style.color = random_color;
     } else if (params.avatar == '0') {
       chatUserAvatar.classList.add('hide');
     } else {
       chatUserAvatar.setAttribute('style', 'background: url(https://avatars.dicebear.com/api/gridy/'+ data['user-id'] +'.svg);');
+      chatUserAvatar.style.color = random_color;
     }
     // ㅋㅋㅋ 웃는 채팅 더 흔들리게
     if (params.lol == '0') {
@@ -551,7 +561,7 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
 
   setTimeout(() => chatBox.classList.add('visible'), 100);
 
-  if (normalChats.length > 15) {
+  if (normalChats.length > maxChatNum) {
     let chatId = normalChats[0].id;
     let chatType = normalChats[0].type;
     normalChats.shift();
@@ -582,9 +592,6 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
       }
     });
   }
-
-  // console.log('예측채팅들', predictionChats);
-  // console.log('채팅들 배열', normalChats);
 
   if (timeout) {
     setTimeout(() => {
