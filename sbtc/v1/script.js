@@ -483,10 +483,14 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
       chatLine_.style.marginBottom = margin_bottom;
     } else if (params.theme == 'smm') { // SMM 테마
       chatBox.classList.add('smm');
-      maxChatNum = 4;
+      maxChatNum = 5;
+      chatEle.style.paddingLeft = '50px';
       nameEle.style.color = random_color_dark;
       chatLine_tail.style.borderColor = random_color;
-
+      if (params.size == 'm') { // 중간 크기
+        chatBox.classList.add('sizem');
+        maxChatNum = 8;
+      }
     }
     // 피버 모드
     if (params.fever == '1') {
