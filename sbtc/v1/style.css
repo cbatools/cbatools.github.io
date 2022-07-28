@@ -249,7 +249,7 @@ body {
   padding-bottom: 14px;
   transform: translate(0px, 0px);
   transition: transform 100ms, width 100ms;
-  width: 100%;
+  width: auto;
 }
 .chat-box.smm .chat-line {
   display: flex;
