@@ -237,19 +237,20 @@ body {
   display: flex;
   align-items: flex-end;
   animation: none;
-  transform: translate(0px, 800px);
-  transition: transform 300ms, width 300ms;
   max-height: 400px;
-  max-width: 368px;
+  max-width: 0;
   width: 0;
+  transform: translate(0px, 800px);
+  transition: transform 300ms, max-width 300ms;
 }
 .chat-box.smm.visible {
   margin-top: 0px;
   padding-left: 6px;
   padding-bottom: 14px;
-  transform: translate(0px, 0px);
-  transition: transform 100ms, width 100ms;
+  max-width: 368px;
   width: auto;
+  transform: translate(0px, 0px);
+  transition: transform 100ms, max-width 100ms;
 }
 .chat-box.smm .chat-line {
   display: flex;
