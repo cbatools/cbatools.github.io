@@ -285,7 +285,7 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
       //   existPos++;
       // }
       if (existPos !== 0) {
-        left_pos = Math.floor(Math.random() * 8000 + 1) / 100;
+        left_pos = Math.floor(Math.random() * 8800 + 1) / 100;
       } else if (existPos === 0) {
         perfectPos = true;
       }
@@ -571,7 +571,7 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
     chatEle.insertBefore(chatBox, chatEle.firstChild);
   }
 
-  setTimeout(() => chatBox.classList.add('visible'), 10);
+  setTimeout(() => chatBox.classList.add('visible'), 100);
 
   if (normalChats.length > maxChatNum) {
     let chatId = normalChats[0].id;

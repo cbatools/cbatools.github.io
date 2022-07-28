@@ -33,22 +33,20 @@ body {
 
 .chat-box {
   position: absolute;
-  bottom: 10px;
   padding-left: 1em;
   width: auto;
   max-width: 210px;
+  bottom: -1200px;
   background: tranparent;
   overflow: hidden;
-  max-height: 0px;
-  transition: opacity 2s, max-height 1s, margin-top 1s;
-  animation: shake .3s;
-  animation-iteration-count: 2;
+  transition: bottom 300ms;
 }
 .chat-box.visible {
-  margin-top: 10px;
   padding-left: 1em;
-  max-height: 400px;
-  transition: opacity 2s, max-height .8s, margin-top 300ms;
+  bottom: 10px;
+  transition: bottom 500ms;
+  animation: shake .2s;
+  animation-iteration-count: 2;
   /* animation: slide 2s;
   animation-iteration-count: infinite;
   animation-direction: alternate;
@@ -68,7 +66,6 @@ body {
 .chat-line.visible {
   margin-top: 10px;
   max-height: 340px;
-  transition: opacity 2s, max-height 1s, margin-top 300ms;
 }
 .chat-line .chat-user .chat-user-avatar {
   width: 46px;
@@ -190,11 +187,11 @@ body {
 /* MLT Theme */
 .chat-box.mlt {
   opacity: 0;
-  transition: opacity .3s;
+  transition: opacity 300ms;
 }
 .chat-box.mlt.visible {
   opacity: 100%;
-  transition: opacity .4s;
+  transition: opacity 300ms;
 }
 .chat-box.mlt .message {
   -webkit-line-clamp: 6;
@@ -239,9 +236,9 @@ body {
   animation: none;
   max-height: 400px;
   max-width: 0;
-  width: 0;
+  width: auto;
   transform: translate(0px, 800px);
-  transition: transform 300ms, max-width 300ms;
+  transition: transform 200ms, max-width 400ms;
 }
 .chat-box.smm.visible {
   margin-top: 0px;
