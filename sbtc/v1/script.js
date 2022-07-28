@@ -6,6 +6,8 @@ const selectedColor = document.getElementById("color").getAttribute("color");
 
 let normalChats = [];
 let predictionChats = {};
+let chatOrder = 'last'
+let messageTimeout = 30000;
 
 const chatEle = document.getElementById('chat');
 const twitchBadgeCache = {
@@ -199,7 +201,7 @@ function getChan(channel = '') {
   return channel.replace(/^#/, '');
 }
 
-function showMessage({ chan, type, message = '', data = {}, timeout = 30000, attribs = {} } = {}) {
+function showMessage({ chan, type, message = '', data = {}, timeout = messageTimeout, attribs = {} } = {}) {
   
   let chatBox = document.createElement('div');
   let chatLine_ = document.createElement('div');
@@ -483,13 +485,15 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
       chatLine_.style.marginBottom = margin_bottom;
     } else if (params.theme == 'smm') { // SMM 테마
       chatBox.classList.add('smm');
-      maxChatNum = 5;
+      maxChatNum = 10;
+      chatOrder = 'first';
       chatEle.style.paddingLeft = '50px';
+      chatEle.style.width = '200%';
       nameEle.style.color = random_color_dark;
       chatLine_tail.style.borderColor = random_color;
       if (params.size == 'm') { // 중간 크기
         chatBox.classList.add('sizem');
-        maxChatNum = 8;
+        maxChatNum = 20;
       }
     }
     // 피버 모드
@@ -561,9 +565,13 @@ function showMessage({ chan, type, message = '', data = {}, timeout = 30000, att
     normalChats.push({ id: 'admin', date: Date.now(), pos: left_pos });
   }
 
-  chatEle.appendChild(chatBox);
+  if (chatOrder == 'last') {
+    chatEle.appendChild(chatBox);
+  } else if (chatOrder == 'first') {
+    chatEle.insertBefore(chatBox, chatEle.firstChild);
+  }
 
-  setTimeout(() => chatBox.classList.add('visible'), 100);
+  setTimeout(() => chatBox.classList.add('visible'), 10);
 
   if (normalChats.length > maxChatNum) {
     let chatId = normalChats[0].id;
