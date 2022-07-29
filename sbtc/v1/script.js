@@ -471,6 +471,12 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
     if (params.userinfo == 1 || params.userinfo == undefined) {
       chatLineInner.appendChild(nameEle);
     }
+    // 글자 색 선택
+    if (params.messagecolor == 'random' || params.messagecolor == undefined){
+
+    } else if (params.messagecolor == 'black') {
+      messageEle.classList.add('black');
+    }
     // 테마 선택
     if (params.theme == 'dark') { // 다크 테마
       chatBox.classList.add('dark');

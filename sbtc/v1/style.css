@@ -44,7 +44,7 @@ body {
 .chat-box.visible {
   padding-left: 1em;
   bottom: 10px;
-  transition: bottom 500ms;
+  transition: bottom 300ms;
   animation: shake .2s;
   animation-iteration-count: 2;
   /* animation: slide 2s;
@@ -160,6 +160,8 @@ body {
   padding: 0.65em;
   border-radius: 0px 0 20px 20px;
   text-shadow: 0px 3px 3px rgba(255,255,255,0.5);
+}
+.message.black {
   color: #160000;
 }
 .message.onecharacter {
@@ -321,7 +323,6 @@ body {
   font-size: 29px;
   text-shadow: none;
   background: rgba(255,255,255,.8) !important;
-  color: #160000;
 }
 .chat-box.smm .user-name {
   position: absolute;
