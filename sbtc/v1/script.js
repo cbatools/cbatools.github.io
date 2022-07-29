@@ -21,6 +21,10 @@ const bttvEmoteCache = {
 const krakenBase = 'https://api.twitch.tv/kraken/';
 const krakenClientID = '4g5an0yjebpf93392k4c5zll7d7xcec';
 
+const helixBase = 'https://api.twitch.tv/helix/';
+const helixClientID = 'u2844yyspjg8a92oyw99uocbkdhb0l';
+const helixAuth = 'Bearer ke9ebipjzigmc2ehvwmv13s2zbb3he';
+
 const chatFilters = [
 // '\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u00FF', // Partial Latin-1 Supplement
 // '\u0100-\u017F', // Latin Extended-A
@@ -91,7 +95,7 @@ function addListeners() {
   });
 
   client.on('connected', () => {
-    getBTTVEmotes();
+    // getBTTVEmotes();
     getBadges().
     then(badges => twitchBadgeCache.data.global = badges);
     showAdminMessage({
@@ -139,16 +143,19 @@ function addListeners() {
       return;
     }
     let chan = getChan(channel);
-    getBTTVEmotes(chan);
+    // getBTTVEmotes(chan);
     twitchNameToUser(chan).
-    then(user => getBadges(user._id)).
-    then(badges => twitchBadgeCache.data[chan] = badges);
-    showAdminMessage({
-      message: `Joined ${chan}`,
-      timeout: 1000 });
-    if (chan != twitchID) {
-      document.title = document.title + " " + chan;
-    }
+    then(user => {
+      return getBadges(user.id);
+    }).
+    then(badges => {
+      twitchBadgeCache.data[chan] = badges;
+    }).
+    then(c => {
+      showAdminMessage({
+        message: `Joined ${chan}`,
+        timeout: 1000 });
+    });
   });
 
   client.on('part', (channel, username, self) => {
@@ -760,27 +767,33 @@ function kraken(opts) {
   return request(Object.assign(defaults, opts));
 }
 
+function helix(opts) {
+  let defaults = {
+    base: helixBase,
+    headers: {
+      'Client-Id' : helixClientID,
+      'Authorization' : helixAuth,
+      } };
+
+
+  return request(Object.assign(defaults, opts));
+}
+
 function twitchNameToUser(username) {
-  return kraken({
+  return helix({
     endpoint: 'users',
     qs: { login: username } }).
-
-  then(({ users }) => users[0] || null);
+  then(({ data }) => data[0] || null);
 }
 
 function getBadges(channel) {
-  return kraken({
+  return helix({
     base: 'https://badges.twitch.tv/v1/badges/',
     endpoint: (channel ? `channels/${channel}` : 'global') + '/display',
     qs: { language: 'en' } }).
-
-  then(data => data.badge_sets);
-}
-
-function getClip(clipSlug) {
-  return kraken({
-    endpoint: `clips/${clipSlug}` });
-
+  then(data => {
+    return data.badge_sets;
+  });
 }
 
 function getBTTVEmotes(channel) {
