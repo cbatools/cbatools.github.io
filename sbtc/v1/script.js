@@ -305,63 +305,62 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
 
   if (chatType == 'normal') {
 
-  } else if (chatType == 'prediction') {
-    chatProperty['prediction'] = predictionNum;
-    if (predictionChats[predictionNum] === undefined) {
-      predictionChats[predictionNum] = [];
-    }
-    predictionChats[predictionNum].push(chatProperty);
-    predictionChatsLength = Object.keys(predictionChats).length;
-    document.documentElement.style.setProperty('--prediction', predictionChatsLength);
-    let _break = 0;
-    Object.keys(predictionChats)
-    .forEach(chatKey => {
-      if (_break !== 1) {
-        predictionSeqNum++;
-        if (parseInt(chatKey) === parseInt(predictionNum)) {
-          _break = 1;
-        }
-      }
-    });
-    // console.log('predictionSeqNum', predictionSeqNum);
   }
+  // else if (chatType == 'prediction') {
+  //   chatProperty['prediction'] = predictionNum;
+  //   if (predictionChats[predictionNum] === undefined) {
+  //     predictionChats[predictionNum] = [];
+  //   }
+  //   predictionChats[predictionNum].push(chatProperty);
+  //   predictionChatsLength = Object.keys(predictionChats).length;
+  //   document.documentElement.style.setProperty('--prediction', predictionChatsLength);
+  //   let _break = 0;
+  //   Object.keys(predictionChats)
+  //   .forEach(chatKey => {
+  //     if (_break !== 1) {
+  //       predictionSeqNum++;
+  //       if (parseInt(chatKey) === parseInt(predictionNum)) {
+  //         _break = 1;
+  //       }
+  //     }
+  //   });
+  // }
 
   chatBox.style.left = 'calc(' + left_pos + 'vw)';
 
   let colorHue = '';
   let currentTime = Date.now();
 
-  if (chatType === 'prediction') {
-    if (predictionChatsLength >= 2) {
-      chatBox.style.left = 'calc('+ (100 / (predictionChatsLength)) * (predictionSeqNum - 1) +'vw + calc(' + left_pos + 'vw / var(--prediction)) )';
-    }
-    if (predictionNum === 0) {
+  // if (chatType === 'prediction') {
+  //   if (predictionChatsLength >= 2) {
+  //     chatBox.style.left = 'calc('+ (100 / (predictionChatsLength)) * (predictionSeqNum - 1) +'vw + calc(' + left_pos + 'vw / var(--prediction)) )';
+  //   }
+  //   if (predictionNum === 0) {
 
-    } else if (predictionNum === 1) {
-      colorHue = 'blue';
-    } else if (predictionNum === 2) {
-      colorHue = 'red';
-    } else if (predictionNum === 3) {
-      colorHue = 'green';
-    } else if (predictionNum === 4) {
-      colorHue = 'orange';
-    } else if (predictionNum === 5) {
-      colorHue = 'purple';
-    } else if (predictionNum === 6) {
-      colorHue = 'pink ';
-    } else if (predictionNum === 7) {
-      colorHue = '#0E0C32'; // 남색
-    } else if (predictionNum === 8) {
-      colorHue = '#92DF45'; // 연두색
-    } else if (predictionNum === 9) {
-      colorHue = 'yellow';
-    } else if (predictionNum === 10) {
-      colorHue = 'monochrome';
-    } else {
-      colorHue = '';
-    }
-
-  }
+  //   } else if (predictionNum === 1) {
+  //     colorHue = 'blue';
+  //   } else if (predictionNum === 2) {
+  //     colorHue = 'red';
+  //   } else if (predictionNum === 3) {
+  //     colorHue = 'green';
+  //   } else if (predictionNum === 4) {
+  //     colorHue = 'orange';
+  //   } else if (predictionNum === 5) {
+  //     colorHue = 'purple';
+  //   } else if (predictionNum === 6) {
+  //     colorHue = 'pink ';
+  //   } else if (predictionNum === 7) {
+  //     colorHue = '#0E0C32'; // 남색
+  //   } else if (predictionNum === 8) {
+  //     colorHue = '#92DF45'; // 연두색
+  //   } else if (predictionNum === 9) {
+  //     colorHue = 'yellow';
+  //   } else if (predictionNum === 10) {
+  //     colorHue = 'monochrome';
+  //   } else {
+  //     colorHue = '';
+  //   }
+  // }
 
   let random_color = randomColor({
     luminosity: 'bright',
@@ -585,19 +584,19 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
     let chatType = normalChats[0].type;
     normalChats.shift();
 
-    if (chatType == 'prediction') {
-      Object.keys(predictionChats)
-      .forEach(preKey => {
-        predictionChats[preKey].forEach((chat, index) => {
-          if (chat.id === chatId) {
-            predictionChats[preKey].splice(index, 1);
-          }
-        });
-        if (parseInt(predictionChats[preKey].length) === 0) {
-          delete predictionChats[preKey];
-        }
-      });
-    }
+    // if (chatType == 'prediction') {
+    //   Object.keys(predictionChats)
+    //   .forEach(preKey => {
+    //     predictionChats[preKey].forEach((chat, index) => {
+    //       if (chat.id === chatId) {
+    //         predictionChats[preKey].splice(index, 1);
+    //       }
+    //     });
+    //     if (parseInt(predictionChats[preKey].length) === 0) {
+    //       delete predictionChats[preKey];
+    //     }
+    //   });
+    // }
 
     chatEle.childNodes.forEach(node => {
       if (chatId === 'admin') {
@@ -629,19 +628,19 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
 
             normalChats.splice(boxIndex, 1);
             
-            if (chatType == 'prediction') {
-              Object.keys(predictionChats)
-              .forEach(preKey => {
-                predictionChats[preKey].forEach((chat, index) => {
-                  if (chat.id === chatId) {
-                    predictionChats[preKey].splice(index, 1);
-                  }
-                });
-                if (parseInt(predictionChats[preKey].length) === 0) {
-                  delete predictionChats[preKey];
-                }
-              });
-            }
+            // if (chatType == 'prediction') {
+            //   Object.keys(predictionChats)
+            //   .forEach(preKey => {
+            //     predictionChats[preKey].forEach((chat, index) => {
+            //       if (chat.id === chatId) {
+            //         predictionChats[preKey].splice(index, 1);
+            //       }
+            //     });
+            //     if (parseInt(predictionChats[preKey].length) === 0) {
+            //       delete predictionChats[preKey];
+            //     }
+            //   });
+            // }
 
             chatEle.removeChild(chatBox);
           }
