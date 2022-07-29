@@ -146,6 +146,7 @@ function addListeners() {
     // getBTTVEmotes(chan);
     twitchNameToUser(chan).
     then(user => {
+      document.title = document.title + " " + user.display_name;
       return getBadges(user.id);
     }).
     then(badges => {
