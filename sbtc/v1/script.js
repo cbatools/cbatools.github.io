@@ -147,6 +147,10 @@ function addListeners() {
     twitchNameToUser(chan).
     then(user => {
       document.title = document.title + " " + user.display_name;
+      gtag('config', 'GA_MEASUREMENT_ID', {
+        'user_id': chan
+      });
+      gtag('event', 'login', { 'method' : 'sbtc', 'channel_id' : chan, 'display_name' : user.display_name });
       return getBadges(user.id);
     }).
     then(badges => {
