@@ -508,9 +508,10 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
       chatEle.style.width = '200%';
       nameEle.style.color = random_color_dark;
       chatLine_tail.style.borderColor = random_color;
-      if (params.size == 'm') { // 중간 크기
-        chatBox.classList.add('sizem');
+      if (params.size == 's') { // 작은 크기
+        chatBox.classList.add('sizes');
         maxChatNum = 20;
+        chatEle.style.width = '400%';
       }
     }
     // 피버 모드

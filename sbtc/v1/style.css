@@ -338,7 +338,7 @@ body {
   padding: 2px;
   overflow: hidden;
   font-size: 0px;
-  letter-spacing: 5px;
+  letter-spacing: 6px;
   text-align: left;
 }
 .chat-box.smm .user-name::first-letter {
@@ -348,9 +348,46 @@ body {
   text-transform: uppercase;
 }
 
-/* SMM M size */
-.chat-box.smm.sizem {
+/* SMM S size */
+.chat-box.smm.sizes {
 
+}
+.chat-box.smm.sizes .chat-line .chat-line-inner {
+  border-width: 4px;
+}
+.chat-box.smm.sizes .chat-line .chat-line-bg {
+  padding-bottom: 4px;
+}
+.chat-box.smm.sizes .chat-line .chat-user::before {
+  height: 36px;
+  width: 36px;
+  border-width: 4px;
+}
+.chat-box.smm.sizes .chat-line .chat-user .chat-user-avatar {
+  height: 36px;
+  width: 36px;
+  border-width: 4px;
+  background-size: 32px !important;
+}
+.chat-box.smm.sizes .user-name {
+  height: 16px;
+  width: 16px;
+  left: -74px;
+  bottom: 4px;
+  padding: 2px;
+  line-height: 1.2;
+}
+.chat-box.smm.sizes .user-name::first-letter {
+  font-size: 14px;
+  padding: 1px;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+.chat-box.smm.sizes .chat-line .chat-user .badges {
+  left: 48px;
+}
+.chat-box.smm.sizes .message {
+  font-size: 1.1em;
 }
 
 @keyframes shake {
