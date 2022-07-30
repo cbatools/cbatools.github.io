@@ -529,13 +529,13 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
       }
     }
     // 아바타 선택
-    if  (params.avatar == '1' ||  params.avatar == 'gridy' || params.avatar == undefined) {
+    if  (params.avatar == '1' ||  params.avatar == 'gridy' || params.avatar == undefined || params.avatar == '') {
       chatUserAvatar.setAttribute('style', 'background: url(https://avatars.dicebear.com/api/gridy/'+ data['user-id'] +'.svg);');
       chatUserAvatar.style.color = random_color;
     } else if (params.avatar == '0') {
       chatUserAvatar.classList.add('hide');
     } else {
-      chatUserAvatar.setAttribute('style', 'background: url(https://avatars.dicebear.com/api/gridy/'+ data['user-id'] +'.svg);');
+      chatUserAvatar.setAttribute('style', 'background: url(https://avatars.dicebear.com/api/'+ params.avatar +'/'+ data['user-id'] +'.svg);');
       chatUserAvatar.style.color = random_color;
     }
     // ㅋㅋㅋ 웃는 채팅 더 흔들리게

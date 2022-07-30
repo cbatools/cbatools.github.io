@@ -305,7 +305,7 @@ body {
   border-radius: 100px;
   border: 8px solid;
   color: black;
-  background-size: 56px !important;
+  background-size: 77px !important;
   background-position: center !important;
 } 
 .chat-box.smm .chat-line .chat-user .badges {
@@ -367,7 +367,7 @@ body {
   height: 36px;
   width: 36px;
   border-width: 4px;
-  background-size: 32px !important;
+  background-size: 36px !important;
 }
 .chat-box.smm.sizes .user-name {
   height: 16px;
