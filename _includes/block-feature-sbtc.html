@@ -40,6 +40,7 @@
       height: 46px;
       margin-left: 12px;
       background-repeat: no-repeat !important;
+      filter: drop-shadow(1px 1px 2px black);
       animation: shake 2s;
       animation-iteration-count: infinite;
     }
@@ -280,6 +281,7 @@
       border-color: rgb(229, 71, 76);
       background-size: 60px !important;
       background-position: center !important;
+      filter: none;
     } 
     .chat-box.smm .chat-line .chat-user .badges {
       top: auto;
@@ -416,7 +418,7 @@
               </div>
             </div>
             <div class="chat-user">
-              <div class="chat-user-avatar" id="chat-user-avatar" style="background: url(https://avatars.dicebear.com/api/gridy/over.svg);"></div>
+              <div class="chat-user-avatar" id="chat-user-avatar" style="background: url(https://avatars.dicebear.com/api/big-smile/over.svg);"></div>
               <span class="badges"><img src="https://static-cdn.jtvnw.net/badges/v1/5527c58c-fb7d-422d-b71b-f309dcb85cc1/1" badgetype="broadcaster" alt="broadcaster" class="badge"></span>
             </div>
           </div>
@@ -478,7 +480,18 @@
                 <div class="select is-fullwidth">
                   <select name="avatar" id="avatar" onchange="selectAvatarOption()">
                     <option value="hide">숨김</option>
-                    <option value="gridy" selected>그리디(기본)</option>
+                    <option value="gridy">그리디(기본)</option>
+                    <option value="adventurer">어드벤처</option>
+                    <option value="avataaars">아바타르</option>
+                    <option value="big-ears">큰귀</option>
+                    <option value="big-smile" selected>큰웃음</option>
+                    <option value="bottts">로봇</option>
+                    <option value="human">인간</option>
+                    <option value="micah">선지자</option>
+                    <option value="miniavs">미니</option>
+                    <option value="open-peeps">핍</option>
+                    <option value="personas">페르소나</option>
+                    <option value="pixel-art">픽셀아트</option>
                   </select>
                 </div>
               </div>
