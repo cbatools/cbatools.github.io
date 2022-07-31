@@ -79,6 +79,22 @@
       document.getElementById("urltext").value = url;
     }
 
+    function selectMessageColorOption() {
+      const messageblack = document.getElementById('messageblack').checked;
+      const messagecolor = document.getElementById('messageblack').value;
+      let messageEle = document.getElementById('message');
+
+      if (messageblack) {
+        url.searchParams.set('messagecolor', messagecolor);
+        messageEle.classList.add('black');
+      } else {
+        url.searchParams.delete('messagecolor');
+        messageEle.classList.remove('black');
+      }
+
+      document.getElementById("urltext").value = url;
+    }
+
     function selectThemeOption() {
       const theme = document.getElementById('theme').value;
 

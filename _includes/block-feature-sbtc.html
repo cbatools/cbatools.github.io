@@ -139,6 +139,9 @@
     .message img.emoji {
       width: 20px;
     }
+    .message.black {
+      color: #160000;
+    }
 
     /* Dark Theme */
     .chat-box.dark .message {
@@ -408,12 +411,12 @@
                 </div>
                 <span> </span>
                 <span class="user-name" id="user-name">오버_</span>
-                <span class="message" id="message">
+                <span class="message black" id="message">
                   안녕하세요! 말풍선 채팅 샘플입니다! 모양을 확인해보세요~</span>
               </div>
             </div>
             <div class="chat-user">
-              <div class="chat-user-avatar" id="chat-user-avatar" style="background: url(https://avatars.dicebear.com/api/gridy/107712711.svg);"></div>
+              <div class="chat-user-avatar" id="chat-user-avatar" style="background: url(https://avatars.dicebear.com/api/gridy/over.svg);"></div>
               <span class="badges"><img src="https://static-cdn.jtvnw.net/badges/v1/5527c58c-fb7d-422d-b71b-f309dcb85cc1/1" badgetype="broadcaster" alt="broadcaster" class="badge"></span>
             </div>
           </div>
@@ -524,6 +527,14 @@
             <label class="label">기타 옵션</label>
           </div>
           <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <label class="checkbox">
+                  <input style="width: auto;" type="checkbox" name="messageblack" id="messageblack" onchange="selectMessageColorOption()" value="black" checked>
+                  메세지 색을 검은색으로
+                </label>
+              </div>
+            </div>
             <div class="field">
               <div class="control">
                 <label class="checkbox">
