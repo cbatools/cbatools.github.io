@@ -6,6 +6,12 @@
       font-weight: normal;
       font-style: normal;
     }
+    @font-face {
+      font-family: 'ONE-Mobile-Regular';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-Regular.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
     .chat-box {
       font-family: 'CookieRun-Regular', sans-serif;
       bottom: 10px;
@@ -18,8 +24,6 @@
       transition: opacity 2s, max-height 1s, margin-top 1s;
       animation: shake .3s;
       animation-iteration-count: 2;
-    }
-    .chat-box.visible {
       margin-top: 10px;
       max-height: 340px;
       left: 25%;
@@ -30,11 +34,6 @@
       padding: 12px;
       animation: shake 4s;
       animation-iteration-count: infinite;
-    }
-    .chat-line.visible {
-      margin-top: 10px;
-      max-height: 340px;
-      transition: opacity 2s, max-height 1s, margin-top 300ms;
     }
     .chat-line .chat-user .chat-user-avatar {
       width: 46px;
@@ -200,6 +199,172 @@
       right: 10px;
       line-height: 1;
     }
+
+    /* SMM Theme  */
+    .chat-box.smm {
+      position: initial;
+      padding-left: 0;
+      display: flex;
+      align-items: flex-end;
+      animation: none;
+      max-height: 400px;
+      max-width: 0;
+      width: auto;
+      transform: translate(0px, 800px);
+      transition: transform 200ms, max-width 400ms;
+    }
+    .chat-box.smm.visible {
+      margin-top: 0px;
+      padding-left: 16px;
+      padding-bottom: 14px;
+      max-width: 368px;
+      width: auto;
+      transform: translate(0px, 0px);
+      transition: transform 100ms, max-width 100ms;
+    }
+    .chat-box.smm .chat-line {
+      display: flex;
+      align-items: flex-end;
+      animation: none;
+      padding: .4em;
+    }
+    .chat-box.smm .chat-line .chat-line-bg {
+      background: transparent;
+      order: 2;
+      box-shadow: none;
+      padding-left: 18px;
+      padding-bottom: 38px;
+      margin-right: 2px;
+    }
+    .chat-box.smm .chat-line .chat-line-inner {
+      border-radius: 12px;
+      border-width: 6px;
+      background-color: transparent;
+    }
+    .chat-box.smm .chat-line .chat-line-inner-tail {
+      bottom: 0px;
+      left: 4px;
+      border-style: none;
+      border-top: 10px solid transparent !important;
+      border-right: 18px solid;
+    }
+    .chat-box.smm .chat-line .chat-line-inner-tail-shadow {
+      bottom: 8px;
+      left: -40px;
+      border-color: transparent;
+    }
+    .chat-box.smm .chat-line .chat-user {
+      order: 1;
+    }
+    .chat-box.smm .chat-line .chat-user::before {
+      content: "";
+      display: block;
+      height: 77px;
+      width: 77px;
+      background-color: white;
+      border-radius: 100px;
+      border: 8px solid;
+      position: absolute;
+      z-index: -1;
+    }
+    .chat-box.smm .chat-line .chat-user .chat-user-avatar {
+      animation: none;
+      height: 77px;
+      width: 77px;
+      margin-left: 0;
+      border-radius: 100px;
+      border: 8px solid;
+      border-color: rgb(229, 71, 76);
+      background-size: 60px !important;
+      background-position: center !important;
+    } 
+    .chat-box.smm .chat-line .chat-user .badges {
+      top: auto;
+      right: auto;
+      left: 90px;
+      bottom: 20px;
+      width: 52px;
+    }
+    .chat-box.smm .message {
+      font-family: 'ONE-Mobile-Regular';
+      font-weight: 500;
+      border-radius: 6px;
+      padding: 2px 12px;
+      font-size: 29px;
+      text-shadow: none;
+      background: rgba(255,255,255,.8) !important;
+    }
+    .chat-box.smm .message.onecharacter img {
+      padding-top: 4px;
+      width: 3em;
+    }
+    .chat-box.smm .user-name {
+      position: absolute;
+      color: transparent;
+      bottom: -8px;
+      left: -112px;
+      text-shadow: none;
+      border-radius: 40px;
+      border-width: 4px;
+      background: white !important;
+      height: 34px;
+      width: 34px;
+      padding: 2px;
+      overflow: hidden;
+      font-size: 0px;
+      letter-spacing: 6px;
+      text-align: left;
+    }
+    .chat-box.smm .user-name::first-letter {
+      font-size: 32px;
+      padding: 4px;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    /* SMM S size */
+    .chat-box.smm.sizes {
+
+    }
+    .chat-box.smm.sizes .chat-line .chat-line-inner {
+      border-width: 4px;
+    }
+    .chat-box.smm.sizes .chat-line .chat-line-bg {
+      padding-bottom: 4px;
+    }
+    .chat-box.smm.sizes .chat-line .chat-user::before {
+      height: 36px;
+      width: 36px;
+      border-width: 4px;
+    }
+    .chat-box.smm.sizes .chat-line .chat-user .chat-user-avatar {
+      height: 36px;
+      width: 36px;
+      border-width: 4px;
+      background-size: 30px !important;
+    }
+    .chat-box.smm.sizes .user-name {
+      height: 16px;
+      width: 16px;
+      left: -62px;
+      bottom: 2px;
+      padding: 2px;
+      border-width: 2px;
+      line-height: 1.2;
+    }
+    .chat-box.smm.sizes .user-name::first-letter {
+      font-size: 14px;
+      padding: 1px;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+    .chat-box.smm.sizes .chat-line .chat-user .badges {
+      left: 52px;
+    }
+    .chat-box.smm.sizes .message {
+      font-size: 1.1em;
+    }
+
     @keyframes shake {
       0% { transform: translate(1px, 1px) rotate(0deg); }
       10% { transform: translate(-1px, -2px) rotate(-1deg); }
@@ -291,7 +456,9 @@
                   <select name="theme" id="theme" onchange="selectThemeOption()">
                     <option value="light">밝은느낌(기본)</option>
                     <option value="dark">어두운느낌</option>
-                    <option value="mlt">MLT테마</option>
+                    <option value="mlt">MLT</option>
+                    <option value="smm">SMM</option>
+                    <option value="smm-s">SMM작게</option>
                   </select>
                 </div>
               </div>

@@ -83,19 +83,34 @@
       const theme = document.getElementById('theme').value;
 
       let chatBox = document.getElementById('chat-box');
+      url.searchParams.delete('size');
+
+      chatBox.className = 'chat-box visible';
 
       if (theme == 'dark') {
         url.searchParams.set('theme', 'dark');
-        chatBox.classList.remove('mlt');
+
         chatBox.classList.add('dark');
+
       } else if (theme == 'mlt') {
         url.searchParams.set('theme', 'mlt');
-        chatBox.classList.remove('dark');
+
         chatBox.classList.add('mlt');
+
+      } else if (theme == 'smm') {
+        url.searchParams.set('theme', 'smm');
+
+        chatBox.classList.add('smm');
+
+      } else if (theme == 'smm-s') {
+        url.searchParams.set('theme', 'smm');
+        url.searchParams.set('size', 's');
+
+        chatBox.classList.add('smm');
+        chatBox.classList.add('sizes');
       } else {
         url.searchParams.delete('theme', '');
-        chatBox.classList.remove('dark');
-        chatBox.classList.remove('mlt');
+
       }
       document.getElementById("urltext").value = url;
     }
