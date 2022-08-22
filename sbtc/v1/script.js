@@ -297,7 +297,7 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
       //   existPos++;
       // }
       if (existPos !== 0) {
-        left_pos = Math.floor(Math.random() * 8800 + 1) / 100;
+        left_pos = Math.floor(Math.random() * 8000 + 1) / 100;
       } else if (existPos === 0) {
         perfectPos = true;
       }
