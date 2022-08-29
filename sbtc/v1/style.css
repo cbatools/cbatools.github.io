@@ -400,6 +400,7 @@ body {
 .chat-box.instalive {
   position: initial;
   max-width: 720px;
+  min-height: 80px;
 }
 .chat-box.instalive.visible {
   animation: none;
