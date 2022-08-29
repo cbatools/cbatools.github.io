@@ -515,7 +515,10 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
       }
     } else if (params.theme == 'instalive') { // instalive 테마
       chatBox.classList.add('instalive');
-      
+      chatEle.style.flexDirection = 'column';
+
+      nameEle.style.color = '#fff';
+      chatLineInner.style.color = '#fff';
     }
     // 피버 모드
     if (params.fever == '1') {

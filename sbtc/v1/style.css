@@ -398,7 +398,69 @@ body {
 
 /* Instalive Theme */
 .chat-box.instalive {
-  
+  position: initial;
+  max-width: 720px;
+}
+.chat-box.instalive.visible {
+  animation: none;
+}
+.chat-box.instalive .chat-line {
+  display: flex;
+  flex-direction: row;
+  animation: none;
+  padding-top: .4em;
+}
+.chat-box.instalive .chat-line .chat-line-bg {
+  order: 1;
+  box-shadow: none;
+  background: transparent !important;
+  border-radius: 0;
+}
+.chat-box.instalive .chat-line .chat-line-inner {
+  padding-left: .8em;
+  border: none;
+  background: transparent !important;
+}
+.chat-box.instalive .chat-line .message {
+  font-family: 'ONE-Mobile-Regular';
+  background: transparent !important;
+  text-shadow: none;
+  padding: 0;
+  border-radius: 0;
+}
+.chat-box.instalive .chat-line .user-name {
+  font-family: 'ONE-Mobile-Regular';
+  background: transparent !important;
+  border: none;
+  text-shadow: none;
+  padding: 0;
+}
+.chat-box.instalive .chat-line .chat-line-inner-tail-shadow {
+  display: none;
+}
+.chat-box.instalive .chat-line .chat-user {
+  order: 0;
+}
+.chat-box.instalive .chat-line .chat-user::before {
+  content: "";
+  display: block;
+  height: 54px;
+  width: 54px;
+  background-color: white;
+  border-radius: 100px;
+  border: 2px;
+  position: absolute;
+  z-index: -1;
+}
+.chat-box.instalive .chat-line .chat-user .chat-user-avatar {
+  animation: none;
+  border-radius: 100px;
+  border: 4px solid;
+  color: transparent !important;
+  background-size: 38px !important;
+  background-position: center !important;
+  filter: none;
+  margin-left: 0px;
 }
 
 @keyframes shake {
