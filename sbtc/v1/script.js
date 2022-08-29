@@ -513,6 +513,9 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
         maxChatNum = 20;
         chatEle.style.width = '400%';
       }
+    } else if (params.theme == 'instalive') { // instalive 테마
+      chatBox.classList.add('instalive');
+      
     }
     // 피버 모드
     if (params.fever == '1') {

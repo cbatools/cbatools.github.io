@@ -396,6 +396,11 @@ body {
   font-size: 1.1em;
 }
 
+/* Instalive Theme */
+.chat-box.instalive {
+  
+}
+
 @keyframes shake {
   0% { transform: translate(1px, 1px) rotate(0deg); }
   10% { transform: translate(-1px, -2px) rotate(-1deg); }
