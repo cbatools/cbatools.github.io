@@ -539,8 +539,12 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
       options.forEach(option => {
         if (option == 'hideBottomBackgroundColor') {
           chatEle.style.background = 'none';
-        } else if (option == '') {
-
+        } else if (option == 'hideStreamerInfo') {
+          document.getElementsByClassName('infotag')[0].style.display = 'none';
+        } else if (option == 'hideHeartEmojiFlow') {
+          document.getElementsByClassName('hearts')[0].style.display = 'none';
+        } else if (option == 'hideLiveBanner') {
+          document.getElementsByClassName('livebanner')[0].style.display = 'none';
         }
       });
     }
@@ -877,14 +881,15 @@ function mulberry32(a) {
 
 function heartEmojiFlow() {
   let heart = document.createElement('div');
+  let hearts = document.getElementsByClassName('hearts')[0];
   heart.classList.add('heart');
   heart.innerText = '❤';
   heart.style.right = 40 + (Math.floor(mulberry32(Date.now()) * 8 + 1)) + 'px';
 
-  layoutEle.appendChild(heart);
+  hearts.appendChild(heart);
   setTimeout(() => {
     setTimeout(() => {
-      layoutEle.removeChild(heart);
+      hearts.removeChild(heart);
     }, 5400);
     heart.classList.add('active');
   }, 100);
