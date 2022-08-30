@@ -55,7 +55,7 @@ body {
   color: white;
   width: auto;
   height: auto;
-  font-size: 2.8em;
+  font-size: 3em;
   z-index: 1;
   opacity: .9;
   transition: bottom 50ms, opacity 5ms;
@@ -76,21 +76,21 @@ body {
 #layout.instalive .infotag .streamer-id {
   font-family: 'Pretendard-Regular';
   color: #fff;
-  font-size: 1.1em;
+  font-size: 1.4em;
   font-weight: bold;
   padding-left: .8em;
 }
 #layout.instalive .infotag .streamer-pic {
   background-size: cover;
-  width: 52px;
-  height: 52px;
+  width: 68px;
+  height: 68px;
   border-radius: 80px;
 }
 #layout.instalive .livebanner {
   display: flex;
   background-color: #e81a5c;
-  width: 96px;
-  height: 40px;
+  width: 112px;
+  height: 48px;
   position: absolute;
   right: 2em;
   top: 1.4em;
@@ -100,7 +100,7 @@ body {
 }
 #layout.instalive .livebanner span {
   font-family: 'Pretendard-Regular';
-  font-size: 1em;
+  font-size: 1.2em;
   color: #fff;
   text-align: center;
   width: 100%;
@@ -475,7 +475,7 @@ body {
 .chat-box.instalive {
   position: initial;
   max-width: 720px;
-  min-height: 80px;
+  min-height: 96px;
 }
 .chat-box.instalive.visible {
   animation: none;
@@ -484,7 +484,10 @@ body {
   display: flex;
   flex-direction: row;
   animation: none;
-  padding-top: .4em;
+  padding-top: 0;
+  padding-bottom: 1em;
+  font-size: 1.4em;
+  align-items: center;
 }
 .chat-box.instalive .chat-line .chat-line-bg {
   order: 1;
@@ -493,7 +496,8 @@ body {
   border-radius: 0;
 }
 .chat-box.instalive .chat-line .chat-line-inner {
-  padding-left: .8em;
+  margin-bottom: 0;
+  padding-left: 1em;
   border: none;
   background: transparent !important;
 }
@@ -520,8 +524,8 @@ body {
 .chat-box.instalive .chat-line .chat-user::before {
   content: "";
   display: block;
-  height: 54px;
-  width: 54px;
+  height: 66px;
+  width: 66px;
   background-color: white;
   border-radius: 100px;
   border: 2px;
@@ -531,9 +535,9 @@ body {
 .chat-box.instalive .chat-line .chat-user .chat-user-avatar {
   animation: none;
   border-radius: 100px;
-  border: 4px solid;
+  border: 10px solid;
   color: transparent !important;
-  background-size: 46px !important;
+  background-size: 60px !important;
   background-position: center !important;
   filter: none;
   margin-left: 0px;
