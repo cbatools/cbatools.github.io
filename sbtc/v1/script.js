@@ -524,7 +524,7 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
       chatEle.style.flexDirection = 'column';
       chatEle.style.justifyContent = 'flex-end';
       chatEle.style.height = '48%';
-      chatEle.style.webkitMaskImage = '-webkit-gradient(linear, 0% 60%, 0% 0%, from(rgb(0, 0, 0)), to(rgba(0, 0, 0, 0)))';
+      chatEle.style.webkitMaskImage = '-webkit-gradient(linear, 0% 50%, 0% 0%, from(rgb(0, 0, 0)), to(rgba(0, 0, 0, 0)))';
       chatEle.style.background = 'rgba(0, 0, 0, .6)';
 
       nameEle.style.color = '#fff';
