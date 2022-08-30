@@ -532,6 +532,7 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
       chatLineInner.style.color = '#fff';
       
       heartEmojiFlow();
+      layoutEle.classList.add('instalive');
 
       let options = urlSearchParams.getAll('option');
       
