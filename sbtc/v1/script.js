@@ -9,6 +9,7 @@ let predictionChats = {};
 let chatOrder = 'last'
 let messageTimeout = 30000;
 
+const layoutEle = document.getElementById('layout');
 const chatEle = document.getElementById('chat');
 const twitchBadgeCache = {
   data: { global: {} } };
@@ -526,6 +527,8 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
       nameEle.style.fontSize = '1em';
       chatLineInner.style.color = '#fff';
       
+      heartEmojiFlow();
+
       let options = urlSearchParams.getAll('option');
       
       options.forEach(option => {
@@ -865,4 +868,19 @@ function mulberry32(a) {
   t = Math.imul(t ^ t >>> 15, t | 1);
   t ^= t + Math.imul(t ^ t >>> 7, t | 61);
   return ((t ^ t >>> 14) >>> 0) / 4294967296;
+}
+
+function heartEmojiFlow() {
+  let heart = document.createElement('div');
+  heart.classList.add('heart');
+  heart.innerText = '❤';
+  heart.style.right = 40 + (Math.floor(mulberry32(Date.now()) * 8 + 1)) + 'px';
+
+  layoutEle.appendChild(heart);
+  setTimeout(() => {
+    setTimeout(() => {
+      layoutEle.removeChild(heart);
+    }, 5400);
+    heart.classList.add('active');
+  }, 100);
 }

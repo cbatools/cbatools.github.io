@@ -39,6 +39,35 @@ body {
   flex-direction: row;
 }
 
+#layout {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#layout .heart {
+  position: absolute;
+  bottom: -100px;
+  right: 40px;
+  color: white;
+  width: auto;
+  height: auto;
+  font-size: 2.8em;
+  z-index: 1;
+  opacity: .9;
+  transition: bottom 50ms, opacity 5ms;
+}
+#layout .heart.active {
+  opacity: 0;
+  bottom: 500px;
+  right: 40px;
+  transition: bottom 10000ms, opacity 3000ms ease-in-out 3000ms;
+  animation: 400ms ease-in-out 0s infinite alternate left-to-right;
+}
+
 .chat-box {
   position: absolute;
   padding-left: 1em;
@@ -499,5 +528,21 @@ body {
   }
   to {
     -webkit-filter: hue-rotate(360deg);
+  }
+}
+@keyframes left-to-right {
+  0% {
+    padding-right: 10px;
+  }
+  100% {
+    padding-right: 0px;
+  }
+}
+@keyframes fadeout {
+  0% {
+    opacity: .9;
+  }
+  100% {
+    opacity: 0;
   }
 }
