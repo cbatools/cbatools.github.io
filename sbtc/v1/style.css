@@ -27,6 +27,7 @@ body {
   display: flex;
   position: absolute;
   bottom: 0px;
+  left: 0;
   width: 120%;
   flex-direction: row;
 }
