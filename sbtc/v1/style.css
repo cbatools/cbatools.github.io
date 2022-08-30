@@ -67,6 +67,25 @@ body {
   transition: bottom 10000ms, opacity 3000ms ease-in-out 3000ms;
   animation: 400ms ease-in-out 0s infinite alternate left-to-right;
 }
+#layout .infotag {
+  padding-left: 2em;
+  padding-top: 1em;
+  display: flex;
+  align-items: center;
+}
+#layout .infotag .streamer-id {
+  font-family: 'Pretendard-Regular';
+  color: #fff;
+  font-size: 1.1em;
+  font-weight: bold;
+  padding-left: .8em;
+}
+#layout .infotag .streamer-pic {
+  background-size: cover;
+  width: 52px;
+  height: 52px;
+  border-radius: 80px;
+}
 
 .chat-box {
   position: absolute;

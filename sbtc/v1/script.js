@@ -9,6 +9,8 @@ let predictionChats = {};
 let chatOrder = 'last'
 let messageTimeout = 30000;
 
+let streamer = [];
+
 const layoutEle = document.getElementById('layout');
 const chatEle = document.getElementById('chat');
 const twitchBadgeCache = {
@@ -147,17 +149,19 @@ function addListeners() {
     // getBTTVEmotes(chan);
     twitchNameToUser(chan).
     then(user => {
-      document.title = document.title + " " + user.display_name;
-      gtag('config', 'GA_MEASUREMENT_ID', {
-        'user_id': chan
-      });
-      gtag('event', 'login', { 'method' : 'sbtc', 'channel_id' : chan, 'display_name' : user.display_name });
+      streamer = user;
       return getBadges(user.id);
     }).
     then(badges => {
       twitchBadgeCache.data[chan] = badges;
     }).
     then(c => {
+      infoTag();
+      document.title = document.title + " " + streamer.display_name;
+      gtag('config', 'GA_MEASUREMENT_ID', {
+        'user_id': chan
+      });
+      gtag('event', 'login', { 'method' : 'sbtc', 'channel_id' : chan, 'display_name' : streamer.display_name });
       showAdminMessage({
         message: `Joined ${chan}`,
         timeout: 1000 });
@@ -883,4 +887,23 @@ function heartEmojiFlow() {
     }, 5400);
     heart.classList.add('active');
   }, 100);
+}
+
+function infoTag() {
+  let infotag = document.createElement('div');
+  let streamerPic = document.createElement('span');
+  let streamerId = document.createElement('span');
+
+  infotag.classList.add('infotag');
+
+  streamerPic.classList.add('streamer-pic');
+  streamerId.classList.add('streamer-id');
+
+  streamerPic.style.backgroundImage = 'url('+ streamer.profile_image_url +')';
+  streamerId.innerText = streamer.login;
+
+  infotag.appendChild(streamerPic);
+  infotag.appendChild(streamerId);
+
+  layoutEle.appendChild(infotag);
 }
