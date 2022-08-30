@@ -523,6 +523,7 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
       chatEle.style.background = 'rgba(0, 0, 0, .6)';
 
       nameEle.style.color = '#fff';
+      nameEle.style.fontSize = '1em';
       chatLineInner.style.color = '#fff';
     }
     // 피버 모드
