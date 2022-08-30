@@ -525,6 +525,16 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
       nameEle.style.color = '#fff';
       nameEle.style.fontSize = '1em';
       chatLineInner.style.color = '#fff';
+      
+      let options = urlSearchParams.getAll('option');
+      
+      options.forEach(option => {
+        if (option == 'hideBottomBackgroundColor') {
+          chatEle.style.background = 'none';
+        } else if (option == '') {
+
+        }
+      });
     }
     // 피버 모드
     if (params.fever == '1') {
