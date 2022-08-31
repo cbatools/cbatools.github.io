@@ -12,6 +12,9 @@
       font-weight: normal;
       font-style: normal;
     }
+    .instalive-option {
+      display: none;
+    }
     .chat-box {
       font-family: 'CookieRun-Regular', sans-serif;
       bottom: 10px;
@@ -464,7 +467,42 @@
                     <option value="mlt">MLT</option>
                     <option value="smm">SMM</option>
                     <option value="smm-s">SMM작게</option>
+                    <option value="instalive">인스타라이브</option>
                   </select>
+                </div>
+                <div class="field-body instalive-option">
+                  <div class="field">
+                    <div class="control">
+                      <label class="checkbox">
+                        <input style="width: auto;" type="checkbox" name="hideBottomBackgroundColor" id="hideBottomBackgroundColor" onchange="checkHideBottomBackgroundColorOption()" value="0">
+                        하단 배경색 숨기기
+                      </label>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <div class="control">
+                      <label class="checkbox">
+                        <input style="width: auto;" type="checkbox" name="hideStreamerInfo" id="hideStreamerInfo" onchange="checkHideStreamerInfoOption()" value="0">
+                        상단 왼쪽 스트리머 정보 숨기기
+                      </label>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <div class="control">
+                      <label class="checkbox">
+                        <input style="width: auto;" type="checkbox" name="hideLiveBanner" id="hideLiveBanner" onchange="checkHideLiveBannerOption()" value="0">
+                        상단 오른쪽 배너 숨기기
+                      </label>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <div class="control">
+                      <label class="checkbox">
+                        <input style="width: auto;" type="checkbox" name="hideHeartEmojiFlow" id="hideHeartEmojiFlow" onchange="checkHideHeartEmojiFlowOption()" value="0">
+                        하단 하트플로우 숨기기
+                      </label>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
