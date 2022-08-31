@@ -207,6 +207,11 @@
       }
       if (theme != 'instalive') {
         document.getElementsByClassName('instalive-option')[0].style.display = 'none';
+        document.getElementById('hideBottomBackgroundColor').checked = false;
+        document.getElementById('hideStreamerInfo').checked = false;
+        document.getElementById('hideLiveBanner').checked = false;
+        document.getElementById('hideHeartEmojiFlow').checked = false;
+
         url.searchParams.delete('option');
       }
       document.getElementById("urltext").value = url;
