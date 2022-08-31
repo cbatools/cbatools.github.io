@@ -562,6 +562,8 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
       chatUserAvatar.style.color = random_color;
     } else if (params.avatar == '0') {
       chatUserAvatar.classList.add('hide');
+    } else if (params.avatar == 'whiteperson') {
+      chatUserAvatar.setAttribute('style', 'background: url(img/person.svg); filter: invert(1);');
     } else {
       chatUserAvatar.setAttribute('style', 'background: url(https://avatars.dicebear.com/api/'+ params.avatar +'/'+ data['user-id'] +'.svg);');
       chatUserAvatar.style.color = random_color;
