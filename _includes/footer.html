@@ -21,6 +21,11 @@
       url.searchParams.set('id', twitchID);
       document.getElementById("urltext").value = url;
     }
+    function botHide() {
+      const botID = document.getElementById('botID').value;
+      url.searchParams.set('hideuser', botID);
+      document.getElementById("urltext").value = url;
+    }
     
     function checkUserinfoOption() {
       const userinfo = document.getElementById('userinfo').checked;
