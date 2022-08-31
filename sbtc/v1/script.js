@@ -157,11 +157,11 @@ function addListeners() {
     }).
     then(c => {
       infoTag();
-      document.title = document.title + " " + streamer.display_name;
+      document.title = document.title + ' ' + streamer.display_name + ' ' + params.version;
       gtag('config', 'GA_MEASUREMENT_ID', {
         'user_id': chan
       });
-      gtag('event', 'login', { 'method' : 'sbtc', 'channel_id' : chan, 'display_name' : streamer.display_name });
+      gtag('event', 'login', { 'method' : 'sbtc', 'channel_id' : chan, 'display_name' : streamer.display_name, 'version' : params.version });
       showAdminMessage({
         message: `Joined ${chan}`,
         timeout: 1000 });
