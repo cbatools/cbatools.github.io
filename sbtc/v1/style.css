@@ -478,7 +478,7 @@ body {
   justify-content: flex-end;
   height: 55%;
   -webkit-mask-image: -webkit-gradient(linear, 0% 50%, 0% 0%, from(rgb(0, 0, 0)), to(rgba(0, 0, 0, 0)));
-  background: rgba(0, 0, 0, .6);
+  background: rgba(0, 0, 0, .4);
 }
 .chat-box.instalive {
   display: table;
