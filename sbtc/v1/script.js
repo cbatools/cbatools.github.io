@@ -533,16 +533,16 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
       heartEmojiFlow();
       layoutEle.classList.add('instalive');
 
-      let options = urlSearchParams.getAll('option');
-      
-      options.forEach(option => {
-        if (option == 'hideBottomBackgroundColor') {
+      let options = params.option.split('');
+
+      options.forEach((option, key) => {
+        if (key == 3 && option == 1) { // hideBottomBackgroundColor - 0001
           chatEle.style.background = 'none';
-        } else if (option == 'hideStreamerInfo') {
+        } else if (key == 2 && option == 1) { // hideStreamerInfo - 0010
           document.getElementsByClassName('infotag')[0].style.display = 'none';
-        } else if (option == 'hideHeartEmojiFlow') {
+        } else if (key == 1 && option == 1) { // hideHeartEmojiFlow - 0100
           document.getElementsByClassName('hearts')[0].style.display = 'none';
-        } else if (option == 'hideLiveBanner') {
+        } else if (key == 0 && option == 1) { // hideLiveBanner - 1000
           document.getElementsByClassName('livebanner')[0].style.display = 'none';
         }
       });
