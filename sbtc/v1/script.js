@@ -520,12 +520,7 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
       }
     } else if (params.theme == 'instalive') { // instalive 테마
       chatBox.classList.add('instalive');
-
-      chatEle.style.flexDirection = 'column';
-      chatEle.style.justifyContent = 'flex-end';
-      chatEle.style.height = '56%';
-      chatEle.style.webkitMaskImage = '-webkit-gradient(linear, 0% 50%, 0% 0%, from(rgb(0, 0, 0)), to(rgba(0, 0, 0, 0)))';
-      chatEle.style.background = 'rgba(0, 0, 0, .6)';
+      chatEle.classList.add('instalive');
 
       nameEle.style.color = '#fff';
       chatLineInner.style.color = '#fff';
