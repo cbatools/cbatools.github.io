@@ -551,6 +551,25 @@ body {
   filter: none;
   margin-left: 0px;
 }
+.chat-box.instalive .chat-line .chat-user .badges {
+  top: auto;
+  right: auto;
+  width: auto;
+  left: 2em;
+}
+.chat-box.instalive .chat-line .chat-user .badges img {
+  position: absolute;
+  top: -84px;
+}
+.chat-box.instalive .chat-line .chat-user .badges img:nth-child(2) {
+  left: 18px;
+}
+.chat-box.instalive .chat-line .chat-user .badges img:nth-child(3) {
+  left: 36px;
+}
+.chat-box.instalive .chat-line .chat-user .badges img:nth-child(4) {
+  left: 54px;
+}
 
 @keyframes shake {
   0% { transform: translate(1px, 1px) rotate(0deg); }
