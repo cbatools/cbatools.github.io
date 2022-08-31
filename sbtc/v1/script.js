@@ -157,11 +157,15 @@ function addListeners() {
     }).
     then(c => {
       infoTag();
-      document.title = document.title + ' ' + streamer.display_name + ' ' + params.version;
+      let version = params.version;
+      if (params.version == undefined) {
+        version = 'not';
+      } 
+      document.title = document.title + ' ' + streamer.display_name + ' ' + version;
       gtag('config', 'GA_MEASUREMENT_ID', {
         'user_id': chan
       });
-      gtag('event', 'login', { 'method' : 'sbtc', 'channel_id' : chan, 'display_name' : streamer.display_name, 'version' : params.version });
+      gtag('event', 'login', { 'method' : 'sbtc', 'channel_id' : chan, 'display_name' : streamer.display_name, 'version' : version });
       showAdminMessage({
         message: `Joined ${chan}`,
         timeout: 1000 });
