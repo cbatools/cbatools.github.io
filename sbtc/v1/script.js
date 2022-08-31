@@ -594,6 +594,13 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
     } else if (params.streamermessage == '1') {
 
     }
+    // 원하는 유저 메세지 안보이게
+    if (params.hideuser != undefined) {
+      if (data.username == params.hideuser) {
+        return false;
+      }
+    }
+
     chatLineInner.appendChild(messageEle);
 
     // 말풍선 정보 배열 저장
