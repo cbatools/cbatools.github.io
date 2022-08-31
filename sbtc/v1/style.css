@@ -79,6 +79,7 @@ body {
   font-size: 1.4em;
   font-weight: bold;
   padding-left: .8em;
+  filter: drop-shadow(0px 1px 1px #333);
 }
 #layout.instalive .infotag .streamer-pic {
   background-size: cover;
@@ -478,7 +479,7 @@ body {
   justify-content: flex-end;
   height: 55%;
   -webkit-mask-image: -webkit-gradient(linear, 0% 50%, 0% 0%, from(rgb(0, 0, 0)), to(rgba(0, 0, 0, 0)));
-  background: rgba(0, 0, 0, .4);
+  background: rgba(0, 0, 0, .3);
 }
 .chat-box.instalive {
   display: table;
@@ -516,6 +517,7 @@ body {
   text-shadow: none;
   padding: 0;
   border-radius: 0;
+  filter: drop-shadow(0px 1px 1px #333);
 }
 .chat-box.instalive .chat-line .user-name {
   font-family: 'Pretendard-Regular';
@@ -523,6 +525,7 @@ body {
   border: none;
   text-shadow: none;
   padding: 0;
+  filter: drop-shadow(0px 1px 1px #333);
 }
 .chat-box.instalive .chat-line .chat-line-inner-tail-shadow {
   display: none;
