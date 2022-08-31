@@ -15,6 +15,14 @@
     .instalive-option {
       display: none;
     }
+    .preview-box iframe {
+      display: none;
+    }
+    .preview-box.instalive .instalive,
+    .preview-box.smm .smm,
+    .preview-box.smm-s .smm-s {
+      display: block;
+    }
     .chat-box {
       font-family: 'CookieRun-Regular', sans-serif;
       bottom: 10px;
@@ -372,6 +380,10 @@
     .chat-box.smm.sizes .message {
       font-size: 1.1em;
     }
+    /* instalive theme */
+    .chat-box.instalive {
+      display: none;
+    }
 
     @keyframes shake {
       0% { transform: translate(1px, 1px) rotate(0deg); }
@@ -406,6 +418,10 @@
   <div class="container">
     <div class="columns">
       <div class="column media">
+        <div class="preview-box" id="preview-box">
+          <iframe class="smm" src="https://player.twitch.tv/?video=1548152449&parent=cbatools.github.io" frameborder="0" allowfullscreen="true" scrolling="no" height="271" width="480"></iframe>
+          <iframe class="smm-s" src="https://player.twitch.tv/?video=1548152478&parent=cbatools.github.io" frameborder="0" allowfullscreen="true" scrolling="no" height="271" width="480"></iframe>
+        </div>
         <div class="chat-box visible" id="chat-box">
           <div class="chat-line">
             <div class="chat-line-bg">

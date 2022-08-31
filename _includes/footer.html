@@ -176,9 +176,12 @@
       const theme = document.getElementById('theme').value;
 
       let chatBox = document.getElementById('chat-box');
+      let previewBox = document.getElementById('preview-box');
+
       url.searchParams.delete('size');
 
       chatBox.className = 'chat-box visible';
+      previewBox.className = 'preview-box';
 
       if (theme == 'dark') {
         url.searchParams.set('theme', 'dark');
@@ -194,6 +197,7 @@
         url.searchParams.set('theme', 'smm');
 
         chatBox.classList.add('smm');
+        previewBox.classList.add('smm');
 
       } else if (theme == 'instalive') {
         url.searchParams.set('theme', 'instalive');
@@ -201,6 +205,8 @@
         url.searchParams.delete('messagecolor');
 
         chatBox.classList.add('instalive');
+        previewBox.classList.add('instalive');
+
         document.getElementsByClassName('instalive-option')[0].style.display = 'block';
         document.getElementsByClassName('fever-field')[0].style.display = 'none';
         document.getElementsByClassName('messageblack-option')[0].style.display = 'none';
@@ -210,6 +216,7 @@
 
         chatBox.classList.add('smm');
         chatBox.classList.add('sizes');
+        previewBox.classList.add('smm-s');
       } else {
         url.searchParams.delete('theme', '');
       }
