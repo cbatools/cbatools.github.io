@@ -533,7 +533,10 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
       heartEmojiFlow();
       layoutEle.classList.add('instalive');
 
-      let options = params.option.split('');
+      let options = [];
+      if (params.option != undefined) {
+        options = params.option.split('');
+      }
 
       options.forEach((option, key) => {
         if (key == 3 && option == 1) { // hideBottomBackgroundColor - 0001
