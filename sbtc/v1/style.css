@@ -529,17 +529,8 @@ body {
 }
 .chat-box.instalive .chat-line .chat-user {
   order: 0;
-}
-.chat-box.instalive .chat-line .chat-user::before {
-  content: "";
-  display: block;
-  height: 66px;
-  width: 66px;
   background-color: white;
   border-radius: 100px;
-  border: 2px;
-  position: absolute;
-  z-index: -1;
 }
 .chat-box.instalive .chat-line .chat-user .chat-user-avatar {
   animation: none;

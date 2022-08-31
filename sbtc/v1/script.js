@@ -524,7 +524,8 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
 
       nameEle.style.color = '#fff';
       chatLineInner.style.color = '#fff';
-      
+      chatUser.style.backgroundColor = random_color_light;
+
       heartEmojiFlow();
       layoutEle.classList.add('instalive');
 
