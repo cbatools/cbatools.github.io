@@ -201,6 +201,7 @@
 
         chatBox.classList.add('instalive');
         document.getElementsByClassName('instalive-option')[0].style.display = 'block';
+        document.getElementsByClassName('fever-field')[0].style.display = 'none';
       } else if (theme == 'smm-s') {
         url.searchParams.set('theme', 'smm');
         url.searchParams.set('size', 's');
@@ -212,6 +213,8 @@
       }
       if (theme != 'instalive') {
         document.getElementsByClassName('instalive-option')[0].style.display = 'none';
+        document.getElementsByClassName('fever-field')[0].style.display = 'flex';
+
         document.getElementById('hideBottomBackgroundColor').checked = false;
         document.getElementById('hideStreamerInfo').checked = false;
         document.getElementById('hideLiveBanner').checked = false;
