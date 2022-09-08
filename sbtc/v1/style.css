@@ -217,10 +217,13 @@ body {
   font-size: 1em;
   font-weight: bold;
   color: #fff;
-  padding: .2em 1em;
+  padding: .2em .7em;
   border: 2px solid;
   border-radius: 16px 16px 0 0;
   text-shadow: 2px 2px 1px rgb(0 0 0), 2px 1px 4px rgb(0 0 0), 2px 3px 3px rgb(0 0 0);
+}
+.user-name-text {
+
 }
 .message {
   max-height: 232px;
@@ -289,7 +292,7 @@ body {
 .chat-box.mlt .user-name,
 .chat-box.mlt .chat-line .chat-line-inner-tail,
 .chat-box.mlt .chat-line .chat-line-inner-tail-shadow {
-  display: none;
+  display: none !important;
 }
 .chat-box.mlt .chat-user {
   position: absolute;

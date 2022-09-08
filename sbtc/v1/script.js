@@ -452,23 +452,21 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
       }, []);
     }
     
+    let nameDiv = document.createElement('div');
+    let nameBox = document.createElement('div');
     let nameEle = document.createElement('span');
-    nameEle.classList.add('user-name');
+
+    nameDiv.classList.add('user-name');
+    nameEle.classList.add('user-name-text');
     // nameEle.innerText = Date.now();
     nameEle.innerText = data.name;
 
-    if (data.name.length > 7) {
-      nameEle.style.fontSize = '0.8em';
-    } else if (data.name.length >= 10) {
-      nameEle.style.fontSize = '0.5em';
-    } else if (data.name.length > 12) {
-      nameEle.style.fontSize = '0.2em';
-    } else if (data.name.length > 20) {
-      nameEle.style.fontSize = '0.1em';
-    }
-    nameEle.style.color = random_color_light;
-    nameEle.style.background = random_color;
-    nameEle.style.borderColor = random_color;
+    nameBox.appendChild(nameEle);
+    nameDiv.appendChild(nameBox);
+
+    nameDiv.style.color = random_color_light;
+    nameDiv.style.background = random_color;
+    nameDiv.style.borderColor = random_color;
 
     messageEle.classList.add('message');
     messageEle.style.background = random_color_light+"33";
@@ -482,7 +480,7 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
 
     // 유저 정보 표시 여부
     if (params.userinfo == 1 || params.userinfo == undefined) {
-      chatLineInner.appendChild(nameEle);
+      chatLineInner.appendChild(nameDiv);
     }
     // 글자 색 선택
     if (params.messagecolor == 'random' || params.messagecolor == undefined){
@@ -498,9 +496,9 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
       chatLineInner.style.background = '#000';
       chatLineInner.style.color = random_color_light;
 
-      nameEle.style.color = random_color_dark;
-      nameEle.style.background = random_color_light;
-      nameEle.style.borderColor = random_color_light;
+      nameDiv.style.color = random_color_dark;
+      nameDiv.style.background = random_color_light;
+      nameDiv.style.borderColor = random_color_light;
 
       chatLine_tail.style.borderColor = random_color_light + " transparent";
     } else if (params.theme == 'mlt') { // MLT 테마
@@ -515,7 +513,7 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
       chatOrder = 'first';
       chatEle.style.paddingLeft = '50px';
       chatEle.style.width = '200%';
-      nameEle.style.color = random_color_dark;
+      nameDiv.style.color = random_color_dark;
       chatLine_tail.style.borderColor = random_color;
       if (params.size == 's') { // 작은 크기
         chatBox.classList.add('sizes');
@@ -633,7 +631,14 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
   } else if (chatOrder == 'first') {
     chatEle.insertBefore(chatBox, chatEle.firstChild);
   }
-
+  
+  if (params.theme == '' || params.theme == 'dark' || params.theme == undefined) {
+    fitty('.user-name-text', {
+      multiLine: false,
+      minSize: 8,
+      maxSize: 16,
+    });
+  }
   setTimeout(() => chatBox.classList.add('visible'), 100);
 
   if (normalChats.length > maxChatNum) {
