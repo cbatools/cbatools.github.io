@@ -139,7 +139,7 @@ body {
   animation-iteration-count: infinite;
 }
 .chat-line.lol-animation {
-  animation: shake .4s;
+  animation: shake .6s;
   animation-iteration-count: infinite;
 }
 .chat-line.visible {
