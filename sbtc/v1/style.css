@@ -234,7 +234,7 @@ body {
 .user-name-text {
   line-height: 1;
   vertical-align: text-top;
-  filter: drop-shadow(1px 1px 1px rgb(0, 0, 0));
+  filter: drop-shadow(1px 1px 2px rgb(0, 0, 0)) brightness(1.3);
 }
 .message {
   max-height: 232px;
@@ -279,7 +279,7 @@ body {
   text-shadow: none;
 }
 .chat-box.dark .user-name .user-name-text {
-  filter: none;
+  filter: brightness(.5);
 }
 /* MLT Theme */
 .chat-box.mlt {
