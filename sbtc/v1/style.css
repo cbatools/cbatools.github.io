@@ -220,7 +220,7 @@ body {
   position: absolute;
   top: -34px;
   font-size: 1em;
-  font-weight: bold;
+  font-weight: normal;
   color: #fff;
   padding: .1em .3em;
   border: 2px solid;
@@ -435,6 +435,7 @@ body {
   padding: 2px;
   overflow: hidden;
   font-size: 0px;
+  font-weight: bold;
   letter-spacing: 6px;
   text-align: left;
   max-height: none;
@@ -550,6 +551,7 @@ body {
   filter: drop-shadow(0px 1px 1px #333);
   max-width: none;
   max-height: none;
+  font-weight: bold;
 }
 .chat-box.instalive .chat-line .user-name .user-name-text {
   line-height: normal;
