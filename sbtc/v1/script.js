@@ -577,7 +577,7 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
     // ㅋㅋㅋ 웃는 채팅 더 흔들리게
     if (params.lol == '0') {
 
-    } else if (params.lol == '1') {
+    } else if (params.lol == '1' || params.lol == undefined) {
       finalMessage.forEach(n => {
         if (typeof n === 'string') {
           let lolword = n.search('ㅋㅋㅋ');
