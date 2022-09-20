@@ -149,7 +149,7 @@ body {
 .chat-line .chat-user .chat-user-avatar {
   width: 46px;
   height: 46px;
-  margin-left: 14px;
+  margin-left: 6px;
   background-repeat: no-repeat !important;
   filter: drop-shadow(1px 1px 2px black);
   animation: shake 2s;
@@ -173,7 +173,7 @@ body {
   background: #fff;
   margin-right: 16px;
   border-radius: 28px;
-  box-shadow: 4px 4px 8px 0px #000000;
+  box-shadow: 3px 3px 5px 0px #000000;
 }
 .chat-line .chat-line-inner {
   position: relative;
@@ -197,26 +197,23 @@ body {
 .chat-line .chat-line-inner-tail {
   content: "";
   position: absolute;
-  bottom: 2px;
-  left: -18px;
-  border-style: solid;
-  border-width: 15px 15px 0;
-  border-color: black transparent;
   display: block;
-  width: 0;
-  z-index: .9;
+  width: 24px;
+  height: 24px;
+  left: -1px;
+  top: -1px;
+  clip-path: path('m3.88731,15.22221c1.33226,-4.49338 1.69403,-8.12066 -0.57007,-11.5107c-2.2641,-3.39004 -5.82578,-4.2609 -1.38059,-4.37762c4.44519,-0.11672 7.73583,-0.1407 15.20028,-0.05063c1.86612,0.02252 4.13194,-0.68636 6.22284,-0.59292c2.09091,0.09344 -1.30672,2.27941 -3.42065,4.59216c-2.11393,2.31275 -4.47629,4.6562 -6.63525,6.96535c-2.15895,2.30916 -10.74882,9.46774 -9.41657,4.97436z');
 }
 .chat-line .chat-line-inner-tail-shadow {
   content: "";
   position: absolute;
-  bottom: -20px;
-  left: 18px;
-  border-style: solid;
-  border-width: 16px 15px 0;
-  border-color: rgba(0,0,0,.4) transparent;
   display: block;
-  width: 0;
-  z-index: .9;
+  bottom: -28px;
+  left: 19px;
+  width: 24px;
+  height: 24px;
+  background-color: #00000080;
+  clip-path: path('m3.88731,15.22221c1.33226,-4.49338 1.69403,-8.12066 -0.57007,-11.5107c-2.2641,-3.39004 -5.82578,-4.2609 -1.38059,-4.37762c4.44519,-0.11672 7.73583,-0.1407 15.20028,-0.05063c1.86612,0.02252 4.13194,-0.68636 6.22284,-0.59292c2.09091,0.09344 -1.30672,2.27941 -3.42065,4.59216c-2.11393,2.31275 -4.47629,4.6562 -6.63525,6.96535c-2.15895,2.30916 -10.74882,9.46774 -9.41657,4.97436z');
 }
 .user-name {
   display: block;

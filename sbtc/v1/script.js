@@ -402,6 +402,7 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
   chatLineInner.style.color = random_color_dark;
   
   chatLine_tail.style.borderColor = random_color + " transparent";
+  chatLine_tail.style.backgroundColor = random_color;
 
   chatBox.appendChild(chatLine_);
   chatLine_.appendChild(chatLineBg);
@@ -501,6 +502,7 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
       nameDiv.style.borderColor = random_color_light;
 
       chatLine_tail.style.borderColor = random_color_light + " transparent";
+      chatLine_tail.style.backgroundColor = random_color_light;
     } else if (params.theme == 'mlt') { // MLT 테마
       chatBox.classList.add('mlt');
 
