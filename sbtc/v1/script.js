@@ -638,7 +638,7 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
     fitty('.user-name-text', {
       multiLine: false,
       minSize: 2,
-      maxSize: 14,
+      maxSize: 15,
     });
   }
   setTimeout(() => chatBox.classList.add('visible'), 100);
