@@ -635,8 +635,8 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
   if (params.theme == '' || params.theme == 'dark' || params.theme == undefined) {
     fitty('.user-name-text', {
       multiLine: false,
-      minSize: 8,
-      maxSize: 16,
+      minSize: 2,
+      maxSize: 14,
     });
   }
   setTimeout(() => chatBox.classList.add('visible'), 100);
