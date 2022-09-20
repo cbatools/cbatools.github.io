@@ -157,11 +157,14 @@ body {
 }
 .chat-line .chat-user .badges {
   top: 36px;
-  right: 13px;
+  left: -3px;
   position: absolute;
   filter: opacity(0.8);
   width: 18px;
   line-height: .5;
+}
+.chat-line .chat-user .badges img {
+  border-radius: 5px;
 }
 .chat-line .chat-line-bg {
   background: #fff;
