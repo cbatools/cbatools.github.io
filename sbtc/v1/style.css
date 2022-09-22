@@ -24,12 +24,11 @@
 }
 
 @font-face {
-  font-family: 'ONE-Mobile-POP';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-POP.woff') format('woff');
+  font-family: 'MaplestoryOTFBold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFBold.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
-
 body {
   background: transparent;
   color: transparent;
@@ -223,7 +222,7 @@ body {
   clip-path: url(#tail);
 }
 .user-name {
-  font-family: 'ONE-Mobile-POP';
+  font-family: 'MaplestoryOTFBold';
   display: block;
   position: absolute;
   top: -34px;
