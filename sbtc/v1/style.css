@@ -30,6 +30,13 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'BRBA_B';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_seven@1.2/BRBA_B.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   background: transparent;
   color: transparent;
@@ -606,6 +613,63 @@ body {
   left: 54px;
 }
 
+/* 코믹스 스타일 말풍선 */
+.chat-line.comic {
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  padding-left: 2em;
+}
+.chat-line.comic .star {
+  display: block;
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  top: 0px;
+  left: 0px;
+  z-index: -2;
+  transform: scale(.55);
+  animation: rotatestar 10s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+.chat-line.comic .user-name {
+  top: -28px;
+  left: 8px;
+}
+.chat-line.comic .message {
+  background: transparent !important;
+  font-size: 3.2em;
+  line-height: .1;
+  width: 114px;
+  text-align: center;
+  padding: .66em .2em;
+  font-family: 'Bangers', 'BRBA_B';
+  text-shadow: 2px 3px 1px rgb(255 255 255);
+  transform: rotate(-5deg);
+}
+.chat-line.comic .chat-line-bg,
+.chat-line.comic .chat-line-inner {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  margin-bottom: 0px;
+}
+.chat-line.comic .chat-line-inner-tail-shadow {
+  display: none;
+}
+.chat-line.comic .chat-user .badges {
+  left: 28px;
+}
+
+@keyframes rotatestar {
+  0% {
+   transform: scale(.55) rotate(0deg);
+  }
+  100% {
+   transform: scale(.55) rotate(360deg);
+  }
+}
 @keyframes shake {
   0% { transform: translate(1px, 1px) rotate(0deg); }
   10% { transform: translate(-1px, -2px) rotate(-1deg); }

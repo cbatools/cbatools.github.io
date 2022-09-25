@@ -7,7 +7,7 @@ const selectedColor = document.getElementById("color").getAttribute("color");
 let normalChats = [];
 let predictionChats = {};
 let chatOrder = 'last'
-let messageTimeout = 30000;
+let messageTimeout = 300000;
 
 let streamer = [];
 
@@ -225,7 +225,7 @@ function getChan(channel = '') {
 function showMessage({ chan, type, message = '', data = {}, timeout = messageTimeout, attribs = {} } = {}) {
   
   let chatBox = document.createElement('div');
-  let chatLine_ = document.createElement('div');
+  let chatLine = document.createElement('div');
   let chatLineBg = document.createElement('div');
   let chatLineInner = document.createElement('div');
   let chatLine_tail = document.createElement('div');
@@ -243,7 +243,7 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
   let maxChatNum = 15;
   
   chatBox.classList.add('chat-box');
-  chatLine_.classList.add('chat-line');
+  chatLine.classList.add('chat-line');
   chatLineBg.classList.add('chat-line-bg');
   chatLineInner.classList.add('chat-line-inner');
   chatLine_tail.classList.add('chat-line-inner-tail');
@@ -404,9 +404,9 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
   chatLine_tail.style.borderColor = random_color + " transparent";
   chatLine_tail.style.backgroundColor = random_color;
 
-  chatBox.appendChild(chatLine_);
-  chatLine_.appendChild(chatLineBg);
-  chatLine_.appendChild(chatUser);
+  chatBox.appendChild(chatLine);
+  chatLine.appendChild(chatLineBg);
+  chatLine.appendChild(chatUser);
   chatUser.appendChild(chatUserAvatar);
   chatLineBg.appendChild(chatLineInner);
   chatLineInner.appendChild(chatLine_tail_shadow);
@@ -508,7 +508,7 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
 
       let margin_bottom = Math.floor(mulberry32(Date.now()) * 74 + 1) + 'px';
 
-      chatLine_.style.marginBottom = margin_bottom;
+      chatLine.style.marginBottom = margin_bottom;
     } else if (params.theme == 'smm') { // SMM 테마
       chatBox.classList.add('smm');
       maxChatNum = 10;
@@ -562,6 +562,34 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
     } else {
       if (finalMessage.length == 1 && finalMessage[0].type) {
         messageEle.classList.add('onecharacter');
+      }
+    }
+    // 코믹스 모양 채팅
+    if (params.comic == '0') {
+
+    } else {
+      let messageText = finalMessage[0];
+      messageText = messageText.toLowerCase();
+      if (finalMessage.length == 1 && 
+        messageText == '와우!'||
+        messageText == '우와'||
+        messageText == '와우'||
+        messageText == '우와!'||
+        messageText == '오!' ||
+        messageText == '와' ||
+        messageText == '와!' ||
+        messageText == '굿' ||
+        messageText == '굿!' ||
+        messageText == '대박' ||
+        messageText == '대박!' ||
+        messageText == 'wow' || 
+        messageText == 'wow!') {
+        let starEle = document.createElement('div');
+        starEle.classList.add('star');
+        starEle.style.backgroundColor = random_color_light;
+        chatLineBg.appendChild(starEle);
+        chatLine.classList.add('comic');
+        starEle.style.clipPath = 'url(#star)';
       }
     }
     // 아바타 선택
