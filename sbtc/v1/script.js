@@ -569,27 +569,29 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
 
     } else {
       let messageText = finalMessage[0];
-      messageText = messageText.toLowerCase();
-      if (finalMessage.length == 1 && 
-        messageText == '와우!'||
-        messageText == '우와'||
-        messageText == '와우'||
-        messageText == '우와!'||
-        messageText == '오!' ||
-        messageText == '와' ||
-        messageText == '와!' ||
-        messageText == '굿' ||
-        messageText == '굿!' ||
-        messageText == '대박' ||
-        messageText == '대박!' ||
-        messageText == 'wow' || 
-        messageText == 'wow!') {
-        let starEle = document.createElement('div');
-        starEle.classList.add('star');
-        starEle.style.backgroundColor = random_color_light;
-        chatLineBg.appendChild(starEle);
-        chatLine.classList.add('comic');
-        starEle.style.clipPath = 'url(#star)';
+      if (typeof messageText == 'string') {
+        messageText = messageText.toLowerCase();
+        if (finalMessage.length == 1 && 
+          messageText == '와우!'||
+          messageText == '우와'||
+          messageText == '와우'||
+          messageText == '우와!'||
+          messageText == '오!' ||
+          messageText == '와' ||
+          messageText == '와!' ||
+          messageText == '굿' ||
+          messageText == '굿!' ||
+          messageText == '대박' ||
+          messageText == '대박!' ||
+          messageText == 'wow' || 
+          messageText == 'wow!') {
+          let starEle = document.createElement('div');
+          starEle.classList.add('star');
+          starEle.style.backgroundColor = random_color_light;
+          chatLineBg.appendChild(starEle);
+          chatLine.classList.add('comic');
+          starEle.style.clipPath = 'url(#star)';
+        }
       }
     }
     // 아바타 선택
