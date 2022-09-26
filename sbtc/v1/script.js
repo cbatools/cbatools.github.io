@@ -7,7 +7,7 @@ const selectedColor = document.getElementById("color").getAttribute("color");
 let normalChats = [];
 let predictionChats = {};
 let chatOrder = 'last'
-let messageTimeout = 300000;
+let messageTimeout = 30000;
 
 let streamer = [];
 
@@ -26,7 +26,7 @@ const krakenClientID = '4g5an0yjebpf93392k4c5zll7d7xcec';
 
 const helixBase = 'https://api.twitch.tv/helix/';
 const helixClientID = 'u2844yyspjg8a92oyw99uocbkdhb0l';
-const helixAuth = 'Bearer ke9ebipjzigmc2ehvwmv13s2zbb3he';
+const helixAuth = 'Bearer 12jaupzty33uhlxn0gusvr73rpbv9g';
 
 const chatFilters = [
 // '\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u00FF', // Partial Latin-1 Supplement
@@ -612,7 +612,7 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
         if (typeof n === 'string') {
           let lolword = n.search('ㅋㅋㅋ');
           if (lolword >= 0) {
-            chatLine_.classList.add('lol-animation');
+            chatLine.classList.add('lol-animation');
           }
         }
       });
