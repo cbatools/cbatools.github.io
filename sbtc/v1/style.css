@@ -207,11 +207,13 @@ body {
   border-radius: 24px;
   overflow-wrap: break-word;
 }
+/* fever */
 .chat-line .chat-line-inner.fever {
   background-image: -webkit-linear-gradient(92deg,#f35626,#feab3a);
   -webkit-background-clip: text;
   animation: hue 1s infinite linear;
 }
+/*  */
 .chat-line .chat-line-inner.admin .message {
   opacity: 0.4;
 }
@@ -630,19 +632,21 @@ body {
   background-repeat: no-repeat;
   padding-left: 2em;
 }
+.chat-line.comic .spbg {
+  display: block;
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  z-index: -2;
+  top: -4em;
+  left: -1.96em;
+}
 .chat-line.comic .chat-user .chat-user-avatar.hide {
   display: block;
   background: none;
   height: 1em;
 }
 .chat-line.comic .star {
-  display: block;
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  top: 0px;
-  left: 0px;
-  z-index: -2;
   animation: rotatestar 10s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
@@ -677,13 +681,6 @@ body {
 }
 
 .chat-line.comic.blob .blob {
-  display: block;
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  top: 0px;
-  left: 0px;
-  z-index: -2;
   animation: breathblob 1s;
   animation-direction: alternate;
   animation-iteration-count: infinite;

@@ -568,6 +568,23 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
       let messageText = finalMessage[0];
       if (typeof messageText == 'string' && finalMessage.length == 1) {
         messageText = messageText.toLowerCase();
+
+        function setComicSpeech() {
+          let backgroundImg = document.createElement('div');
+          backgroundImg.classList.add('spbg');
+          backgroundImg.style.backgroundColor = random_color_light;
+          chatLine.classList.add('comic');
+  
+          if (params.theme == 'dark') {
+            chatLineInner.style.background = 'transparent';
+            backgroundImg.style.backgroundColor = random_color_dark;
+            backgroundImg.style.filter = 'filter: brightness(0.4)';
+            messageEle.style.color = random_color_light;
+            messageEle.style.textShadow = '2px 3px 1px rgb(0 0 0)'
+          }
+          return backgroundImg;
+        }
+
         if (
           messageText == '엌'||
           messageText == '와우!'||
@@ -594,12 +611,9 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
           messageText == 'lol!' || 
           messageText == 'wow' || 
           messageText == 'wow!') {
-          let backgroundImg = document.createElement('div');
+          let backgroundImg = setComicSpeech();
           backgroundImg.classList.add('star');
-          backgroundImg.classList.add('spbg');
-          backgroundImg.style.backgroundColor = random_color_light;
-          chatLineBg.appendChild(backgroundImg);
-          chatLine.classList.add('comic');
+          chatLineInner.appendChild(backgroundImg);
           chatLine.classList.add('star');
           backgroundImg.style.clipPath = 'url(#star)';
         } else if (
@@ -613,12 +627,9 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
           messageText == '??' ||
           messageText == '???' ||
           messageText == '헐!') {
-          let backgroundImg = document.createElement('div');
+          let backgroundImg = setComicSpeech();
           backgroundImg.classList.add('blob');
-          backgroundImg.classList.add('spbg');
-          backgroundImg.style.backgroundColor = random_color_light;
-          chatLineBg.appendChild(backgroundImg);
-          chatLine.classList.add('comic');
+          chatLineInner.appendChild(backgroundImg);
           chatLine.classList.add('blob');
           backgroundImg.style.clipPath = 'url(#blob)';
         }
