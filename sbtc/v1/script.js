@@ -567,7 +567,7 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
     // 코믹스 모양 채팅
     if (params.comic == '0') {
 
-    } else {
+    } else if ((params.comic == '1' || params.comic == undefined) && params.theme != 'smm' && params.theme != 'instalive') {
       let messageText = finalMessage[0];
       if (typeof messageText == 'string') {
         messageText = messageText.toLowerCase();
