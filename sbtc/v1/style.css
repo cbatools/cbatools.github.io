@@ -388,10 +388,11 @@ body {
   border-right: 18px solid;
 }
 .chat-box.smm .chat-line .chat-line-inner-tail-shadow {
-  display: none;
-  bottom: 8px;
-  left: -40px;
+  background-color: transparent;
+  bottom: 0px;
+  left: -26px;
   border-color: transparent;
+  transform: rotateY(180deg) rotateZ(-90deg);
 }
 .chat-box.smm .chat-line .chat-user {
   order: 1;
