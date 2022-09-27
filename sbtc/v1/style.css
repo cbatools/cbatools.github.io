@@ -315,7 +315,7 @@ body {
 .chat-box.mlt .message {
   -webkit-line-clamp: 6;
   border-radius: 0;
-  padding: 8px 8px 8px 24px;
+  padding: 8px 8px 8px 20px;
 }
 .chat-box.mlt .chat-line .chat-line-inner {
   border-radius: 0;

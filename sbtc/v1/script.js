@@ -621,6 +621,9 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
       chatUserAvatar.style.color = random_color;
     } else if (params.avatar == '0') {
       chatUserAvatar.classList.add('hide');
+      if (params.theme == 'mlt') {
+        messageEle.style.paddingLeft = '12px';
+      }
     } else if (params.avatar == 'whiteperson') {
       chatUserAvatar.setAttribute('style', 'background: url(img/person.svg); filter: invert(1);');
     } else {
