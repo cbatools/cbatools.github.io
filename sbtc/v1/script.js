@@ -506,7 +506,7 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
     } else if (params.theme == 'mlt') { // MLT 테마
       chatBox.classList.add('mlt');
 
-      let margin_bottom = Math.floor(mulberry32(Date.now()) * 74 + 1) + 'px';
+      let margin_bottom = Math.floor(mulberry32(Date.now()) * 74 + 4) + 'px';
 
       chatLine.style.marginBottom = margin_bottom;
     } else if (params.theme == 'smm') { // SMM 테마
@@ -578,6 +578,8 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
           messageText == '오!' ||
           messageText == '와' ||
           messageText == '와!' ||
+          messageText == '앗' ||
+          messageText == '앗!' ||
           messageText == '굿' ||
           messageText == '굿!' ||
           messageText == '대박' ||
@@ -586,13 +588,14 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
           messageText == 'lol!' || 
           messageText == 'wow' || 
           messageText == 'wow!') {
-          let starEle = document.createElement('div');
-          starEle.classList.add('star');
-          starEle.style.backgroundColor = random_color_light;
-          chatLineBg.appendChild(starEle);
+          let backgroundImg = document.createElement('div');
+          backgroundImg.classList.add('star');
+          backgroundImg.classList.add('spbg');
+          backgroundImg.style.backgroundColor = random_color_light;
+          chatLineBg.appendChild(backgroundImg);
           chatLine.classList.add('comic');
           chatLine.classList.add('star');
-          starEle.style.clipPath = 'url(#star)';
+          backgroundImg.style.clipPath = 'url(#star)';
         } else if (messageText == '헐' ||
           messageText == '오' ||
           messageText == '엥' ||
@@ -601,13 +604,14 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
           messageText == '??' ||
           messageText == '???' ||
           messageText == '헐!') {
-          let starEle = document.createElement('div');
-          starEle.classList.add('blob');
-          starEle.style.backgroundColor = random_color_light;
-          chatLineBg.appendChild(starEle);
+          let backgroundImg = document.createElement('div');
+          backgroundImg.classList.add('blob');
+          backgroundImg.classList.add('spbg');
+          backgroundImg.style.backgroundColor = random_color_light;
+          chatLineBg.appendChild(backgroundImg);
           chatLine.classList.add('comic');
           chatLine.classList.add('blob');
-          starEle.style.clipPath = 'url(#blob)';
+          backgroundImg.style.clipPath = 'url(#blob)';
         }
       }
     }

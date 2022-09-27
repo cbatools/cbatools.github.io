@@ -695,6 +695,15 @@ body {
   font-weight: bold;
   transform: none;
 }
+.chat-box.mlt .chat-line.comic {
+  padding-left: 1em;
+}
+.chat-box.mlt .chat-line.comic .chat-line-inner {
+  filter: none;
+}
+.chat-box.mlt .chat-line.comic .spbg {
+  left: -1em;
+}
 
 @keyframes breathblob {
   0% {
