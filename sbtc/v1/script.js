@@ -286,7 +286,7 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
     let last2Chat = normalChats[parseInt(normalChats.length) - 2];
     let perfectPos = false;
     let lastloop = 0;
-    let lastPosGap = 40;
+    let lastPosGap = 22;
     let existPosGap = 2.6;
     while (perfectPos != true) {
       let existPos = 0;
