@@ -697,9 +697,6 @@ body {
 .chat-box.mlt .chat-line.comic .chat-line-inner {
   filter: none;
 }
-.chat-box.mlt .chat-line.comic .spbg {
-  left: -1em;
-}
 
 @keyframes breathblob {
   0% {
