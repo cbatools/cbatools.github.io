@@ -632,6 +632,14 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
           chatLineInner.appendChild(backgroundImg);
           chatLine.classList.add('blob');
           backgroundImg.style.clipPath = 'url(#blob)';
+        } else if (
+          messageText == 'ㅗㅜㅑ' ||
+          messageText == '오우야') {
+          let backgroundImg = setComicSpeech();
+          backgroundImg.classList.add('heart');
+          chatLineInner.appendChild(backgroundImg);
+          chatLine.classList.add('heart');
+          backgroundImg.style.clipPath = 'url(#heart)';
         }
       }
     }
