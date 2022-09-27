@@ -38,8 +38,8 @@
 }
 
 @font-face {
-  font-family: 'NotoSerifKR';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NotoSerifKR.woff') format('woff');
+  font-family: '국립박물관문화재단클래식B';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/국립박물관문화재단클래식B.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
@@ -690,8 +690,7 @@ body {
   animation-timing-function: ease;
 }
 .chat-line.comic.blob .message {
-  font-family: 'NotoSerifKR';
-  line-height: 0;
+  font-family: '국립박물관문화재단클래식B';
   font-weight: bold;
   transform: none;
 }
