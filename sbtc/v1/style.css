@@ -37,6 +37,13 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'NotoSerifKR';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NotoSerifKR.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   background: transparent;
   color: transparent;
@@ -623,6 +630,11 @@ body {
   background-repeat: no-repeat;
   padding-left: 2em;
 }
+.chat-line.comic .chat-user .chat-user-avatar.hide {
+  display: block;
+  background: none;
+  height: 1em;
+}
 .chat-line.comic .star {
   display: block;
   position: absolute;
@@ -664,6 +676,34 @@ body {
   left: 28px;
 }
 
+.chat-line.comic.blob .blob {
+  display: block;
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  top: 0px;
+  left: 0px;
+  z-index: -2;
+  animation: breathblob 1s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease;
+}
+.chat-line.comic.blob .message {
+  font-family: 'NotoSerifKR';
+  line-height: 0;
+  font-weight: bold;
+  transform: none;
+}
+
+@keyframes breathblob {
+  0% {
+    transform: scale(.5);
+   }
+   100% {
+    transform: scale(.53);
+   }
+}
 @keyframes rotatestar {
   0% {
    transform: scale(.55) rotate(0deg);

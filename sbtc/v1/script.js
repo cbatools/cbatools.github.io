@@ -569,10 +569,9 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
 
     } else if ((params.comic == '1' || params.comic == undefined) && params.theme != 'smm' && params.theme != 'instalive') {
       let messageText = finalMessage[0];
-      if (typeof messageText == 'string') {
+      if (typeof messageText == 'string' && finalMessage.length == 1) {
         messageText = messageText.toLowerCase();
-        if (finalMessage.length == 1 && 
-          messageText == '와우!'||
+        if (messageText == '와우!'||
           messageText == '우와'||
           messageText == '와우'||
           messageText == '우와!'||
@@ -592,7 +591,23 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
           starEle.style.backgroundColor = random_color_light;
           chatLineBg.appendChild(starEle);
           chatLine.classList.add('comic');
+          chatLine.classList.add('star');
           starEle.style.clipPath = 'url(#star)';
+        } else if (messageText == '헐' ||
+          messageText == '오' ||
+          messageText == '엥' ||
+          messageText == '엥?' ||
+          messageText == '?' ||
+          messageText == '??' ||
+          messageText == '???' ||
+          messageText == '헐!') {
+          let starEle = document.createElement('div');
+          starEle.classList.add('blob');
+          starEle.style.backgroundColor = random_color_light;
+          chatLineBg.appendChild(starEle);
+          chatLine.classList.add('comic');
+          chatLine.classList.add('blob');
+          starEle.style.clipPath = 'url(#blob)';
         }
       }
     }
