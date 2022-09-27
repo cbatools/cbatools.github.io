@@ -583,6 +583,8 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
           messageText == '굿!' ||
           messageText == '대박' ||
           messageText == '대박!' ||
+          messageText == 'lol' || 
+          messageText == 'lol!' || 
           messageText == 'wow' || 
           messageText == 'wow!') {
           let starEle = document.createElement('div');
