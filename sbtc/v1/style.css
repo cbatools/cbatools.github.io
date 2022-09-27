@@ -270,10 +270,12 @@ body {
 }
 .message.onecharacter {
   font-size: 1.8em;
-  padding: 0.4em;
+  padding: 6px;
+  line-height: 1;
 }
 .message.onecharacter img {
   width: 2em;
+  border-radius: 9px;
 }
 
 .message img {
@@ -628,7 +630,6 @@ body {
   top: 0px;
   left: 0px;
   z-index: -2;
-  transform: scale(.55);
   animation: rotatestar 10s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
