@@ -568,17 +568,26 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
       let messageText = finalMessage[0];
       if (typeof messageText == 'string' && finalMessage.length == 1) {
         messageText = messageText.toLowerCase();
-        if (messageText == '와우!'||
+        if (
+          messageText == '엌'||
+          messageText == '와우!'||
           messageText == '우와'||
           messageText == '와우'||
           messageText == '우와!'||
+          messageText == '오~' ||
           messageText == '오!' ||
           messageText == '와' ||
+          messageText == '와~' ||
           messageText == '와!' ||
           messageText == '앗' ||
           messageText == '앗!' ||
           messageText == '굿' ||
           messageText == '굿!' ||
+          messageText == '캬'||
+          messageText == '캬~'||
+          messageText == '캬!'||
+          messageText == '크'||
+          messageText == '크~'||
           messageText == '대박' ||
           messageText == '대박!' ||
           messageText == 'lol' || 
@@ -593,7 +602,10 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
           chatLine.classList.add('comic');
           chatLine.classList.add('star');
           backgroundImg.style.clipPath = 'url(#star)';
-        } else if (messageText == '헐' ||
+        } else if (
+          messageText == '아' ||
+          messageText == '헉' ||
+          messageText == '헐' ||
           messageText == '오' ||
           messageText == '엥' ||
           messageText == '엥?' ||
