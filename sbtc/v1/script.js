@@ -286,31 +286,28 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
     let last2Chat = normalChats[parseInt(normalChats.length) - 2];
     let perfectPos = false;
     let lastloop = 0;
-    let posGap = 20;
+    let lastPosGap = 40;
+    let existPosGap = 2.6;
     while (perfectPos != true) {
       let existPos = 0;
       normalChats.forEach(element => {
         if (element.pos !== undefined 
           && element.type == 'normal' 
-          && element.pos < left_pos + 2.4
-          && element.pos > left_pos - 2.4) {
+          && element.pos < left_pos + existPosGap
+          && element.pos > left_pos - existPosGap) {
           existPos++;
         }
       });
-      if (lastChat.pos < left_pos + posGap && lastChat.pos > left_pos - posGap) {
+      if (lastChat.pos < left_pos + lastPosGap && lastChat.pos > left_pos - lastPosGap) {
         existPos++;
       }
-      // if (last2Chat !== undefined && last2Chat.pos < left_pos + 20 && last2Chat.pos > left_pos - 20) {
-      //   existPos++;
-      // }
       if (existPos !== 0) {
-        posGap = posGap - 0.2;
+        lastPosGap = lastPosGap - 1;
         left_pos = Math.floor(Math.random() * 8000 + 1) / 100;
       } else if (existPos === 0) {
         perfectPos = true;
       }
-      if (lastloop >= 22) {
-        console.log(lastloop);
+      if (lastloop >= 22 && lastChat.pos < left_pos + lastPosGap && lastChat.pos > left_pos - lastPosGap) {
         perfectPos = true;
       }
       lastloop++;
