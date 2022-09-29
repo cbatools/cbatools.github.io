@@ -194,7 +194,12 @@
       previewBox.className = 'preview-box';
 
       if (theme == 'dark') {
+        let messageEle = document.getElementById('message');
+
         url.searchParams.set('theme', 'dark');
+        url.searchParams.delete('messagecolor');
+        messageEle.classList.remove('black');
+        document.getElementById('messageblack').checked = 0;
 
         chatBox.classList.add('dark');
 
