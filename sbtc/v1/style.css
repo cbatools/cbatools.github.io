@@ -289,7 +289,7 @@ body {
 }
 .chat-line.onecharacter .message {
   font-size: 1.8em;
-  padding: 0;
+  padding: 2px;
   line-height: 1;
   border-radius: 0px;
 }
