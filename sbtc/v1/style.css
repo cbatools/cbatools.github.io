@@ -29,9 +29,6 @@
   font-weight: normal;
   font-style: normal;
 }
-<<<<<<< HEAD
-=======
-
 @font-face {
   font-family: 'BRBA_B';
   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_seven@1.2/BRBA_B.woff') format('woff');
@@ -53,7 +50,6 @@
   font-style: normal;
 }
 
->>>>>>> 1.2209
 body {
   background: transparent;
   color: transparent;
