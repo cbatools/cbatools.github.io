@@ -687,7 +687,7 @@ body {
   left: 28px;
 }
 
-.chat-line.comic.blob .blob {
+.chat-line.comic.blob .spbg {
   animation: breathblob 1s;
   animation-direction: alternate;
   animation-iteration-count: infinite;
@@ -698,7 +698,7 @@ body {
   font-weight: bold;
   transform: none;
 }
-.chat-line.comic.heart .heart {
+.chat-line.comic.heart .spbg {
   transform: scale(.55);
 }
 .chat-line.comic.heart .message {
@@ -708,11 +708,70 @@ body {
   font-weight: bold;
 }
 
+.chat-line.comic.wavey .spbg {
+  clip-path: circle(36%);
+  transform: scale(.7);
+}
+.chat-line.comic.wavey .spbg::before {
+  content: '';
+  position: absolute;
+  top: 8vw;
+  left: -12vw;
+  width: 36vw;
+  height: 36vw;
+  margin-left: 0;
+  transform-origin: 50% 50%;
+  background-color: transparent;
+  border-radius: 38% 42%;
+  box-shadow: inset 0 0 10vw rgba(255,0,255,0.7);
+  animation: spin 8s infinite linear;
+  mix-blend-mode: multiply;
+}
+
+.chat-line.comic.wavey .message {
+  transform: none;
+  font-size: 2.6em;
+  font-family: 'HSYuji-Regular';
+  font-weight: bold;
+}
+.chat-line.comic.wavey .message span {
+  display: inline-block;
+  animation: wavetext 1s ease-in-out infinite;
+}
+.chat-line.comic.wavey .message span:nth-of-type(1) {
+  animation-delay: 0s;
+  -webkit-animation-delay: 0s;
+}
+.chat-line.comic.wavey .message span:nth-of-type(2) {
+  animation-delay: 0.1s;
+  -webkit-animation-delay: 0.1s;
+}
+.chat-line.comic.wavey .message span:nth-of-type(3) {
+  animation-delay: 0.2s;
+  -webkit-animation-delay: 0.2s;
+}
+
 .chat-box.mlt .chat-line.comic {
   padding-left: 1em;
 }
 .chat-box.mlt .chat-line.comic .chat-line-inner {
   filter: none;
+}
+
+@keyframes wavetext {
+  00% {
+    transform: translateY(0.22em);
+  }
+  60% {
+    transform: translateY(-0.12em);
+  }
+  100% {
+    transform: translateY(0.22em);
+  }
+}
+
+@keyframes spin {
+  100% { transform: rotate(360deg); }
 }
 
 @keyframes breathblob {

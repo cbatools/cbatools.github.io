@@ -633,13 +633,26 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
           chatLine.classList.add('blob');
           backgroundImg.style.clipPath = 'url(#blob)';
         } else if (
-          messageText == 'ㅗㅜㅑ' ||
-          messageText == '오우야') {
+          messageText == '하트@#' ||
+          messageText == '하트!@#') {
           let backgroundImg = setComicSpeech();
           backgroundImg.classList.add('heart');
           chatLineInner.appendChild(backgroundImg);
           chatLine.classList.add('heart');
           backgroundImg.style.clipPath = 'url(#heart)';
+        } else if (
+          messageText == 'ㅗㅜㅑ' ||
+          messageText == '오우야') {
+          let backgroundImg = setComicSpeech();
+          backgroundImg.classList.add('wavey');
+          chatLineInner.appendChild(backgroundImg);
+          chatLine.classList.add('wavey');
+          let messageText = messageEle.innerText.split('');
+          let spanMessage = '';
+          messageText.forEach(n => {
+            spanMessage = spanMessage + '<span>' + n + '</span>';
+          });
+          messageEle.innerHTML = spanMessage;
         }
       }
     }
