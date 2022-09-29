@@ -558,7 +558,7 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
       }
     } else {
       if (finalMessage.length == 1 && finalMessage[0].type) {
-        messageEle.classList.add('onecharacter');
+        chatLine.classList.add('onecharacter');
       }
     }
     // 코믹스 모양 채팅
