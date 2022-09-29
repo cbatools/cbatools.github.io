@@ -50,6 +50,16 @@
       document.getElementById("urltext").value = url;
     }
 
+    function checkComicOption() {
+      const comic = document.getElementById('comic').checked;
+      if (comic) {
+        url.searchParams.set('comic', 1);
+      } else {
+        url.searchParams.set('comic', 0);
+      }
+      document.getElementById("urltext").value = url;
+    }
+
     function checkLOLOption() {
       const lol = document.getElementById('lol').checked;
       if (lol) {
