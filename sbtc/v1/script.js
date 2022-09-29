@@ -26,7 +26,7 @@ const krakenClientID = '4g5an0yjebpf93392k4c5zll7d7xcec';
 
 const helixBase = 'https://api.twitch.tv/helix/';
 const helixClientID = 'u2844yyspjg8a92oyw99uocbkdhb0l';
-const helixAuth = 'Bearer ke9ebipjzigmc2ehvwmv13s2zbb3he';
+const helixAuth = 'Bearer 12jaupzty33uhlxn0gusvr73rpbv9g';
 
 const chatFilters = [
 // '\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u00FF', // Partial Latin-1 Supplement
@@ -225,7 +225,7 @@ function getChan(channel = '') {
 function showMessage({ chan, type, message = '', data = {}, timeout = messageTimeout, attribs = {} } = {}) {
   
   let chatBox = document.createElement('div');
-  let chatLine_ = document.createElement('div');
+  let chatLine = document.createElement('div');
   let chatLineBg = document.createElement('div');
   let chatLineInner = document.createElement('div');
   let chatLine_tail = document.createElement('div');
@@ -243,7 +243,7 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
   let maxChatNum = 15;
   
   chatBox.classList.add('chat-box');
-  chatLine_.classList.add('chat-line');
+  chatLine.classList.add('chat-line');
   chatLineBg.classList.add('chat-line-bg');
   chatLineInner.classList.add('chat-line-inner');
   chatLine_tail.classList.add('chat-line-inner-tail');
@@ -279,9 +279,6 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
     }
   }
   
-  // console.log('type', chatBox.getAttribute('type'));
-  // console.log('prediction', chatBox.getAttribute('prediction'));
-
   // 말풍선 위치 지정
   let left_pos = Math.floor(mulberry32(Date.now()) * 8000 + 1) / 100;
   if (normalChats.length > 0) {
@@ -289,28 +286,28 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
     let last2Chat = normalChats[parseInt(normalChats.length) - 2];
     let perfectPos = false;
     let lastloop = 0;
+    let lastPosGap = 22;
+    let existPosGap = 2.6;
     while (perfectPos != true) {
       let existPos = 0;
       normalChats.forEach(element => {
         if (element.pos !== undefined 
           && element.type == 'normal' 
-          && element.pos < left_pos + 2.2 
-          && element.pos > left_pos - 2.2) {
+          && element.pos < left_pos + existPosGap
+          && element.pos > left_pos - existPosGap) {
           existPos++;
         }
       });
-      if (lastChat.pos < left_pos + 20 && lastChat.pos > left_pos - 20) {
+      if (lastChat.pos < left_pos + lastPosGap && lastChat.pos > left_pos - lastPosGap) {
         existPos++;
       }
-      // if (last2Chat !== undefined && last2Chat.pos < left_pos + 20 && last2Chat.pos > left_pos - 20) {
-      //   existPos++;
-      // }
       if (existPos !== 0) {
+        lastPosGap = lastPosGap - 1;
         left_pos = Math.floor(Math.random() * 8000 + 1) / 100;
       } else if (existPos === 0) {
         perfectPos = true;
       }
-      if (lastloop >= 22) {
+      if (lastloop >= 22 && lastChat.pos < left_pos + lastPosGap && lastChat.pos > left_pos - lastPosGap) {
         perfectPos = true;
       }
       lastloop++;
@@ -404,9 +401,9 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
   chatLine_tail.style.borderColor = random_color + " transparent";
   chatLine_tail.style.backgroundColor = random_color;
 
-  chatBox.appendChild(chatLine_);
-  chatLine_.appendChild(chatLineBg);
-  chatLine_.appendChild(chatUser);
+  chatBox.appendChild(chatLine);
+  chatLine.appendChild(chatLineBg);
+  chatLine.appendChild(chatUser);
   chatUser.appendChild(chatUserAvatar);
   chatLineBg.appendChild(chatLineInner);
   chatLineInner.appendChild(chatLine_tail_shadow);
@@ -506,9 +503,9 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
     } else if (params.theme == 'mlt') { // MLT 테마
       chatBox.classList.add('mlt');
 
-      let margin_bottom = Math.floor(mulberry32(Date.now()) * 74 + 1) + 'px';
+      let margin_bottom = Math.floor(mulberry32(Date.now()) * 74 + 4) + 'px';
 
-      chatLine_.style.marginBottom = margin_bottom;
+      chatLine.style.marginBottom = margin_bottom;
     } else if (params.theme == 'smm') { // SMM 테마
       chatBox.classList.add('smm');
       maxChatNum = 10;
@@ -561,7 +558,102 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
       }
     } else {
       if (finalMessage.length == 1 && finalMessage[0].type) {
-        messageEle.classList.add('onecharacter');
+        chatLine.classList.add('onecharacter');
+      }
+    }
+    // 코믹스 모양 채팅
+    if (params.comic == '0') {
+
+    } else if ((params.comic == '1' || params.comic == undefined) && params.theme != 'smm' && params.theme != 'instalive') {
+      let messageText = finalMessage[0];
+      if (typeof messageText == 'string' && finalMessage.length == 1) {
+        messageText = messageText.toLowerCase();
+
+        function setComicSpeech() {
+          let backgroundImg = document.createElement('div');
+          backgroundImg.classList.add('spbg');
+          backgroundImg.style.backgroundColor = random_color_light;
+          chatLine.classList.add('comic');
+  
+          if (params.theme == 'dark') {
+            chatLineInner.style.background = 'transparent';
+            backgroundImg.style.backgroundColor = random_color_dark;
+            backgroundImg.style.filter = 'filter: brightness(0.4)';
+            messageEle.style.color = random_color_light;
+            messageEle.style.textShadow = '2px 3px 1px rgb(0 0 0)'
+          }
+          return backgroundImg;
+        }
+
+        if (
+          messageText == '엌'||
+          messageText == '와우!'||
+          messageText == '우와'||
+          messageText == '와우'||
+          messageText == '우와!'||
+          messageText == '오~' ||
+          messageText == '오!' ||
+          messageText == '와' ||
+          messageText == '와~' ||
+          messageText == '와!' ||
+          messageText == '앗' ||
+          messageText == '앗!' ||
+          messageText == '굿' ||
+          messageText == '굿!' ||
+          messageText == '캬'||
+          messageText == '캬~'||
+          messageText == '캬!'||
+          messageText == '크'||
+          messageText == '크~'||
+          messageText == '대박' ||
+          messageText == '대박!' ||
+          messageText == 'lol' || 
+          messageText == 'lol!' || 
+          messageText == 'wow' || 
+          messageText == 'wow!') {
+          let backgroundImg = setComicSpeech();
+          backgroundImg.classList.add('star');
+          chatLineInner.appendChild(backgroundImg);
+          chatLine.classList.add('star');
+          backgroundImg.style.clipPath = 'url(#star)';
+        } else if (
+          messageText == '아' ||
+          messageText == '헉' ||
+          messageText == '헐' ||
+          messageText == '오' ||
+          messageText == '엥' ||
+          messageText == '엥?' ||
+          messageText == '?' ||
+          messageText == '??' ||
+          messageText == '???' ||
+          messageText == '헐!') {
+          let backgroundImg = setComicSpeech();
+          backgroundImg.classList.add('blob');
+          chatLineInner.appendChild(backgroundImg);
+          chatLine.classList.add('blob');
+          backgroundImg.style.clipPath = 'url(#blob)';
+        } else if (
+          messageText == '하트@#' ||
+          messageText == '하트!@#') {
+          let backgroundImg = setComicSpeech();
+          backgroundImg.classList.add('heart');
+          chatLineInner.appendChild(backgroundImg);
+          chatLine.classList.add('heart');
+          backgroundImg.style.clipPath = 'url(#heart)';
+        } else if (
+          messageText == 'ㅗㅜㅑ' ||
+          messageText == '오우야') {
+          let backgroundImg = setComicSpeech();
+          backgroundImg.classList.add('wavey');
+          chatLineInner.appendChild(backgroundImg);
+          chatLine.classList.add('wavey');
+          let messageText = messageEle.innerText.split('');
+          let spanMessage = '';
+          messageText.forEach(n => {
+            spanMessage = spanMessage + '<span>' + n + '</span>';
+          });
+          messageEle.innerHTML = spanMessage;
+        }
       }
     }
     // 아바타 선택
@@ -570,6 +662,9 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
       chatUserAvatar.style.color = random_color;
     } else if (params.avatar == '0') {
       chatUserAvatar.classList.add('hide');
+      if (params.theme == 'mlt') {
+        messageEle.style.paddingLeft = '12px';
+      }
     } else if (params.avatar == 'whiteperson') {
       chatUserAvatar.setAttribute('style', 'background: url(img/person.svg); filter: invert(1);');
     } else {
@@ -584,7 +679,7 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
         if (typeof n === 'string') {
           let lolword = n.search('ㅋㅋㅋ');
           if (lolword >= 0) {
-            chatLine_.classList.add('lol-animation');
+            chatLine.classList.add('lol-animation');
           }
         }
       });

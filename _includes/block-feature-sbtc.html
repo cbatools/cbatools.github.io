@@ -1,6 +1,12 @@
 <section id="{{ section.slug | slugify }}" class="block block-feature-2">
   <style>
     @font-face {
+      font-family: 'Pretendard-Regular';
+      src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+      font-weight: 400;
+      font-style: normal;
+    }
+    @font-face {
       font-family: 'CookieRun-Regular';
       src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff') format('woff');
       font-weight: normal;
@@ -12,6 +18,33 @@
       font-weight: normal;
       font-style: normal;
     }
+    @font-face {
+      font-family: 'ONE-Mobile-POP';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-POP.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'BRBA_B';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_seven@1.2/BRBA_B.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: '국립박물관문화재단클래식B';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/국립박물관문화재단클래식B.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'HSYuji-Regular';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/HSYuji-Regular.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+
     .instalive-option {
       display: none;
     }
@@ -27,41 +60,47 @@
       font-family: 'CookieRun-Regular', sans-serif;
       bottom: 10px;
       width: auto;
+      padding-right: 1em;
       padding-left: 1em;
       max-width: 210px;
       background: tranparent;
       overflow: hidden;
       max-height: 0px;
-      transition: opacity 2s, max-height 1s, margin-top 1s;
       animation: shake .3s;
       animation-iteration-count: 2;
       margin-top: 10px;
       max-height: 340px;
+      max-width: 226px;
       left: 25%;
       display: flex;
       position: relative;
     }
     .chat-line {
-      padding: 12px;
+      padding: 1em;
+      padding-top: 4em;
+      padding-right: 1em;
       animation: shake 4s;
       animation-iteration-count: infinite;
     }
     .chat-line .chat-user .chat-user-avatar {
       width: 46px;
       height: 46px;
-      margin-left: 12px;
+      margin-left: 6px;
       background-repeat: no-repeat !important;
       filter: drop-shadow(1px 1px 2px black);
       animation: shake 2s;
       animation-iteration-count: infinite;
     }
     .chat-line .chat-user .badges {
-      top: 36px;
-      right: 9px;
+      top: 80px;
+      left: -3px;
       position: absolute;
       filter: opacity(0.8);
       width: 18px;
       line-height: .5;
+    }
+    .chat-line .chat-user .badges img {
+      border-radius: 5px;
     }
     .chat-line .chat-line-bg {
       background: transparent;
@@ -92,44 +131,55 @@
     .chat-line .chat-line-inner-tail {
       content: "";
       position: absolute;
-      bottom: 2px;
-      left: -18px;
-      border-style: solid;
-      border-width: 15px 15px 0;
       display: block;
-      width: 0;
-      z-index: .9;
+      width: 24px;
+      height: 24px;
+      left: -1px;
+      top: -1px;
+      clip-path: url(#tail);
+      background: rgb(229, 71, 76);
       border-color: rgb(229, 71, 76) transparent;
     }
     .chat-line .chat-line-inner-tail-shadow {
       content: "";
       position: absolute;
-      bottom: -20px;
-      left: 18px;
-      border-style: solid;
-      border-width: 16px 15px 0;
-      border-color: rgba(0,0,0,.4) transparent;
       display: block;
-      width: 0;
-      z-index: .9;
+      bottom: -28px;
+      left: 19px;
+      width: 24px;
+      height: 24px;
+      background-color: #00000080;
+      clip-path: url(#tail);
     }
     .user-name {
+      font-family: 'ONE-Mobile-POP';
       display: block;
+      position: absolute;
+      top: -34px;
       font-size: 1em;
-      font-weight: bold;
-      color: #fff;
-      padding: .2em 1em;
+      font-weight: normal;
+      padding: .1em .3em;
       border: 2px solid;
-      border-radius: 16px 16px 0 0;
-      text-shadow: 2px 2px 1px rgb(0 0 0), 2px 1px 4px rgb(0 0 0), 2px 3px 3px rgb(0 0 0);
+      border-radius: 8px;
+      max-width: 110px;
+      max-height: 28px;
       color: rgb(249, 172, 175);
       background: rgb(229, 71, 76);
       border-color: rgb(229, 71, 76);
     }
+    .user-name-text {
+      white-space: nowrap;
+      display: inline-block;
+      font-size: 13px;
+      line-height: 1.3;
+      vertical-align: super;
+      filter: brightness(1.3) drop-shadow(1px 1px 2px rgb(0, 0, 0));
+      -webkit-font-smoothing: 4em;
+    }
     .user-name.noinfo {
       display: none;
     }
-    .message {
+    .chat-line .message {
       min-width: 32px;
       font-size: 1.1em;
       white-space: normal;
@@ -140,18 +190,18 @@
       -webkit-box-orient: vertical;
       overflow: hidden;
       text-overflow: ellipsis;
-      padding: 0.7em 0.7em;
-      border-radius: 0px 0 20px 20px;
+      padding: 0.6em;
+      border-radius: 20px;
       text-shadow: 0px 3px 3px rgba(255,255,255,0.5);
       background: rgba(249, 172, 175, .2);
     }
-    .message img {
+    .chat-line .message img {
       vertical-align: text-bottom;
     }
-    .message img.emoji {
+    .chat-line .message img.emoji {
       width: 20px;
     }
-    .message.black {
+    .chat-line .message.black {
       color: #160000;
     }
 
@@ -163,6 +213,9 @@
     .chat-box.dark .user-name {
       text-shadow: none;
       color: rgb(173, 3, 48); background: rgb(252, 131, 163); border-color: rgb(252, 131, 163);
+    }
+    .chat-box.dark .user-name .user-name-text {
+      filter: none;
     }
     .chat-box.dark .chat-line .chat-line-inner {
       border-color: rgb(252, 131, 163); color: rgb(252, 131, 163); background: rgb(0, 0, 0);
@@ -200,8 +253,8 @@
     }
     .chat-box.mlt .chat-user {
       position: absolute;
-      top: 1.1em;
-      left: -1.3em;
+      top: 4.2em;
+      left: -1.1em;
     }
     .chat-box.mlt .chat-line .chat-user .chat-user-avatar {
       animation: none;
@@ -211,7 +264,7 @@
       transform: scale(.8);
       filter: opacity(1);
       top: -18px;
-      right: 10px;
+      left: 32px;
       line-height: 1;
     }
 
@@ -264,9 +317,11 @@
       border-right: 18px solid;
     }
     .chat-box.smm .chat-line .chat-line-inner-tail-shadow {
-      bottom: 8px;
-      left: -40px;
+      background-color: transparent;
+      bottom: 0px;
+      left: -26px;
       border-color: transparent;
+      transform: rotateY(180deg) rotateZ(-90deg);
     }
     .chat-box.smm .chat-line .chat-user {
       order: 1;
@@ -415,6 +470,11 @@
       }
     }
   </style>
+  <svg>
+    <clipPath id="tail">
+        <path d="m3.88731,15.22221c1.33226,-4.49338 1.69403,-8.12066 -0.57007,-11.5107c-2.2641,-3.39004 -5.82578,-4.2609 -1.38059,-4.37762c4.44519,-0.11672 7.73583,-0.1407 15.20028,-0.05063c1.86612,0.02252 4.13194,-0.68636 6.22284,-0.59292c2.09091,0.09344 -1.30672,2.27941 -3.42065,4.59216c-2.11393,2.31275 -4.47629,4.6562 -6.63525,6.96535c-2.15895,2.30916 -10.74882,9.46774 -9.41657,4.97436z"/>
+    </clipPath>
+  </svg>
   <div class="container">
     <div class="columns">
       <div class="column media">
@@ -432,7 +492,11 @@
                   </div>
                 </div>
                 <span> </span>
-                <span class="user-name" id="user-name">오버_</span>
+                <div class="user-name" id="user-name">
+                  <div>
+                    <span class="user-name-text">오버_</span>
+                  </div>
+                </div>
                 <span class="message black" id="message">
                   안녕하세요! 말풍선 채팅 샘플입니다! 모양을 확인해보세요~</span>
               </div>
@@ -572,6 +636,26 @@
                   <input style="width: auto;" type="checkbox" name="fever" id="fever" onchange="checkFeverOption()" value="0">
                   색이 화려하게 변신!!
                 </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="field is-horizontal">
+          <div class="field-label">
+            <label class="label">코믹스말풍선</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <label class="checkbox">
+                  <input style="width: auto;" type="checkbox" name="comic" id="comic" onchange="checkComicOption()" value="1" checked>
+                  적용하기
+                </label>
+                <article class="message is-small is-dark">
+                  <div class="message-body">
+                    와, 헐, ㅗㅜㅑ같은 채팅이 특별한 모양으로 나오게 됩니다. <strong>* 기본, 다크, MLT테마만 적용</strong>
+                  </div>
+                </article>
               </div>
             </div>
           </div>

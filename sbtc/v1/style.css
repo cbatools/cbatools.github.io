@@ -29,6 +29,31 @@
   font-weight: normal;
   font-style: normal;
 }
+<<<<<<< HEAD
+=======
+
+@font-face {
+  font-family: 'BRBA_B';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_seven@1.2/BRBA_B.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: '국립박물관문화재단클래식B';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/국립박물관문화재단클래식B.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'HSYuji-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/HSYuji-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+>>>>>>> 1.2209
 body {
   background: transparent;
   color: transparent;
@@ -192,11 +217,13 @@ body {
   border-radius: 24px;
   overflow-wrap: break-word;
 }
+/* fever */
 .chat-line .chat-line-inner.fever {
   background-image: -webkit-linear-gradient(92deg,#f35626,#feab3a);
   -webkit-background-clip: text;
   animation: hue 1s infinite linear;
 }
+/*  */
 .chat-line .chat-line-inner.admin .message {
   opacity: 0.4;
 }
@@ -260,12 +287,18 @@ body {
 .message.black {
   color: #160000;
 }
-.message.onecharacter {
-  font-size: 1.8em;
-  padding: 0.4em;
+.chat-line.onecharacter .chat-line-inner {
+  border-radius: 9px;
 }
-.message.onecharacter img {
+.chat-line.onecharacter .message {
+  font-size: 1.8em;
+  padding: 2px;
+  line-height: 1;
+  border-radius: 0px;
+}
+.chat-line.onecharacter .message img {
   width: 2em;
+  border-radius: 4px;
 }
 
 .message img {
@@ -298,7 +331,7 @@ body {
 .chat-box.mlt .message {
   -webkit-line-clamp: 6;
   border-radius: 0;
-  padding: 8px 8px 8px 24px;
+  padding: 8px 8px 8px 20px;
 }
 .chat-box.mlt .chat-line .chat-line-inner {
   border-radius: 0;
@@ -307,6 +340,7 @@ body {
 .chat-box.mlt .chat-line .chat-line-bg {
   border-radius: 0;
   box-shadow: none;
+  margin-bottom: 16px;
 }
 .chat-box.mlt .user-name,
 .chat-box.mlt .chat-line .chat-line-inner-tail,
@@ -378,10 +412,11 @@ body {
   border-right: 18px solid;
 }
 .chat-box.smm .chat-line .chat-line-inner-tail-shadow {
-  display: none;
-  bottom: 8px;
-  left: -40px;
+  background-color: transparent;
+  bottom: 0px;
+  left: -26px;
   border-color: transparent;
+  transform: rotateY(180deg) rotateZ(-90deg);
 }
 .chat-box.smm .chat-line .chat-user {
   order: 1;
@@ -605,6 +640,167 @@ body {
   left: 54px;
 }
 
+/* 코믹스 스타일 말풍선 */
+.chat-line.comic {
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  padding-left: 2em;
+}
+.chat-line.comic .spbg {
+  display: block;
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  z-index: -2;
+  top: -4em;
+  left: -1.96em;
+}
+.chat-line.comic .chat-user .chat-user-avatar.hide {
+  display: block;
+  background: none;
+  height: 1em;
+}
+.chat-line.comic .star {
+  animation: rotatestar 10s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+.chat-line.comic .user-name {
+  top: -28px;
+  left: 8px;
+}
+.chat-line.comic .message {
+  background: transparent !important;
+  font-size: 3.2em;
+  line-height: .1;
+  width: 114px;
+  text-align: center;
+  padding: .66em .2em;
+  font-family: 'Bangers', 'BRBA_B';
+  text-shadow: 2px 3px 1px rgb(255 255 255);
+  transform: rotate(-5deg);
+}
+.chat-line.comic .chat-line-bg,
+.chat-line.comic .chat-line-inner {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  margin-bottom: 0px;
+}
+.chat-line.comic .chat-line-inner-tail-shadow {
+  display: none;
+}
+.chat-line.comic .chat-user .badges {
+  left: 28px;
+}
+
+.chat-line.comic.blob .spbg {
+  animation: breathblob 1s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease;
+}
+.chat-line.comic.blob .message {
+  font-family: '국립박물관문화재단클래식B';
+  font-weight: bold;
+  transform: none;
+}
+.chat-line.comic.heart .spbg {
+  transform: scale(.55);
+}
+.chat-line.comic.heart .message {
+  transform: none;
+  font-size: 2.6em;
+  font-family: 'HSYuji-Regular';
+  font-weight: bold;
+}
+
+.chat-line.comic.wavey .spbg {
+  clip-path: circle(36%);
+  transform: scale(.7);
+}
+.chat-line.comic.wavey .spbg::before {
+  content: '';
+  position: absolute;
+  top: 8vw;
+  left: -12vw;
+  width: 36vw;
+  height: 36vw;
+  margin-left: 0;
+  transform-origin: 50% 50%;
+  background-color: transparent;
+  border-radius: 38% 42%;
+  box-shadow: inset 0 0 10vw rgba(255,0,255,0.57);
+  animation: spin 8s infinite linear;
+  mix-blend-mode: multiply;
+}
+.chat-box.dark .chat-line.comic.wavey .spbg::before {
+  box-shadow: inset 0 0 10vw rgba(10, 10, 10, 1);
+}
+
+.chat-line.comic.wavey .message {
+  transform: none;
+  font-size: 2.6em;
+  font-family: 'HSYuji-Regular';
+  font-weight: bold;
+}
+.chat-line.comic.wavey .message span {
+  display: inline-block;
+  animation: wavetext 1s ease-in-out infinite;
+}
+.chat-line.comic.wavey .message span:nth-of-type(1) {
+  animation-delay: 0s;
+  -webkit-animation-delay: 0s;
+}
+.chat-line.comic.wavey .message span:nth-of-type(2) {
+  animation-delay: 0.14s;
+  -webkit-animation-delay: 0.14s;
+}
+.chat-line.comic.wavey .message span:nth-of-type(3) {
+  animation-delay: 0.24s;
+  -webkit-animation-delay: 0.24s;
+}
+
+.chat-box.mlt .chat-line.comic {
+  padding-left: 1em;
+}
+.chat-box.mlt .chat-line.comic .chat-line-inner {
+  filter: none;
+}
+
+@keyframes wavetext {
+  00% {
+    transform: translateY(0.26em);
+  }
+  60% {
+    transform: translateY(-0.12em);
+  }
+  100% {
+    transform: translateY(0.26em);
+  }
+}
+
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes breathblob {
+  0% {
+    transform: scale(.49);
+   }
+   100% {
+    transform: scale(.53);
+   }
+}
+@keyframes rotatestar {
+  0% {
+   transform: scale(.55) rotate(0deg);
+  }
+  100% {
+   transform: scale(.55) rotate(360deg);
+  }
+}
 @keyframes shake {
   0% { transform: translate(1px, 1px) rotate(0deg); }
   10% { transform: translate(-1px, -2px) rotate(-1deg); }

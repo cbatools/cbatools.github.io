@@ -50,6 +50,16 @@
       document.getElementById("urltext").value = url;
     }
 
+    function checkComicOption() {
+      const comic = document.getElementById('comic').checked;
+      if (comic) {
+        url.searchParams.set('comic', 1);
+      } else {
+        url.searchParams.set('comic', 0);
+      }
+      document.getElementById("urltext").value = url;
+    }
+
     function checkLOLOption() {
       const lol = document.getElementById('lol').checked;
       if (lol) {
@@ -184,7 +194,12 @@
       previewBox.className = 'preview-box';
 
       if (theme == 'dark') {
+        let messageEle = document.getElementById('message');
+
         url.searchParams.set('theme', 'dark');
+        url.searchParams.delete('messagecolor');
+        messageEle.classList.remove('black');
+        document.getElementById('messageblack').checked = 0;
 
         chatBox.classList.add('dark');
 
