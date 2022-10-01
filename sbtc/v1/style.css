@@ -219,6 +219,12 @@ body {
   -webkit-background-clip: text;
   animation: hue 1s infinite linear;
 }
+.chat-line.onecharacter .chat-line-inner.fever .message {
+  background: #fff !important;
+}
+.chat-box.dark .chat-line.onecharacter .chat-line-inner.fever .message {
+  background: rgba(0, 0, 0, 0.8) !important;
+}
 /*  */
 .chat-line .chat-line-inner.admin .message {
   opacity: 0.4;
