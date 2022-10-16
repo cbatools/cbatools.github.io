@@ -44,6 +44,13 @@
 }
 
 @font-face {
+  font-family: 'Dokrip';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Dokrip.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
   font-family: 'HSYuji-Regular';
   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/HSYuji-Regular.woff') format('woff');
   font-weight: normal;
@@ -704,9 +711,9 @@ body {
   animation-timing-function: ease;
 }
 .chat-line.comic.blob .message {
-  font-family: '국립박물관문화재단클래식B';
-  font-weight: bold;
+  font-family: 'Dokrip';
   transform: none;
+  line-height: 0;
 }
 .chat-line.comic.heart .spbg {
   transform: scale(.55);
