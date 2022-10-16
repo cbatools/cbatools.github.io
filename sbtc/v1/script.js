@@ -585,6 +585,35 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
           return backgroundImg;
         }
 
+        let splitText = messageText.split('');
+        let preChar = '';
+        let charLength = 0;
+        splitText.forEach(element => {
+          if (preChar == '') preChar = element;
+          if (preChar != element) {
+            return;
+          }
+          charLength++;
+          if ((charLength == splitText.length && splitText.length >= 3) && 
+          (preChar == 'ㅋ' ||
+          preChar == 'ㅎ')) {
+            let backgroundImg = setComicSpeech();
+            backgroundImg.classList.add('nobg');
+            chatLineInner.appendChild(backgroundImg);
+            chatLine.classList.add('nobg');
+            let messageText = messageEle.innerText.split('');
+            let spanMessage = '';
+            let messageTextN = 0;
+            messageText.forEach(n => {
+              messageTextN++;
+              let randomSize = (mulberry32(Date.now() + messageTextN) * 0.6) + 0.6;
+              console.log(randomSize)
+              spanMessage = spanMessage + '<span style="font-size:'+ randomSize +'em;">' + n + '</span>';
+            });
+            messageEle.innerHTML = spanMessage;
+          }
+        });
+
         if (
           messageText == '엌'||
           messageText == '와우!'||
@@ -654,6 +683,7 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
           });
           messageEle.innerHTML = spanMessage;
         }
+        
       }
     }
     // 아바타 선택

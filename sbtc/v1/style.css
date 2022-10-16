@@ -51,6 +51,13 @@
 }
 
 @font-face {
+  font-family: 'KOTRAHOPE';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/KOTRAHOPE.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
   font-family: 'HSYuji-Regular';
   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/HSYuji-Regular.woff') format('woff');
   font-weight: normal;
@@ -771,6 +778,29 @@ body {
   -webkit-animation-delay: 0.24s;
 }
 
+.chat-line.comic.nobg .spbg {
+  background-color: transparent !important;
+}
+
+.chat-line.comic.nobg .message {
+  font-family: 'KOTRAHOPE';
+  font-size: 4em;
+  font-weight: bold;
+  line-height: 0;
+  padding: 0.5em .26em 0.3em .2em;
+  transform: none;
+}
+.chat-line.comic.nobg .message.black {
+  color: inherit;
+}
+.chat-line.comic.nobg .message span:nth-of-type(n) {
+  display: none;
+}
+.chat-line.comic.nobg .message span:nth-of-type(1),
+.chat-line.comic.nobg .message span:nth-of-type(2),
+.chat-line.comic.nobg .message span:nth-of-type(3) {
+  display: inline-block;
+}
 .chat-box.mlt .chat-line.comic {
   padding-left: 1em;
 }
