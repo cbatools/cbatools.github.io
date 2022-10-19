@@ -789,6 +789,7 @@ body {
   line-height: 0;
   padding: 0.5em .26em 0.3em .2em;
   transform: none;
+  text-shadow: 2px 2px 1px rgb(0 0 0 / 30%);
 }
 .chat-line.comic.nobg .message.black {
   color: inherit;

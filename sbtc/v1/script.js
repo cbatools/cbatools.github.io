@@ -580,7 +580,7 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
             backgroundImg.style.backgroundColor = random_color_dark;
             backgroundImg.style.filter = 'filter: brightness(0.4)';
             messageEle.style.color = random_color_light;
-            messageEle.style.textShadow = '2px 3px 1px rgb(0 0 0)'
+            messageEle.style.textShadow = '2px 3px 1px rgb(0 0 0)';
           }
           return backgroundImg;
         }
@@ -607,10 +607,11 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
             messageText.forEach(n => {
               messageTextN++;
               let randomSize = (mulberry32(Date.now() + messageTextN) * 0.6) + 0.6;
-              console.log(randomSize)
               spanMessage = spanMessage + '<span style="font-size:'+ randomSize +'em;">' + n + '</span>';
             });
             messageEle.innerHTML = spanMessage;
+            messageEle.style.color = random_color_light;
+            messageEle.style.textShadow = '3px 3px 3px' + random_color_dark + ', -3px -3px 3px' + random_color_dark + ', -3px 3px 3px' + random_color_dark + ', 3px -3px 3px' + random_color_dark;
           }
         });
 
