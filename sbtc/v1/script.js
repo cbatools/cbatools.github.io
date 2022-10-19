@@ -596,7 +596,8 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
           charLength++;
           if ((charLength == splitText.length && splitText.length >= 2) && 
           (preChar == 'ㅋ' ||
-          preChar == 'ㅎ')) {
+          preChar == 'z'
+          )) {
             let backgroundImg = setComicSpeech();
             backgroundImg.classList.add('nobg');
             chatLineInner.appendChild(backgroundImg);
