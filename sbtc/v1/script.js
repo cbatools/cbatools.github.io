@@ -594,7 +594,7 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
             return;
           }
           charLength++;
-          if ((charLength == splitText.length && splitText.length >= 3) && 
+          if ((charLength == splitText.length && splitText.length >= 2) && 
           (preChar == 'ㅋ' ||
           preChar == 'ㅎ')) {
             let backgroundImg = setComicSpeech();
