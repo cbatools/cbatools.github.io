@@ -796,6 +796,12 @@ body {
 .chat-line.comic.nobg .message span:nth-of-type(n) {
   display: none;
 }
+.chat-line.comic.nobg .message span:nth-of-type(1) {
+  transform: rotateZ(-20deg);
+}
+.chat-line.comic.nobg .message span:nth-of-type(3) {
+  transform: rotateZ(20deg);
+}
 .chat-line.comic.nobg .message span:nth-of-type(1),
 .chat-line.comic.nobg .message span:nth-of-type(2),
 .chat-line.comic.nobg .message span:nth-of-type(3) {
