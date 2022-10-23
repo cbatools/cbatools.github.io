@@ -7,7 +7,7 @@ const selectedColor = document.getElementById("color").getAttribute("color");
 let normalChats = [];
 let predictionChats = {};
 let chatOrder = 'last'
-let messageTimeout = 30000;
+let messageTimeout = 300000;
 
 let streamer = [];
 
@@ -701,6 +701,11 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
       chatUserAvatar.classList.add('hide');
       if (params.theme == 'mlt') {
         messageEle.style.paddingLeft = '12px';
+      }
+      if (params.theme == 'instalive') {
+        badgeEle.style.top = '1.5em';
+        badgeEle.style.left = '0';
+        chatUser.style.position = 'absolute';
       }
     } else if (params.avatar == 'whiteperson') {
       chatUserAvatar.setAttribute('style', 'background: url(img/person.svg); filter: invert(1);');

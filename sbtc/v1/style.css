@@ -640,20 +640,20 @@ body {
   top: auto;
   right: auto;
   width: auto;
-  left: 2em;
+  left: 1.2em;
 }
 .chat-box.instalive .chat-line .chat-user .badges img {
   position: absolute;
-  top: -84px;
+  top: -66px;
 }
 .chat-box.instalive .chat-line .chat-user .badges img:nth-child(2) {
-  left: 18px;
+  top: -48px;
 }
 .chat-box.instalive .chat-line .chat-user .badges img:nth-child(3) {
-  left: 36px;
+  top: -30px;
 }
 .chat-box.instalive .chat-line .chat-user .badges img:nth-child(4) {
-  left: 54px;
+  top: -12px;
 }
 
 /* 코믹스 스타일 말풍선 */
