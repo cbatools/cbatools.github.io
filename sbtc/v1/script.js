@@ -596,7 +596,8 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
           charLength++;
           if ((charLength == splitText.length && splitText.length >= 2) && 
           (preChar == 'ㅋ' ||
-          preChar == 'z'
+          preChar == 'z' ||
+          preChar == 'w'
           )) {
             let backgroundImg = setComicSpeech();
             backgroundImg.classList.add('nobg');
@@ -654,6 +655,10 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
           messageText == '오' ||
           messageText == '엥' ||
           messageText == '엥?' ||
+          messageText == '!' ||
+          messageText == '!!' ||
+          messageText == '!?' ||
+          messageText == '?!' ||
           messageText == '?' ||
           messageText == '??' ||
           messageText == '???' ||
