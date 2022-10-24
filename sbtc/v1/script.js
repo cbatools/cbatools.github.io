@@ -7,7 +7,7 @@ const selectedColor = document.getElementById("color").getAttribute("color");
 let normalChats = [];
 let predictionChats = {};
 let chatOrder = 'last'
-let messageTimeout = 300000;
+let messageTimeout = 30000;
 
 let streamer = [];
 
@@ -232,6 +232,7 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
   let chatLine_tail_shadow = document.createElement('div');
   let chatUser = document.createElement('div');
   let chatUserAvatar = document.createElement('div');
+  let messageBox = document.createElement('div');
   let messageEle = document.createElement('span');
 
   let chatType = 'normal';
@@ -466,8 +467,9 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
     nameDiv.style.background = random_color;
     nameDiv.style.borderColor = random_color;
 
+    messageBox.classList.add('message-box');
     messageEle.classList.add('message');
-    messageEle.style.background = random_color_light+"33";
+    messageBox.style.background = random_color_light+"33";
 
     let finalMessage = handleEmotes(chan, data.emotes || {}, message);
     addEmoteDOM(messageEle, finalMessage);
@@ -741,7 +743,8 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
       }
     }
 
-    chatLineInner.appendChild(messageEle);
+    chatLineInner.appendChild(messageBox);
+    messageBox.appendChild(messageEle);
 
     // 말풍선 정보 배열 저장
     chatProperty = { id: data.id, date: Date.now(), pos: left_pos, type: chatType };
@@ -771,12 +774,23 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
     chatEle.insertBefore(chatBox, chatEle.firstChild);
   }
   
-  if (params.theme == '' || params.theme == 'dark' || params.theme == undefined) {
+  // 기본, 다크 테마일 때
+  if (params.theme == '' || params.theme == 'dark' || params.theme == undefined) { 
     fitty('.user-name-text', {
       multiLine: false,
       minSize: 2,
       maxSize: 13,
     });
+    let messageScroll = [
+      { top: 0 },
+      { top: '-'+(messageEle.clientHeight-136)+'px' }
+    ];
+    let messageScrollTiming = {
+      duration: 4000,
+      direction : 'alternate',
+      iterations: Infinity,
+    }
+    messageEle.animate(messageScroll, messageScrollTiming);
   }
   setTimeout(() => chatBox.classList.add('visible'), 100);
 
