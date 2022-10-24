@@ -781,16 +781,20 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
       minSize: 2,
       maxSize: 13,
     });
-    let messageScroll = [
-      { top: 0 },
-      { top: '-'+(messageEle.clientHeight-136)+'px' }
-    ];
-    let messageScrollTiming = {
-      duration: 4000,
-      direction : 'alternate',
-      iterations: Infinity,
+    let messageHeight = (messageEle.clientHeight-136);
+    if (0 < messageHeight) {
+      let messageScroll = [
+        { top: 0 },
+        { top: '-'+messageHeight+'px' }
+      ];
+      let messageScrollTiming = {
+        duration: 4000,
+        direction : 'alternate',
+        iterations: Infinity,
+      }
+      messageEle.animate(messageScroll, messageScrollTiming);
     }
-    messageEle.animate(messageScroll, messageScrollTiming);
+    
   }
   setTimeout(() => chatBox.classList.add('visible'), 100);
 
