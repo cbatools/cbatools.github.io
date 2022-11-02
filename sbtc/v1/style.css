@@ -286,6 +286,7 @@ body {
 }
 .message-box {
   overflow: hidden;
+  border-radius: 20px;
   max-height: 136px;
 }
 .message {
