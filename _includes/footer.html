@@ -258,14 +258,14 @@
 
       if (avatar == 'gridy') {
         url.searchParams.set('avatar', 'gridy');
-        chatUserAvatar.style.backgroundImage = 'url(https://avatars.dicebear.com/api/gridy/over.svg)';
+        chatUserAvatar.style.backgroundImage = 'url(https://api.dicebear.com/7.x/big-smile/svg?seed=over)';
       } else if (avatar == 'hide') {
         url.searchParams.set('avatar', '0');
         chatUserAvatar.style.backgroundImage = '';
       } else {
         let random = Math.floor(mulberry32(Date.now()) * 8000 + 1);
         url.searchParams.set('avatar', avatar);
-        chatUserAvatar.style.backgroundImage = 'url(https://avatars.dicebear.com/api/'+ avatar +'/'+ random +'.svg)';
+        chatUserAvatar.style.backgroundImage = 'url(https://api.dicebear.com/7.x/'+ avatar +'/svg?seed='+ random +')';
       }
       document.getElementById("urltext").value = url;
     }
