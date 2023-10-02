@@ -701,7 +701,7 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
     }
     // 아바타 선택
     if  (params.avatar == '1' ||  params.avatar == 'gridy' || params.avatar == undefined || params.avatar == '') {
-      chatUserAvatar.setAttribute('style', 'background: url(https://avatars.dicebear.com/api/gridy/'+ data['user-id'] +'.svg);');
+      chatUserAvatar.setAttribute('style', 'background: url(https://api.dicebear.com/7.x/big-smile/svg?seed='+ data['user-id'] +');');
       chatUserAvatar.style.color = random_color;
     } else if (params.avatar == '0') {
       chatUserAvatar.classList.add('hide');
@@ -716,7 +716,7 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
     } else if (params.avatar == 'whiteperson') {
       chatUserAvatar.setAttribute('style', 'background: url(img/person.svg); filter: invert(1);');
     } else {
-      chatUserAvatar.setAttribute('style', 'background: url(https://avatars.dicebear.com/api/'+ params.avatar +'/'+ data['user-id'] +'.svg);');
+      chatUserAvatar.setAttribute('style', 'background: url(https://api.dicebear.com/7.x/'+ params.avatar +'/svg?seed='+ data['user-id'] +');');
       chatUserAvatar.style.color = random_color;
     }
     // ㅋㅋㅋ 웃는 채팅 더 흔들리게
@@ -761,11 +761,11 @@ function showMessage({ chan, type, message = '', data = {}, timeout = messageTim
     messageEle.innerText = message;
     
     if (params.avatar == '1' ||  params.avatar == 'gridy' || params.avatar == undefined) {
-      chatUserAvatar.setAttribute('style', 'background: url(https://avatars.dicebear.com/api/gridy/admin.svg);');
+      chatUserAvatar.setAttribute('style', 'background: url(https://api.dicebear.com/7.x/big-smile/svg?seed=admin);');
     } else if (params.avatar == '0') {
       chatUserAvatar.classList.add('hide');
     } else {
-      chatUserAvatar.setAttribute('style', 'background: url(https://avatars.dicebear.com/api/gridy/admin.svg);');
+      chatUserAvatar.setAttribute('style', 'background: url(https://api.dicebear.com/7.x/big-smile/svg?seed=admin);');
     }
     chatLineInner.appendChild(messageEle);
 
